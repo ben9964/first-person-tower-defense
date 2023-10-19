@@ -14,6 +14,7 @@ public class Characters : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
 
