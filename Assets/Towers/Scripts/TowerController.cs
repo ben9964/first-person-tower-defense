@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float damage;
-    private float projectileSpeed;
     [SerializeField] private float range = 15f;
-
     [SerializeField] private Transform target;
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private float rateOfFire = 1000f;
 
 
     
@@ -17,8 +17,6 @@ public class TowerController : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
-        damage = 1f;
-        projectileSpeed = 1f;
         
     }
 
@@ -43,6 +41,7 @@ public class TowerController : MonoBehaviour
             }
         }
 
+        // Set target to nearest enemy if enemy exists in range
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
@@ -57,13 +56,14 @@ public class TowerController : MonoBehaviour
     {
         if (target != null)
         {
-            return;
-        } 
+            // Instantiate(projectile);
+        }
 
     }
 
     private void OnDrawGizmos()
     {
+        // Draws the range of the tower around it
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
