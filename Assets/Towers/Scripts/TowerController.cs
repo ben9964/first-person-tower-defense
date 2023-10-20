@@ -10,9 +10,9 @@ public class TowerController : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private GameObject projectile;
     [SerializeField] private float rateOfFire = 1000f;
+    private float rotationSpeed = 5f;
 
-
-    
+    public Transform rotator;
 
     void Start()
     {
@@ -57,7 +57,12 @@ public class TowerController : MonoBehaviour
         if (target != null)
         {
             // Instantiate(projectile);
+            Vector3 dir = target.position - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(dir);
+            Vector3 r = Quaternion.Lerp(rotator.rotation, rotation, Time.deltaTime * rotationSpeed).eulerAngles;
+            rotator.rotation = Quaternion.Euler(0f, r.y, 0f);
         }
+
 
     }
 
