@@ -13,6 +13,7 @@ namespace Players
         private float _health;
         public float maxHealth;
         public float speed;
+        public TextMeshProUGUI dieText;
 
         private void Start()
         {
@@ -47,8 +48,9 @@ namespace Players
 
         private void die()
         {
-            GameObject.FindWithTag("death").SetActive(true);
+            GameGraphics.ShowDeathMessage();
             Time.timeScale = 0;
+            gameObject.GetComponentInParent<FirstPersonController>().RotationSpeed = 0;
         }
 
         public float GetHealth()

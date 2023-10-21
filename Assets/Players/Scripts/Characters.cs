@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Characters : MonoBehaviour
 {
     
     public static Characters Instance { get; private set; }
     
-    public GameObject[] staticCharacters;
+    public GameObject[] characterPrefabs;
 
     private void Awake()
     {
@@ -18,13 +19,18 @@ public class Characters : MonoBehaviour
     }
 
 
-    public GameObject GetCharacter(int index)
+    public static GameObject GetCharacter(int index)
     {
-        return Instance.staticCharacters[index];
+        return Instance.characterPrefabs[index];
     }
 
-    public int getAmount()
+    public static int GetAmount()
     {
-        return Instance.staticCharacters.Length;
+        return Instance.characterPrefabs.Length;
+    }
+
+    public static GameObject[] GetAll()
+    {
+        return Instance.characterPrefabs;
     }
 }
