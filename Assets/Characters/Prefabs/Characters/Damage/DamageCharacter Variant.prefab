@@ -87,3 +87,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   speed: 10
+  currentWeapon: {fileID: 863093164373036079, guid: 9b2ef08cc6dcd974f8d8fd0aa04d6182, type: 3}

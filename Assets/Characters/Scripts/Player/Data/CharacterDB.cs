@@ -5,10 +5,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Characters : MonoBehaviour
+public class CharacterDB : MonoBehaviour
 {
     
-    public static Characters Instance { get; private set; }
+    public static CharacterDB Instance { get; private set; }
     
     public GameObject[] characterPrefabs;
 
