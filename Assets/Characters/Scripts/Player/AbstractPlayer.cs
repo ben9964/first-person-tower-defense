@@ -16,13 +16,18 @@ public abstract class AbstractPlayer : MonoBehaviour
     public float speed;
     public GameObject weaponPrefab;
     private AbstractWeapon _currentWeapon;
-    public Camera camera;
+    public Camera cameraPrefab;
+    private Camera _camera;
 
     private void Awake()
     {
-        InitWeapon();
-        //TODO: FIX THIS TO BE BETTER WHEN PREFAB IS MORE DYNAMIC
-        camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        if (IsInGame())
+        {
+            _camera = Instantiate(cameraPrefab, cameraPrefab.transform.position, cameraPrefab.transform.rotation,
+                transform).GetComponent<Camera>();
+            InitWeapon();
+        }
+        
     }
 
     private void Start()
@@ -42,8 +47,8 @@ public abstract class AbstractPlayer : MonoBehaviour
 
     private void InitWeapon()
     {
-        GameObject weapon = Instantiate(weaponPrefab, transform.Find("HandPos").position, weaponPrefab.transform.rotation,
-            GameObject.FindWithTag("MainCamera").transform);
+        GameObject weapon = Instantiate(weaponPrefab, transform.Find("PlayerCapsule/Model/HandPos").position, weaponPrefab.transform.rotation,
+            _camera.transform);
         _currentWeapon = weapon.GetComponent<AbstractWeapon>();
     }
 
@@ -90,6 +95,6 @@ public abstract class AbstractPlayer : MonoBehaviour
 
     public Camera GetCamera()
     {
-        return this.camera;
+        return this._camera;
     }
 }

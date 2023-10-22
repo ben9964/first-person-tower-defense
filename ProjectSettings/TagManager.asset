@@ -9,6 +9,8 @@ TagManager:
   - CinemachineTarget
   - CharacterRoot
   - DieText
+  - PlayerCamera
+  - PlayerModel
   - LiveCharacter
   layers:
   - Default

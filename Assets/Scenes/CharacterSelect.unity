@@ -479,8 +479,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPrefabs:
-  - {fileID: 471501931337291084, guid: 34194223cfb42084ebb84e874ec2755a, type: 3}
-  - {fileID: 899428199266123027, guid: 6227934054ed9d443828c939a7d9518a, type: 3}
+  - {fileID: 5429082932816303652, guid: 732d8ea3b17aba347b9ffb15b9002b64, type: 3}
+  - {fileID: 915376995334273361, guid: 0ebb4e53578bd894abc968662a4d15fb, type: 3}
 --- !u!1 &1006652782
 GameObject:
   m_ObjectHideFlags: 0
