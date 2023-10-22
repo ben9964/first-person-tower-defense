@@ -21,6 +21,7 @@ public abstract class AbstractPlayer : MonoBehaviour
     private void Awake()
     {
         InitWeapon();
+        //TODO: FIX THIS TO BE BETTER WHEN PREFAB IS MORE DYNAMIC
         camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
     }
 

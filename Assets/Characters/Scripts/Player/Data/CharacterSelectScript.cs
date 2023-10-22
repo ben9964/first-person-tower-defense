@@ -50,7 +50,7 @@ public class CharacterSelectScript : MonoBehaviour
     {
         foreach (GameObject prefab in CharacterDB.GetAll())
         {
-            characterCache.Add(Instantiate(prefab,new Vector3(0, 0, 0),Quaternion.identity, GameObject.FindWithTag("CharacterRoot").transform));
+            characterCache.Add(Instantiate(prefab,new Vector3(0, 0, 0), Quaternion.identity, GameObject.FindWithTag("CharacterRoot").transform));
         }
     }
 }

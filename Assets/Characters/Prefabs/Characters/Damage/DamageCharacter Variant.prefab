@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 465362909528885846, guid: 89af6dbf702a72945a265f22b218df6b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 659671648158195476, guid: 89af6dbf702a72945a265f22b218df6b, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -88,3 +88,4 @@ MonoBehaviour:
   maxHealth: 50
   speed: 10
   weaponPrefab: {fileID: 863093164373036079, guid: 9b2ef08cc6dcd974f8d8fd0aa04d6182, type: 3}
+  camera: {fileID: 0}
