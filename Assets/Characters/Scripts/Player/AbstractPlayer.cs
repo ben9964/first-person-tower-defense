@@ -14,9 +14,22 @@ public abstract class AbstractPlayer : MonoBehaviour
     private float _health;
     public float maxHealth;
     public float speed;
-    public GameObject currentWeapon;
+    public GameObject weaponPrefab;
+    private AbstractWeapon _currentWeapon;
+    public Camera camera;
+
+    private void Awake()
+    {
+        InitWeapon();
+        camera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+    }
 
     private void Start()
+    {
+        InitPlayerDefaults();
+    }
+
+    private void InitPlayerDefaults()
     {
         this._health = maxHealth;
         var controller = this.gameObject.GetComponentInParent<FirstPersonController>(false);
@@ -26,6 +39,13 @@ public abstract class AbstractPlayer : MonoBehaviour
         }
     }
 
+    private void InitWeapon()
+    {
+        GameObject weapon = Instantiate(weaponPrefab, transform.Find("HandPos").position, weaponPrefab.transform.rotation,
+            GameObject.FindWithTag("MainCamera").transform);
+        _currentWeapon = weapon.GetComponent<AbstractWeapon>();
+    }
+
     private static bool IsInGame()
     {
         return !SceneManager.GetActiveScene().name.Equals("CharacterSelect");
@@ -33,8 +53,7 @@ public abstract class AbstractPlayer : MonoBehaviour
 
     public void OnLeftClick(InputValue value)
     {
-        Debug.Log("Left Click");
-        currentWeapon.GetComponent<AbstractWeapon>().Use();
+        _currentWeapon.Use();
     }
 
     public void TakeDamage(float amount)
@@ -66,5 +85,10 @@ public abstract class AbstractPlayer : MonoBehaviour
     public float GetSpeed()
     {
         return this.speed;
+    }
+
+    public Camera GetCamera()
+    {
+        return this.camera;
     }
 }

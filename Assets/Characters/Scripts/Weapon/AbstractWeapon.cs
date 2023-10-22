@@ -6,7 +6,8 @@ public abstract class AbstractWeapon : MonoBehaviour
 {
     public float damage;
     public float projectileSpeed;
-    public GameObject projectileObject;
+    public Transform muzzle;
+    public GameObject projectilePrefab;
     public abstract void Use();
 
     public float GetDamage()
@@ -17,5 +18,10 @@ public abstract class AbstractWeapon : MonoBehaviour
     public float GetProjectileSpeed()
     {
         return projectileSpeed;
+    }
+
+    public Transform GetMuzzle()
+    {
+        return this.muzzle;
     }
 }

@@ -9,6 +9,7 @@ TagManager:
   - CinemachineTarget
   - CharacterRoot
   - DieText
+  - LiveCharacter
   layers:
   - Default
   - TransparentFX

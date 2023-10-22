@@ -5,9 +5,9 @@ public class Pistol : AbstractWeapon
     {
         public override void Use()
         {
-            GameObject bullet = Instantiate(this.projectileObject, this.gameObject.transform.position, quaternion.identity, this.transform);
+            GameObject bullet = Instantiate(this.projectilePrefab, GetMuzzle().position, quaternion.identity);
             AbstractProjectile projectile = bullet.GetComponent<AbstractProjectile>();
-            projectile.SetShooter(GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>());
+            projectile.SetShooter(GameObject.FindWithTag("LiveCharacter").GetComponent<AbstractPlayer>());
             projectile.SetWeapon(this);
         }
     }

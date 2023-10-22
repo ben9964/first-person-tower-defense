@@ -7,9 +7,34 @@ public class AbstractProjectile : MonoBehaviour
 {
     private AbstractPlayer _shooter;
     private AbstractWeapon _weaponThatShot;
-    void Update()
+    public float aliveTime;
+
+    private void Awake()
     {
-        this.transform.Translate(_weaponThatShot.GetProjectileSpeed() * Time.deltaTime * Vector3.forward);
+        Destroy(gameObject, aliveTime);
+    }
+
+    void Start()
+    {
+        GameObject playerObj = this._shooter.gameObject;
+
+        Ray ray = _shooter.GetCamera().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hitData;
+
+        Vector3 target;
+        if (Physics.Raycast(ray, out hitData))
+        {
+            target = hitData.point;
+        }
+        else
+        {
+            target = ray.GetPoint(50);
+        }
+
+        Vector3 direction = target - _weaponThatShot.GetMuzzle().position;
+
+        transform.forward = direction.normalized;
+        GetComponent<Rigidbody>().AddForce(direction.normalized * _weaponThatShot.GetProjectileSpeed(), ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other)
