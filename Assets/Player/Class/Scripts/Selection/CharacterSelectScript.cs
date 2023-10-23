@@ -15,6 +15,7 @@ public class CharacterSelectScript : MonoBehaviour
     {
         InitCharacters();
         characterCache[selected].SetActive(true);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void SelectNext()
@@ -43,7 +44,7 @@ public class CharacterSelectScript : MonoBehaviour
 
     public void StartButtonPress()
     {
-        PlayerPrefs.SetInt("character", selected);
+        CharacterDB.SetSelected(this.selected);
         SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
     }
     

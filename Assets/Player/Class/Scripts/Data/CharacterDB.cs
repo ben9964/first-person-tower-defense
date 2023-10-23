@@ -12,6 +12,8 @@ public class CharacterDB : MonoBehaviour
     
     public GameObject[] characterPrefabs;
 
+    private int selectedCharacter = -1;
+
     private void Awake()
     {
         Instance = this;
@@ -32,5 +34,15 @@ public class CharacterDB : MonoBehaviour
     public static GameObject[] GetAll()
     {
         return Instance.characterPrefabs;
+    }
+
+    public static void SetSelected(int selected)
+    {
+        Instance.selectedCharacter = selected;
+    }
+
+    public static int GetSelected()
+    {
+        return Instance.selectedCharacter;
     }
 }

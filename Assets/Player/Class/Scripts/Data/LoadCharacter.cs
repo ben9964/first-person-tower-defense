@@ -12,9 +12,9 @@ public class LoadCharacter : MonoBehaviour
     void Start()
     {
         GameObject characterPrefab = defaultCharacter;
-        if (PlayerPrefs.HasKey("character"))
+        if (CharacterDB.GetSelected() != -1)
         {
-            int selectedCharacter = PlayerPrefs.GetInt("character");
+            int selectedCharacter = CharacterDB.GetSelected();
             characterPrefab = CharacterDB.GetCharacter(selectedCharacter);
         }
         GameObject character = Instantiate(characterPrefab, spawnPos.position+offset, Quaternion.identity);
