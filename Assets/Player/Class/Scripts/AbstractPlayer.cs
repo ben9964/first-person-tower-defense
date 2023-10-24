@@ -24,7 +24,7 @@ public abstract class AbstractPlayer : MonoBehaviour
         if (IsInGame())
         {
             _camera = Instantiate(cameraPrefab, cameraPrefab.transform.position, cameraPrefab.transform.rotation,
-                this.transform.parent).GetComponent<Camera>();
+                transform.parent).GetComponent<Camera>();
             InitWeapon();
         }
         
@@ -37,12 +37,13 @@ public abstract class AbstractPlayer : MonoBehaviour
 
     private void InitPlayerDefaults()
     {
-        this._health = maxHealth;
-        var controller = this.gameObject.GetComponentInParent<FirstPersonController>(false);
+        _health = maxHealth;
+        var controller = gameObject.GetComponentInParent<FirstPersonController>(false);
         if (controller != null)
         {
             controller.MoveSpeed = speed;
         }
+        HudManager.setHealthPercentage(_health/maxHealth);
     }
 
     private void InitWeapon()
@@ -59,14 +60,20 @@ public abstract class AbstractPlayer : MonoBehaviour
 
     public void OnLeftClick(InputValue value)
     {
-        if (!IsInGame()) return;
+        if (!IsInGame() || IsDead()) return;
         _currentWeapon.Use();
+    }
+
+    public bool IsDead()
+    {
+        return _health <= 0;
     }
 
     public void TakeDamage(float amount)
     {
-        this._health -= amount;
-        if (this._health <= 0)
+        _health -= amount;
+        HudManager.setHealthPercentage(_health/maxHealth);
+        if (_health <= 0)
         {
             _die();
         }
@@ -74,19 +81,19 @@ public abstract class AbstractPlayer : MonoBehaviour
 
     private void _die()
     {
-        HudManager.sendMessage("You Died!", new Color32(255, 0, 0, 255));
+        HudManager.SendMessage("You Died!", new Color32(255, 0, 0, 255));
         Time.timeScale = 0;
         gameObject.GetComponentInParent<FirstPersonController>().RotationSpeed = 0;
     }
 
     public float GetHealth()
     {
-        return this._health;
+        return _health;
     }
 
     public float GetMaxHealth()
     {
-        return this.maxHealth;
+        return maxHealth;
     }
 
     public float GetSpeed()

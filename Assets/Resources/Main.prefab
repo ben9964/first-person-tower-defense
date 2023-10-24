@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 997602891254512032}
   - component: {fileID: 6184219641373625127}
-  - component: {fileID: 2470304835591645836}
+  - component: {fileID: -8193275697477945566}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -48,7 +48,7 @@ MonoBehaviour:
   characterPrefabs:
   - {fileID: 5429082932816303652, guid: 732d8ea3b17aba347b9ffb15b9002b64, type: 3}
   - {fileID: 915376995334273361, guid: 0ebb4e53578bd894abc968662a4d15fb, type: 3}
---- !u!114 &2470304835591645836
+--- !u!114 &-8193275697477945566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -57,8 +57,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1147856796099900108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20bfe21370ad23e44994e2c6cdb0ea29, type: 3}
+  m_Script: {fileID: 11500000, guid: ce999486af0287b4c977ddb2e640f515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHudPrefab: {fileID: 7474950061688482861, guid: ddf53c0d67984414a8530874403e5c33, type: 3}
-  playerMessageObjectName: CenterMessage
+  playerHudCanvasPrefab: {fileID: 7474950061688482861, guid: ddf53c0d67984414a8530874403e5c33, type: 3}
