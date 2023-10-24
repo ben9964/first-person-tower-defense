@@ -74,7 +74,7 @@ public abstract class AbstractPlayer : MonoBehaviour
 
     private void _die()
     {
-        GameGraphics.ShowDeathMessage();
+        HudManager.sendMessage("You Died!", new Color32(255, 0, 0, 255));
         Time.timeScale = 0;
         gameObject.GetComponentInParent<FirstPersonController>().RotationSpeed = 0;
     }
