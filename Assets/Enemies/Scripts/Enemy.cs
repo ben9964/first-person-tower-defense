@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : LivingEntity
 {
     private Transform _target;
     private int _waypointIndex = 0;
     public float attackDamage;
+    public Slider healthBar;
 
     void Start () {
         _target = Waypoints.points[0];
+        UpdateHealthBar();
     }
 
     void Update () {
@@ -46,5 +49,16 @@ public class Enemy : LivingEntity
     public virtual void Attack(AbstractPlayer player)
     {
         player.TakeDamage(attackDamage);
+    }
+    
+    public override void TakeDamage(float amount)
+    {
+        base.TakeDamage(amount);
+        UpdateHealthBar();
+    }
+
+    protected void UpdateHealthBar()
+    {
+        healthBar.value = GetHealth()/GetMaxHealth();
     }
 }
