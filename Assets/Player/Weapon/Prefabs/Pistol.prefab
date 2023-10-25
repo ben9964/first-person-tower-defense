@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  projectileSpeed: 50
+  projectileSpeed: 30
   muzzle: {fileID: 1868667750304143717}
   projectilePrefab: {fileID: 7276880913439751661, guid: 9adaaaa10efcb524eaa205d66b058a32, type: 3}
 --- !u!1 &2471828958655224770

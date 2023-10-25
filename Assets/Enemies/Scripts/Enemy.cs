@@ -2,35 +2,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : LivingEntity
 {
-    public float speed = 10f;
-    public float health;
-
-    private Transform target;
-    private int wavepointIndex = 0;
+    private Transform _target;
+    private int _waypointIndex = 0;
 
     void Start () {
-        target = Waypoints.points[0];
+        _target = Waypoints.points[0];
     }
 
     void Update () {
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+        Vector3 dir = _target.position - transform.position;
+        transform.Translate(Time.deltaTime * GetSpeed() * dir.normalized , Space.World);
 
-        if (Vector3.Distance(transform.position, target.position) <= 0.2f) {
+        if (Vector3.Distance(transform.position, _target.position) <= 0.2f) {
             GetNextWaypoint();
         }
     }
 
     void GetNextWaypoint() {
-        if (wavepointIndex >= Waypoints.points.Length - 1) {
+        if (_waypointIndex >= Waypoints.points.Length - 1) {
             Destroy(gameObject);
             return;
         }
 
-        wavepointIndex++;
-        target = Waypoints.points[wavepointIndex];
+        _waypointIndex++;
+        _target = Waypoints.points[_waypointIndex];
     }
 
+    protected override void _die()
+    {
+        //TODO: maybe some cool particle explosion idk
+        
+        Destroy(gameObject);
+    }
 }

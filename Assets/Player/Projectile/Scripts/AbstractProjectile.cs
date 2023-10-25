@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 public class AbstractProjectile : MonoBehaviour
 {
@@ -37,12 +38,20 @@ public class AbstractProjectile : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(direction.normalized * _weaponThatShot.GetProjectileSpeed(), ForceMode.Impulse);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Enemy"))
+        HandleCollision(other);
+    }
+
+    private void HandleCollision(Collision other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
         {
-            //TODO: Add damaging enemy logic
-            
+            Debug.Log("collided with enemy");
+            LivingEntity enemy = other.gameObject.GetComponent<LivingEntity>();
+            Debug.Log("enemy health pre: " + enemy.GetHealth());
+            enemy.TakeDamage(_weaponThatShot.GetDamage());
+            Debug.Log("enemy health post: " + enemy.GetHealth());
             Destroy(gameObject);
         }
     }

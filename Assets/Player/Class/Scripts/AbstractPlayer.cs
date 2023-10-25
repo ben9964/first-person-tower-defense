@@ -9,18 +9,16 @@ using UnityEngine.SceneManagement;
 
 
 
-public abstract class AbstractPlayer : MonoBehaviour
+public abstract class AbstractPlayer : LivingEntity
 {
-    private float _health;
-    public float maxHealth;
-    public float speed;
     public GameObject weaponPrefab;
     private AbstractWeapon _currentWeapon;
     public Camera cameraPrefab;
     private Camera _camera;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         if (IsInGame())
         {
             _camera = Instantiate(cameraPrefab, cameraPrefab.transform.position, cameraPrefab.transform.rotation,
@@ -37,13 +35,12 @@ public abstract class AbstractPlayer : MonoBehaviour
 
     private void InitPlayerDefaults()
     {
-        _health = maxHealth;
         var controller = gameObject.GetComponentInParent<FirstPersonController>(false);
         if (controller != null)
         {
             controller.MoveSpeed = speed;
         }
-        HudManager.setHealthPercentage(_health/maxHealth);
+        HudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
     }
 
     private void InitWeapon()
@@ -64,41 +61,17 @@ public abstract class AbstractPlayer : MonoBehaviour
         _currentWeapon.Use();
     }
 
-    public bool IsDead()
+    public override void TakeDamage(float amount)
     {
-        return _health <= 0;
+        base.TakeDamage(amount);
+        HudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
     }
 
-    public void TakeDamage(float amount)
-    {
-        _health -= amount;
-        HudManager.setHealthPercentage(_health/maxHealth);
-        if (_health <= 0)
-        {
-            _die();
-        }
-    }
-
-    private void _die()
+    protected override void _die()
     {
         HudManager.SendMessage("You Died!", new Color32(255, 0, 0, 255));
         Time.timeScale = 0;
         gameObject.GetComponentInParent<FirstPersonController>().RotationSpeed = 0;
-    }
-
-    public float GetHealth()
-    {
-        return _health;
-    }
-
-    public float GetMaxHealth()
-    {
-        return maxHealth;
-    }
-
-    public float GetSpeed()
-    {
-        return this.speed;
     }
 
     public Camera GetCamera()
