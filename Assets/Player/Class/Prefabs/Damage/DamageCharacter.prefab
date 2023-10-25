@@ -65,28 +65,41 @@ PrefabInstance:
     - {fileID: 577221183606780182, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2045088447750492753, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 2539675459947468781, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 352951417518889700}
+      addedObject: {fileID: 5295412683566151166}
   m_SourcePrefab: {fileID: 100100000, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}
---- !u!1 &8361172754710959000 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2045088447750492753, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}
+--- !u!114 &255310177847082766 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7773859507163709127, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}
   m_PrefabInstance: {fileID: 7523623034315653577}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &352951417518889700
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &5429082932816303652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2539675459947468781, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}
+  m_PrefabInstance: {fileID: 7523623034315653577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5295412683566151166
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361172754710959000}
+  m_GameObject: {fileID: 5429082932816303652}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df6fe21c95614936912889ba9794e5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 50
   maxHealth: 50
-  speed: 10
+  damageGracePeriod: 2
   weaponPrefab: {fileID: 863093164373036079, guid: 9b2ef08cc6dcd974f8d8fd0aa04d6182, type: 3}
   cameraPrefab: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
+  controller: {fileID: 255310177847082766}

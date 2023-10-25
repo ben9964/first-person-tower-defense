@@ -4160,16 +4160,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4381460647755362907, guid: e8f9598be01d08348b28b83db02a0278, type: 3}
-      propertyPath: speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381460647755362907, guid: e8f9598be01d08348b28b83db02a0278, type: 3}
       propertyPath: health
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4381460647755362907, guid: e8f9598be01d08348b28b83db02a0278, type: 3}
-      propertyPath: maxHealth
-      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 9069872214224727660, guid: e8f9598be01d08348b28b83db02a0278, type: 3}
       propertyPath: m_Name
@@ -6224,14 +6216,6 @@ PrefabInstance:
     - target: {fileID: 2383959085296149116, guid: 75507697eb11e4248b16dca901c010cc, type: 3}
       propertyPath: m_Name
       value: Slow Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2968719022836056856, guid: 75507697eb11e4248b16dca901c010cc, type: 3}
-      propertyPath: speed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2968719022836056856, guid: 75507697eb11e4248b16dca901c010cc, type: 3}
-      propertyPath: maxHealth
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9891,14 +9875,6 @@ PrefabInstance:
     - target: {fileID: 1519512780123877172, guid: f1c7f1dec70b9da4197dc4384281239e, type: 3}
       propertyPath: m_Name
       value: Fast Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 5115560756330074201, guid: f1c7f1dec70b9da4197dc4384281239e, type: 3}
-      propertyPath: speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5115560756330074201, guid: f1c7f1dec70b9da4197dc4384281239e, type: 3}
-      propertyPath: maxHealth
-      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7250986778013228475, guid: f1c7f1dec70b9da4197dc4384281239e, type: 3}
       propertyPath: m_LocalScale.x

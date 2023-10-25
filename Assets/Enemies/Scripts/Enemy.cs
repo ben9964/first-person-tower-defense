@@ -6,6 +6,7 @@ public class Enemy : LivingEntity
 {
     private Transform _target;
     private int _waypointIndex = 0;
+    public float attackDamage;
 
     void Start () {
         _target = Waypoints.points[0];
@@ -35,5 +36,15 @@ public class Enemy : LivingEntity
         //TODO: maybe some cool particle explosion idk
         
         Destroy(gameObject);
+    }
+
+    public float GetAttackDamage()
+    {
+        return attackDamage;
+    }
+
+    public virtual void Attack(AbstractPlayer player)
+    {
+        player.TakeDamage(attackDamage);
     }
 }

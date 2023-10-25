@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR;
 
-public class AbstractProjectile : MonoBehaviour
+public class AbstractProjectile : Entity
 {
     private AbstractPlayer _shooter;
     private AbstractWeapon _weaponThatShot;
@@ -35,7 +35,7 @@ public class AbstractProjectile : MonoBehaviour
         Vector3 direction = target - _weaponThatShot.GetMuzzle().position;
 
         transform.forward = direction.normalized;
-        GetComponent<Rigidbody>().AddForce(direction.normalized * _weaponThatShot.GetProjectileSpeed(), ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(direction.normalized * GetSpeed(), ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -43,15 +43,12 @@ public class AbstractProjectile : MonoBehaviour
         HandleCollision(other);
     }
 
-    private void HandleCollision(Collision other)
+    protected virtual void HandleCollision(Collision other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("collided with enemy");
             LivingEntity enemy = other.gameObject.GetComponent<LivingEntity>();
-            Debug.Log("enemy health pre: " + enemy.GetHealth());
             enemy.TakeDamage(_weaponThatShot.GetDamage());
-            Debug.Log("enemy health post: " + enemy.GetHealth());
             Destroy(gameObject);
         }
     }
