@@ -15,4 +15,9 @@ public class CollisionListener : MonoBehaviour
     {
         transform.parent.GetComponent<AbstractPlayer>().HandleUseWeapon(value);
     }
+
+    private void OnEscape(InputValue value)
+    {
+        transform.parent.GetComponent<AbstractPlayer>().ToggleCursorLock();
+    }
 }

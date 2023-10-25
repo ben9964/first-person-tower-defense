@@ -40,7 +40,18 @@ public abstract class AbstractPlayer : LivingEntity
     private void InitPlayerDefaults()
     {
         controller.MoveSpeed = speed;
+        ToggleCursorLock();
         hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
+    }
+
+    public void ToggleCursorLock()
+    {
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }else{
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     private void InitWeapon()
