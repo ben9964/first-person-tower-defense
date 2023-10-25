@@ -18,28 +18,29 @@ public abstract class AbstractPlayer : LivingEntity
     private Camera _camera;
     
     public FirstPersonController controller;
+    private HudManager hudManager;
 
     protected override void Awake()
     {
         base.Awake();
-        if (IsInGame())
-        {
-            _camera = Instantiate(cameraPrefab, cameraPrefab.transform.position, cameraPrefab.transform.rotation,
-                transform.parent).GetComponent<Camera>();
-            InitWeapon();
-        }
-        
+        GameObject playerHudPrefab = Global.GetHudPrefab();
+        hudManager = Instantiate(playerHudPrefab, playerHudPrefab.transform.position,
+            playerHudPrefab.transform.rotation).GetComponent<HudManager>();
+        _camera = Instantiate(cameraPrefab, cameraPrefab.transform.position, cameraPrefab.transform.rotation,
+            transform.parent).GetComponent<Camera>();
+        InitWeapon();
     }
 
     private void Start()
     {
+        Debug.Log("init player defaults");
         InitPlayerDefaults();
     }
 
     private void InitPlayerDefaults()
     {
         controller.MoveSpeed = speed;
-        HudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
+        hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
     }
 
     private void InitWeapon()
@@ -49,26 +50,21 @@ public abstract class AbstractPlayer : LivingEntity
         _currentWeapon = weapon.GetComponent<AbstractWeapon>();
     }
 
-    private static bool IsInGame()
-    {
-        return !SceneManager.GetActiveScene().name.Equals("CharacterSelect");
-    }
-
     public void HandleUseWeapon(InputValue value)
     {
-        if (!IsInGame() || IsDead()) return;
+        if (IsDead()) return;
         _currentWeapon.Use();
     }
 
     public override void TakeDamage(float amount)
     {
         base.TakeDamage(amount);
-        HudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
+        hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
     }
 
     protected override void _die()
     {
-        HudManager.SendMessage("You Died!", new Color32(255, 0, 0, 255));
+        hudManager.SendMessage("You Died!", new Color32(255, 0, 0, 255));
         Time.timeScale = 0;
         controller.RotationSpeed = 0;
     }
@@ -85,5 +81,15 @@ public abstract class AbstractPlayer : LivingEntity
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.Attack(this);
         }
+    }
+
+    public void HideHud()
+    {
+        hudManager.SetVisible(false);
+    }
+
+    public void ShowHud()
+    {
+        hudManager.SetVisible(true);
     }
 }

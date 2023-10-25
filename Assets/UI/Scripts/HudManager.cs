@@ -8,42 +8,35 @@ using UnityEngine.UI;
 
 public class HudManager : MonoBehaviour
 {
-
-    private static HudManager Instance { get; set; }
     
     public TextMeshProUGUI playerMessageObj;
     public Slider healthBar;
 
-    void Start()
-    {
-        Instance = this;
-    }
-
     //generic method for sending the player messages
-    public static void SendMessage(String message, Color32 colour, float removeAfter)
+    public void SendMessage(String message, Color32 colour, float removeAfter)
     {
         SendMessage(message, colour);
 
         //remove the text from screen after x seconds
-        Instance.Invoke(() =>
+        this.Invoke(() =>
         {
-            Instance.playerMessageObj.gameObject.SetActive(false);
+            playerMessageObj.gameObject.SetActive(false);
         }, removeAfter);
     }
     
-    public static void SendMessage(String message, Color32 colour)
+    public void SendMessage(String message, Color32 colour)
     {
-        Instance.playerMessageObj.SetText(message);
-        Instance.playerMessageObj.color = colour;
-        Instance.playerMessageObj.gameObject.SetActive(true);
+        playerMessageObj.SetText(message);
+        playerMessageObj.color = colour;
+        playerMessageObj.gameObject.SetActive(true);
     }
 
-    public static void clearMessage()
+    public void clearMessage()
     {
-        Instance.playerMessageObj.gameObject.SetActive(false);
+        playerMessageObj.gameObject.SetActive(false);
     }
 
-    public static void setHealthPercentage(float value)
+    public void setHealthPercentage(float value)
     {
         if (value > 1)
         {
@@ -53,7 +46,12 @@ public class HudManager : MonoBehaviour
         {
             value = 0.0f;
         }
-        Instance.healthBar.value = value;
+        healthBar.value = value;
+    }
+
+    public void SetVisible(bool visible)
+    {
+        gameObject.SetActive(visible);
     }
     
 }
