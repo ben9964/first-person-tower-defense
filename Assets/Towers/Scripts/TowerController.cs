@@ -5,14 +5,21 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // rateOfFire is shots PER SECOND.
+    [Header("Attributes")]
+    [SerializeField] private float rateOfFire = 1f;
+    [SerializeField] private float damage = 1f;
+    [SerializeField] private float fireCooldown = 0f;
     [SerializeField] private float range = 15f;
-    [SerializeField] private Transform target;
-    [SerializeField] private GameObject projectile;
-    [SerializeField] private float rateOfFire = 1000f;
-    private float rotationSpeed = 5f;
 
+    [Header("Fields")]
+    [SerializeField] private Transform target;
+    private float rotationSpeed = 5f;
     public Transform rotator;
+
+
+    [SerializeField] private GameObject projectile;
+    public Transform projectileSpawn;
 
     void Start()
     {
@@ -54,16 +61,31 @@ public class TowerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (target != null)
+        if (target == null) return;
+        
+        Vector3 dir = target.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(dir);
+        Vector3 r = Quaternion.Lerp(rotator.rotation, rotation, Time.deltaTime * rotationSpeed).eulerAngles;
+        rotator.rotation = Quaternion.Euler(0f, r.y, 0f);
+
+        if (fireCooldown <= 0f)
         {
-            // Instantiate(projectile);
-            Vector3 dir = target.position - transform.position;
-            Quaternion rotation = Quaternion.LookRotation(dir);
-            Vector3 r = Quaternion.Lerp(rotator.rotation, rotation, Time.deltaTime * rotationSpeed).eulerAngles;
-            rotator.rotation = Quaternion.Euler(0f, r.y, 0f);
+            Shoot();
+            fireCooldown = 1000f / rateOfFire;
         }
 
+        fireCooldown -= Time.deltaTime;
+    }
 
+    private void Shoot()
+    {
+        // Instantiate a projectile and call a script to target that projectile
+        GameObject proj = (GameObject)Instantiate(projectile, projectileSpawn.position, projectileSpawn.rotation);
+        Projectile p = proj.GetComponent<Projectile>();
+        if (p != null)
+        {
+            p.SelectTarget(target, damage);
+        }
     }
 
     private void OnDrawGizmos()

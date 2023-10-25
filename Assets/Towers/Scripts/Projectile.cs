@@ -4,17 +4,37 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    private float projSpeed = 10f;
+    private Transform target;
+    private float damage;
 
-    public Vector3 projectileSpeed;
-    // Start is called before the first frame update
-    void Start()
+    // Method to call 
+    public void SelectTarget(Transform _target, float _damage)
     {
-        
+        target = _target;
+        damage = _damage;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(5f, 0, 0) * Time.deltaTime;
+        if (target == null) {
+            Destroy(gameObject);
+            return;
+        }
+
+        Vector3 dir = target.position - transform.position;
+        transform.Translate(dir.normalized * projSpeed * Time.deltaTime, Space.World);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            LivingEntity enemy = collision.gameObject.GetComponent<LivingEntity>();
+            enemy.TakeDamage(damage);
+            Destroy(gameObject);
+        }   
+        Debug.Log("Colliding");
     }
 }
