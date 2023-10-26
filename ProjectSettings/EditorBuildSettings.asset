@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/BenTest.unity
     guid: c4bcd7e8371b2ca4fb75699214047f31
   - enabled: 1
-    path: Assets/Scenes/EnemyTest.unity
+    path: Assets/Scenes/Map1.unity
     guid: ae63e5a0d73c6124a8c64b99df5e7def
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
