@@ -259,6 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rateOfFire: 1000
+  damage: 1
   fireCooldown: 0
   range: 10
   target: {fileID: 0}
