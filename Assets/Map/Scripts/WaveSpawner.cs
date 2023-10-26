@@ -32,6 +32,7 @@ public class WaveSpawner : MonoBehaviour
     void Start()
     {
         // Initial setup can be done here if needed.
+        SpawnPoint = GameObject.FindWithTag("Start").transform;
     }
 
     // Called every frame.

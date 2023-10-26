@@ -33,7 +33,6 @@ public abstract class AbstractPlayer : LivingEntity
 
     private void Start()
     {
-        Debug.Log("init player defaults");
         InitPlayerDefaults();
     }
 

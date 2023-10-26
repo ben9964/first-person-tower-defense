@@ -8,6 +8,7 @@ public class LoadCharacter : MonoBehaviour
     public Transform spawnPos;
     public Vector3 offset;
     public GameObject defaultCharacter;
+    public GameObject mapManagerPrefab;
 
     void Start()
     {
@@ -19,5 +20,7 @@ public class LoadCharacter : MonoBehaviour
         }
         GameObject character = Instantiate(characterPrefab, spawnPos.position+offset, Quaternion.identity);
         character.SetActive(true);
+
+        Instantiate(mapManagerPrefab, mapManagerPrefab.transform.position, mapManagerPrefab.transform.rotation);
     }
 }
