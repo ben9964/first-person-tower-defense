@@ -97,9 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6fe21c95614936912889ba9794e5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 25
   maxHealth: 50
-  damageGracePeriod: 2
+  damageGracePeriod: 1
   weaponPrefab: {fileID: 863093164373036079, guid: 9b2ef08cc6dcd974f8d8fd0aa04d6182, type: 3}
   cameraPrefab: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
   controller: {fileID: 255310177847082766}
+  colour:
+    serializedVersion: 2
+    rgba: 4278190335
+  name: Damage

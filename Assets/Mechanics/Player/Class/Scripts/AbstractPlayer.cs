@@ -12,19 +12,20 @@ using UnityEngine.SceneManagement;
 public abstract class AbstractPlayer : LivingEntity
 {
     public GameObject weaponPrefab;
-    private AbstractWeapon _currentWeapon;
-    
     public Camera cameraPrefab;
-    private Camera _camera;
-    
     public FirstPersonController controller;
-    private HudManager hudManager;
+    public Color32 colour;
+    public String name;
+    
+    private Camera _camera;
+    private HudManager _hudManager;
+    private AbstractWeapon _currentWeapon;
 
     protected override void Awake()
     {
         base.Awake();
         GameObject playerHudPrefab = Global.GetHudPrefab();
-        hudManager = Instantiate(playerHudPrefab, playerHudPrefab.transform.position,
+        _hudManager = Instantiate(playerHudPrefab, playerHudPrefab.transform.position,
             playerHudPrefab.transform.rotation).GetComponent<HudManager>();
         _camera = Instantiate(cameraPrefab, cameraPrefab.transform.position, cameraPrefab.transform.rotation,
             transform.parent).GetComponent<Camera>();
@@ -40,7 +41,7 @@ public abstract class AbstractPlayer : LivingEntity
     {
         controller.MoveSpeed = speed;
         ToggleCursorLock();
-        hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
+        _hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
     }
 
     public void ToggleCursorLock()
@@ -69,14 +70,24 @@ public abstract class AbstractPlayer : LivingEntity
     public override void TakeDamage(float amount)
     {
         base.TakeDamage(amount);
-        hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
+        _hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
     }
 
     protected override void _die()
     {
-        hudManager.SendMessage("You Died!", new Color32(255, 0, 0, 255));
+        _hudManager.SendMessage("You Died!", new Color32(255, 0, 0, 255));
         Time.timeScale = 0;
         controller.RotationSpeed = 0;
+    }
+
+    public Color32 GetColour()
+    {
+        return colour;
+    }
+
+    public String GetName()
+    {
+        return name;
     }
 
     public Camera GetCamera()
@@ -95,11 +106,11 @@ public abstract class AbstractPlayer : LivingEntity
 
     public void HideHud()
     {
-        hudManager.SetVisible(false);
+        _hudManager.SetVisible(false);
     }
 
     public void ShowHud()
     {
-        hudManager.SetVisible(true);
+        _hudManager.SetVisible(true);
     }
 }
