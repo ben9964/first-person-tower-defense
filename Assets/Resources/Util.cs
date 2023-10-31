@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class Util
 {
@@ -14,5 +15,10 @@ public static class Util
     {
         yield return new WaitForSeconds(delay);
         f();
+    }
+
+    public static void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name, LoadSceneMode.Single);
     }
 }

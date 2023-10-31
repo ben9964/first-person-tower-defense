@@ -12,6 +12,7 @@ TagManager:
   - PlayerCamera
   - PlayerModel
   - LiveCharacter
+  - Start
   layers:
   - Default
   - TransparentFX
