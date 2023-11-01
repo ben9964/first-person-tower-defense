@@ -807,15 +807,15 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: a2096240-c6d3-40ed-8446-0a77d4e39d07
+  cloudProjectId: 
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: first-person-tower-defense
-  organizationId: quickfiree
+  projectName: 
+  organizationId: 
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage:
     fileID: 0
   virtualTexturingSupportEnabled: 0
   insecureHttpOption: 0
-  genesisOrgId: '5772626499884'
+  genesisOrgId: 
