@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9302aeedc9824d548188432e5370a41d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 12
   maxHealth: 100
   damageGracePeriod: 1
   weaponPrefab: {fileID: 863093164373036079, guid: 9b2ef08cc6dcd974f8d8fd0aa04d6182, type: 3}
@@ -95,6 +95,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294918400
   name: Tank
+  startingMoney: 100
 --- !u!114 &4929440410927730811 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7773859507163709127, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}

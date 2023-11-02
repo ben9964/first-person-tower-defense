@@ -9,6 +9,7 @@ public abstract class LivingEntity : Entity
     private float _health;
     
     private bool _invincible = false;
+    private bool isDead = false;
     public float damageGracePeriod;
 
     protected virtual void Awake()
@@ -28,12 +29,15 @@ public abstract class LivingEntity : Entity
 
     public virtual void TakeDamage(float amount)
     {
+        Debug.Log("TAKE DAMAGE");
+        Debug.Log(amount);
         if (_invincible) return;
         
         
         _health -= amount;
-        if (_health <= 0)
+        if (_health <= 0 && !isDead)
         {
+            isDead = true;
             _die();
         }
         else

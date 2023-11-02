@@ -47,9 +47,10 @@ public class AbstractProjectile : Entity
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("COLLIDING");
+            Destroy(gameObject);
             LivingEntity enemy = other.gameObject.GetComponent<LivingEntity>();
             enemy.TakeDamage(_weaponThatShot.GetDamage());
-            Destroy(gameObject);
         }
     }
 

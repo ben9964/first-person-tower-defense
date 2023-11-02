@@ -14,7 +14,7 @@ public class NodeBuilding : MonoBehaviour
     public Vector3 positionOffset;
 
     // Variable to reference the tower object if one is built on this node.
-    private GameObject tower;
+    private GameObject towerObj;
 
     // Renderer component for changing the node's color.
     private Renderer render;
@@ -52,7 +52,7 @@ public class NodeBuilding : MonoBehaviour
     void OnRightMouseClick()
     {
         // Check if a tower already exists on this node.
-        if (tower != null)
+        if (towerObj != null)
         {
             Debug.Log("Cannot build tower on occupied node");
             return;
@@ -60,7 +60,13 @@ public class NodeBuilding : MonoBehaviour
 
         // Fetch the tower to be built and instantiate it on this node.
         GameObject BuildTower = TowerBuildingManager.instance.GetBuildTower();
-        tower = (GameObject)Instantiate(BuildTower, transform.position + positionOffset, transform.rotation);
+        TowerController tower = BuildTower.GetComponent<TowerController>();
+        AbstractPlayer player = GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>();
+        
+        if (!player.HasMoney(tower.GetCost())) return;
+        
+        towerObj = Instantiate(BuildTower, transform.position + positionOffset, transform.rotation);
+        player.RemoveMoney(tower.GetCost());
     }
 
     // Method called when the mouse cursor exits the node's collider area.

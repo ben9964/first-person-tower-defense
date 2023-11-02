@@ -8,6 +8,7 @@ public class Global : MonoBehaviour
     public static Global Instance { get; set; }
 
     public GameObject playerHudPrefab;
+    private WaveSpawner _waveSpawner;
 
     private void Awake()
     {
@@ -17,5 +18,15 @@ public class Global : MonoBehaviour
     public static GameObject GetHudPrefab()
     {
         return Instance.playerHudPrefab;
+    }
+
+    public static void SetWaveSpawner(WaveSpawner spawner)
+    {
+        Instance._waveSpawner = spawner;
+    }
+
+    public static WaveSpawner GetWaveSpawner()
+    {
+        return Instance._waveSpawner;
     }
 }

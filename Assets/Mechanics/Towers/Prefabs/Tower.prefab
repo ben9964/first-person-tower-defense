@@ -259,9 +259,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rateOfFire: 1000
-  damage: 1
+  damage: 4
   fireCooldown: 0
   range: 10
+  cost: 50
   target: {fileID: 0}
   rotator: {fileID: 3598292733477442935}
   projectile: {fileID: 5611003599860177599, guid: 8fe6aa14696d55947a113ef276a34e1d, type: 3}

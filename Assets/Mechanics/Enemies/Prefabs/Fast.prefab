@@ -109,3 +109,4 @@ MonoBehaviour:
   damageGracePeriod: 0
   attackDamage: 3
   healthBar: {fileID: 4225155511047322300}
+  moneyReward: 3

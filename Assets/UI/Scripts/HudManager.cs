@@ -11,6 +11,8 @@ public class HudManager : MonoBehaviour
     
     public TextMeshProUGUI playerMessageObj;
     public Slider healthBar;
+    public TextMeshProUGUI moneyText;
+    public String moneyString;
 
     //generic method for sending the player messages
     public void SendMessage(String message, Color32 colour, float removeAfter)
@@ -52,6 +54,11 @@ public class HudManager : MonoBehaviour
     public void SetVisible(bool visible)
     {
         gameObject.SetActive(visible);
+    }
+
+    public void SetMoney(float amount)
+    {
+        moneyText.SetText(moneyString + amount);
     }
     
 }

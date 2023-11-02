@@ -16,10 +16,13 @@ public abstract class AbstractPlayer : LivingEntity
     public FirstPersonController controller;
     public Color32 colour;
     public String name;
+    public float startingMoney;
     
     private Camera _camera;
     private HudManager _hudManager;
     private AbstractWeapon _currentWeapon;
+
+	private float money;
 
     protected override void Awake()
     {
@@ -40,8 +43,10 @@ public abstract class AbstractPlayer : LivingEntity
     private void InitPlayerDefaults()
     {
         controller.MoveSpeed = speed;
+        money = startingMoney;
         ToggleCursorLock();
         _hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
+        _hudManager.SetMoney(money);
     }
 
     public void ToggleCursorLock()
@@ -73,9 +78,20 @@ public abstract class AbstractPlayer : LivingEntity
         _hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
     }
 
+    public void StartNextWave()
+    {
+        WaveSpawner spawner = Global.GetWaveSpawner();
+        spawner.NextWave();
+    }
+
     protected override void _die()
     {
         _hudManager.SendMessage("You Died!", new Color32(255, 0, 0, 255));
+        Freeze();
+    }
+
+    public void Freeze()
+    {
         Time.timeScale = 0;
         controller.RotationSpeed = 0;
     }
@@ -112,5 +128,34 @@ public abstract class AbstractPlayer : LivingEntity
     public void ShowHud()
     {
         _hudManager.SetVisible(true);
+    }
+
+    public HudManager GetHud()
+    {
+        return _hudManager;
+    }
+
+    public float GetMoney()
+    {
+        return money;
+    }
+
+    public void AddMoney(float amount)
+    {
+        money += amount;
+        Debug.Log(amount);
+        Debug.Log(money);
+        _hudManager.SetMoney(money);
+    }
+
+    public void RemoveMoney(float amount)
+    {
+        money -= amount;
+        _hudManager.SetMoney(money);
+    }
+
+    public bool HasMoney(float amount)
+    {
+        return money >= amount;
     }
 }

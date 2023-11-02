@@ -9,6 +9,7 @@ public class Enemy : LivingEntity
     private int _waypointIndex = 0;
     public float attackDamage;
     public Slider healthBar;
+    public float moneyReward;
 
     void Start () {
         _target = Waypoints.points[0];
@@ -36,8 +37,9 @@ public class Enemy : LivingEntity
 
     protected override void _die()
     {
+        Debug.Log("DYING");
         //TODO: maybe some cool particle explosion idk
-        
+        GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>().AddMoney(moneyReward);
         Destroy(gameObject);
     }
 
@@ -60,5 +62,10 @@ public class Enemy : LivingEntity
     protected void UpdateHealthBar()
     {
         healthBar.value = GetHealth()/GetMaxHealth();
+    }
+
+    public float GetMoneyReward()
+    {
+        return moneyReward;
     }
 }

@@ -20,4 +20,9 @@ public class CollisionListener : MonoBehaviour
     {
         transform.parent.GetComponent<AbstractPlayer>().ToggleCursorLock();
     }
+
+    private void OnWaveStart(InputValue value)
+    {
+        transform.parent.GetComponent<AbstractPlayer>().StartNextWave();
+    }
 }

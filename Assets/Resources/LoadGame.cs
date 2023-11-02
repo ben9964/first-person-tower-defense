@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LoadCharacter : MonoBehaviour
+public class LoadGame : MonoBehaviour
 {
     public Transform spawnPos;
     public Vector3 offset;
@@ -21,6 +21,7 @@ public class LoadCharacter : MonoBehaviour
         GameObject character = Instantiate(characterPrefab, spawnPos.position+offset, Quaternion.identity);
         character.SetActive(true);
 
-        Instantiate(mapManagerPrefab, mapManagerPrefab.transform.position, mapManagerPrefab.transform.rotation);
+        GameObject manager = Instantiate(mapManagerPrefab, mapManagerPrefab.transform.position, mapManagerPrefab.transform.rotation);
+        Global.SetWaveSpawner(manager.GetComponent<WaveSpawner>());
     }
 }

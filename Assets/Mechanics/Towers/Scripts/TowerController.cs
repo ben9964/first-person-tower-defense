@@ -11,6 +11,7 @@ public class TowerController : MonoBehaviour
     [SerializeField] private float damage = 1f;
     [SerializeField] private float fireCooldown = 0f;
     [SerializeField] private float range = 15f;
+    [SerializeField] private float cost = 100f;
 
     [Header("Fields")]
     [SerializeField] private Transform target;
@@ -93,5 +94,10 @@ public class TowerController : MonoBehaviour
         // Draws the range of the tower around it
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    public float GetCost()
+    {
+        return cost;
     }
 }
