@@ -9,6 +9,7 @@ public class Global : MonoBehaviour
 
     public GameObject playerHudPrefab;
     private WaveSpawner _waveSpawner;
+    private AbstractPlayer _player;
 
     private void Awake()
     {
@@ -28,5 +29,20 @@ public class Global : MonoBehaviour
     public static WaveSpawner GetWaveSpawner()
     {
         return Instance._waveSpawner;
+    }
+    
+    public static void SetPlayer(AbstractPlayer player)
+    {
+        Instance._player = player;
+    }
+
+    public static AbstractPlayer GetPlayer()
+    {
+        return Instance._player;
+    }
+
+    public static bool HasPlayer()
+    {
+        return Instance._player != null;
     }
 }

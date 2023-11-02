@@ -20,7 +20,6 @@ public class CharacterSelectScript : MonoBehaviour
         characterName.SetText(playerPrefabComponent.GetName());
         characterName.color = playerPrefabComponent.GetColour();
         characterCache[selected].SetActive(true);
-        DontDestroyOnLoad(gameObject);
     }
 
     public void SelectNext()

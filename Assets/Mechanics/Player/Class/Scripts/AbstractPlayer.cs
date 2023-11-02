@@ -27,6 +27,7 @@ public abstract class AbstractPlayer : LivingEntity
     protected override void Awake()
     {
         base.Awake();
+        Global.SetPlayer(this);
         GameObject playerHudPrefab = Global.GetHudPrefab();
         _hudManager = Instantiate(playerHudPrefab, playerHudPrefab.transform.position,
             playerHudPrefab.transform.rotation).GetComponent<HudManager>();

@@ -61,12 +61,15 @@ public class NodeBuilding : MonoBehaviour
         // Fetch the tower to be built and instantiate it on this node.
         GameObject BuildTower = TowerBuildingManager.instance.GetBuildTower();
         TowerController tower = BuildTower.GetComponent<TowerController>();
-        AbstractPlayer player = GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>();
+        if (Global.HasPlayer())
+        {
+            AbstractPlayer player = GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>();
         
-        if (!player.HasMoney(tower.GetCost())) return;
+            if (!player.HasMoney(tower.GetCost())) return;
+            player.RemoveMoney(tower.GetCost());
+        }
         
         towerObj = Instantiate(BuildTower, transform.position + positionOffset, transform.rotation);
-        player.RemoveMoney(tower.GetCost());
     }
 
     // Method called when the mouse cursor exits the node's collider area.

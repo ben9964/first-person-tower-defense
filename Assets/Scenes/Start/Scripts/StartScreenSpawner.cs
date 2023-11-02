@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 public class StartScreenSpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefabs;
 
     public Transform spawnPoint;
     
@@ -17,9 +18,10 @@ public class StartScreenSpawner : MonoBehaviour
 
     IEnumerator SpawnEnemy(float repeatDelay)
     {
+        Random random = new Random();
         while (true)
         {
-            Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+            Instantiate(enemyPrefabs[random.Next(0, enemyPrefabs.Length-1)], spawnPoint.position, spawnPoint.rotation);
             
             yield return new WaitForSeconds(repeatDelay);
         }
