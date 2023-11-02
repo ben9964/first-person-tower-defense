@@ -136,8 +136,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -25}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 182, y: -35}
+  m_SizeDelta: {x: 334.0923, y: 40.8575}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6932289048072585894
 CanvasRenderer:
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Wave Number : 1'
+  m_text: 'Wave Number : 1/1'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -194,8 +194,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -230,7 +230,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.72268677, y: 9.850635, z: -0.2819519, w: 33.30114}
+  m_margin: {x: -0.72268677, y: 0.70805645, z: -0.2819519, w: -0.22205353}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -296,7 +296,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyTypes:
-    keys: []
-    values: []
+    _serializedList:
+    - Key: regular
+      Value: {fileID: 3955186037750842055, guid: 0cd1f9b7db6b7a246b324cd128ef07a5, type: 3}
+    - Key: fast
+      Value: {fileID: 9118779253381611821, guid: b99439c01caeb5948b78e7c197bbb300, type: 3}
+    - Key: slow
+      Value: {fileID: 6265714259429851123, guid: 8558955dcf1a8404593442db2a3a3216, type: 3}
   spawnPoint: {fileID: 0}
   waveText: {fileID: 8240096273351210314}

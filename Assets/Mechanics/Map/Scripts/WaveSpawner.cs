@@ -4,14 +4,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Sherbert.Framework.Generic;
 using TMPro;  // Importing the namespace for TextMeshPro, which is used for UI text elements.
 using UnityEngine;
 using Random = System.Random;
+using AYellowpaper.SerializedCollections;
+using UnityEngine.Rendering.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-    public SerializableDictionary<String, GameObject> enemyTypes = new();
+    [SerializedDictionary("Enemy Name", "Enemy Prefab")]
+    public SerializedDictionary<String, GameObject> enemyTypes;
 
     // Reference to the location where enemies will be spawned.
     public Transform spawnPoint;
@@ -21,6 +23,8 @@ public class WaveSpawner : MonoBehaviour
 
     // UI text elements to display wave info to the player.
     public TextMeshProUGUI waveText;
+
+    private bool inWave = false;
 
     private Dictionary<Int32, List<String>> waves = new(){
             {1, new List<String>{"regular", "regular", "regular", "slow"}},
@@ -40,13 +44,8 @@ public class WaveSpawner : MonoBehaviour
     // Function to handle the spawning of a wave of enemies.
     public void NextWave()
     {
-        if (waves[_waveNumber] == null)
-        {
-            _win();
-            return;
-        }
-        
-        waveText.text = "Wave Number: " + _waveNumber;
+        inWave = true;
+        waveText.text = "Wave Number: " + _waveNumber + "/" + waves.Count;
         SpawnEnemies(_waveNumber); 
         _waveNumber++;  // Increase the wave number for the next wave.
     }
@@ -69,6 +68,30 @@ public class WaveSpawner : MonoBehaviour
                 Instantiate(enemyTypes[enemy], spawnPoint.position, spawnPoint.rotation);
             }, randomDelay(0.2f, 2.5f));
         }
+    }
+
+    public void CheckWaveFinished(bool enemyDeath)
+    {
+        int enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        bool isFinished = enemyDeath ? enemies <= 1 : enemies <= 0;
+        if (isFinished)
+        {
+            inWave = false;
+            if (waves.Count < _waveNumber)
+            {
+                _win();
+            }
+            else
+            {
+                GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>().GetHud().ShowWaveSpawnText();
+            }
+            
+        }
+    }
+
+    public bool CanStartNext()
+    {
+        return !inWave;
     }
 
     // generate a float between range

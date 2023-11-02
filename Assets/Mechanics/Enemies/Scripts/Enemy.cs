@@ -37,10 +37,10 @@ public class Enemy : LivingEntity
 
     protected override void _die()
     {
-        Debug.Log("DYING");
         //TODO: maybe some cool particle explosion idk
         GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>().AddMoney(moneyReward);
         Destroy(gameObject);
+        Global.GetWaveSpawner().CheckWaveFinished(true);
     }
 
     public float GetAttackDamage()

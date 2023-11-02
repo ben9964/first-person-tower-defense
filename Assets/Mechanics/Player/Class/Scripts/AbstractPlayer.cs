@@ -47,6 +47,7 @@ public abstract class AbstractPlayer : LivingEntity
         ToggleCursorLock();
         _hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
         _hudManager.SetMoney(money);
+        Global.GetWaveSpawner().CheckWaveFinished(false);
     }
 
     public void ToggleCursorLock()
@@ -76,12 +77,6 @@ public abstract class AbstractPlayer : LivingEntity
     {
         base.TakeDamage(amount);
         _hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
-    }
-
-    public void StartNextWave()
-    {
-        WaveSpawner spawner = Global.GetWaveSpawner();
-        spawner.NextWave();
     }
 
     protected override void _die()
@@ -143,8 +138,6 @@ public abstract class AbstractPlayer : LivingEntity
     public void AddMoney(float amount)
     {
         money += amount;
-        Debug.Log(amount);
-        Debug.Log(money);
         _hudManager.SetMoney(money);
     }
 

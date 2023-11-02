@@ -13,6 +13,7 @@ public class HudManager : MonoBehaviour
     public Slider healthBar;
     public TextMeshProUGUI moneyText;
     public String moneyString;
+    public TextMeshProUGUI waveSpawnText;
 
     //generic method for sending the player messages
     public void SendMessage(String message, Color32 colour, float removeAfter)
@@ -59,6 +60,16 @@ public class HudManager : MonoBehaviour
     public void SetMoney(float amount)
     {
         moneyText.SetText(moneyString + amount);
+    }
+
+    public void ShowWaveSpawnText()
+    {
+        waveSpawnText.gameObject.SetActive(true);
+    }
+
+    public void HideWaveSpawnText()
+    {
+        waveSpawnText.gameObject.SetActive(false);
     }
     
 }

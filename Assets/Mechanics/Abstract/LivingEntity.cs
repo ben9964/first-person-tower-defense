@@ -29,8 +29,6 @@ public abstract class LivingEntity : Entity
 
     public virtual void TakeDamage(float amount)
     {
-        Debug.Log("TAKE DAMAGE");
-        Debug.Log(amount);
         if (_invincible) return;
         
         

@@ -23,6 +23,11 @@ public class CollisionListener : MonoBehaviour
 
     private void OnWaveStart(InputValue value)
     {
-        transform.parent.GetComponent<AbstractPlayer>().StartNextWave();
+        WaveSpawner spawner = Global.GetWaveSpawner();
+        if (spawner.CanStartNext())
+        {
+            spawner.NextWave();
+            transform.parent.GetComponent<AbstractPlayer>().GetHud().HideWaveSpawnText();
+        }
     }
 }
