@@ -18,7 +18,17 @@ public class CollisionListener : MonoBehaviour
 
     private void OnEscape(InputValue value)
     {
-        transform.parent.GetComponent<AbstractPlayer>().ToggleCursorLock();
+        AbstractPlayer player = transform.parent.GetComponent<AbstractPlayer>();
+        HudManager hud = player.GetHud();
+        if (hud.IsPaused())
+        {
+            hud.CloseEscMenu();
+        }
+        else
+        {
+            hud.OpenEscMenu();
+        }
+        
     }
 
     private void OnWaveStart(InputValue value)

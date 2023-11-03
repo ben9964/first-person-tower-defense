@@ -14,6 +14,9 @@ public class HudManager : MonoBehaviour
     public TextMeshProUGUI moneyText;
     public String moneyString;
     public TextMeshProUGUI waveSpawnText;
+    public GameObject escMenuPrefab;
+    private GameObject _escMenu;
+    private bool isPaused = false;
 
     //generic method for sending the player messages
     public void SendMessage(String message, Color32 colour, float removeAfter)
@@ -70,6 +73,34 @@ public class HudManager : MonoBehaviour
     public void HideWaveSpawnText()
     {
         waveSpawnText.gameObject.SetActive(false);
+    }
+
+    public void OpenEscMenu()
+    {
+        if (_escMenu == null)
+        {
+            _escMenu = Instantiate(escMenuPrefab, escMenuPrefab.transform.position, escMenuPrefab.transform.rotation);
+        }
+        Global.GetPlayer().Freeze();
+        _escMenu.SetActive(true);
+        isPaused = true;
+    }
+
+    public void CloseEscMenu()
+    {
+        if (_escMenu == null)
+        {
+            _escMenu = Instantiate(escMenuPrefab, escMenuPrefab.transform.position, escMenuPrefab.transform.rotation);
+        }
+
+        Global.GetPlayer().UnFreeze();
+        _escMenu.SetActive(false);
+        isPaused = false;
+    }
+
+    public bool IsPaused()
+    {
+        return isPaused;
     }
     
 }

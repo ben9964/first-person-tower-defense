@@ -45,12 +45,22 @@ public abstract class AbstractPlayer : LivingEntity
     {
         controller.MoveSpeed = speed;
         money = startingMoney;
-        ToggleCursorLock();
+        ToggleCursorLock(true);
         _hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
         _hudManager.SetMoney(money);
         Global.GetWaveSpawner().CheckWaveFinished(false);
     }
 
+    public void ToggleCursorLock(bool lockState)
+    {
+        if (lockState)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }else{
+            Cursor.lockState = CursorLockMode.None;
+        }
+    }
+    
     public void ToggleCursorLock()
     {
         if (Cursor.lockState == CursorLockMode.Locked)
@@ -70,7 +80,7 @@ public abstract class AbstractPlayer : LivingEntity
 
     public void HandleUseWeapon(InputValue value)
     {
-        if (IsDead()) return;
+        if (IsDead() || _hudManager.IsPaused()) return;
         _currentWeapon.Use();
     }
 
@@ -90,6 +100,14 @@ public abstract class AbstractPlayer : LivingEntity
     {
         Time.timeScale = 0;
         controller.RotationSpeed = 0;
+        ToggleCursorLock(false);
+    }
+    
+    public void UnFreeze()
+    {
+        Time.timeScale = 1;
+        controller.RotationSpeed = 1;
+        ToggleCursorLock(true);
     }
 
     public Color32 GetColour()

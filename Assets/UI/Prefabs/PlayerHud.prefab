@@ -601,6 +601,7 @@ MonoBehaviour:
   moneyText: {fileID: 2965226324205308992}
   moneyString: 'Cash: $'
   waveSpawnText: {fileID: 4378482063933301022}
+  escMenuPrefab: {fileID: 7474950061688482861, guid: abc47392cf3ebc341985528dd5a02db5, type: 3}
 --- !u!1001 &2223811235840561071
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -66,7 +66,7 @@ public class WaveSpawner : MonoBehaviour
             this.Invoke(() =>
             {
                 Instantiate(enemyTypes[enemy], spawnPoint.position, spawnPoint.rotation);
-            }, randomDelay(0.2f, 2.5f));
+            }, randomDelay(0.8f, 4.5f));
         }
     }
 

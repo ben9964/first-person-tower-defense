@@ -14,6 +14,7 @@ public class StartScreenSpawner : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnEnemy(5));
+        Cursor.lockState = CursorLockMode.None;
     }
 
     IEnumerator SpawnEnemy(float repeatDelay)
