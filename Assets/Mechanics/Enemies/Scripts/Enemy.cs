@@ -26,7 +26,15 @@ public class Enemy : LivingEntity
     }
 
     void GetNextWaypoint() {
-        if (_waypointIndex >= Waypoints.points.Length - 1) {
+        if (_waypointIndex >= Waypoints.points.Length - 1) 
+        {
+            // This is where the enemy reaches the base
+            LoseState baseState = FindObjectOfType<LoseState>();
+            if (baseState != null)
+            {
+                baseState.DecreaseBaseHealth((int)attackDamage);
+
+            }
             Destroy(gameObject);
             return;
         }
