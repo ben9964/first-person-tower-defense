@@ -120,3 +120,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hover_Colour: {r: 0.7607843, g: 0.75686276, b: 0.14901961, a: 0}
   positionOffset: {x: 0, y: 3, z: 0}
+  inputMap:
+    m_Name: Input Map
+    m_Id: 41794ba9-a33e-44de-a4b0-0f094cb4b6fc
+    m_Asset: {fileID: 0}
+    m_Actions:
+    - m_Name: RightClick
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: fe86b9af-211c-45cc-a6df-ca5b33d37b3d
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Bindings:
+    - m_Name: 
+      m_Id: be7b1997-0ea9-4284-b762-c6b96a221db4
+      m_Path: <Mouse>/rightButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: RightClick
+      m_Flags: 0

@@ -1,0 +1,34 @@
+{
+    "name": "NodeInput",
+    "maps": [
+        {
+            "name": "node",
+            "id": "016e8a6b-6353-4351-9588-4a651ef62fb8",
+            "actions": [
+                {
+                    "name": "RightClick",
+                    "type": "Button",
+                    "id": "e4fd8ed4-c144-462f-9ef0-d2654161c131",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c99fb106-3af9-45d0-869c-ff259281a62d",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
