@@ -21,9 +21,6 @@ public class WaveSpawner : MonoBehaviour
     // The number of the current wave.
     private int _waveNumber = 1;
 
-    // UI text elements to display wave info to the player.
-    public TextMeshProUGUI waveText;
-
     private bool inWave = false;
 
     private Dictionary<Int32, List<String>> waves = new(){
@@ -38,6 +35,7 @@ public class WaveSpawner : MonoBehaviour
     void Start()
     {
         // Initial setup can be done here if needed.
+        Global.GetPlayer().GetHud().UpdateWaveText(_waveNumber, waves.Count);
         spawnPoint = GameObject.FindWithTag("Start").transform;
     }
 
@@ -45,7 +43,7 @@ public class WaveSpawner : MonoBehaviour
     public void NextWave()
     {
         inWave = true;
-        waveText.text = "Wave Number: " + _waveNumber + "/" + waves.Count;
+        Global.GetPlayer().GetHud().UpdateWaveText(_waveNumber, waves.Count);
         SpawnEnemies(_waveNumber); 
         _waveNumber++;  // Increase the wave number for the next wave.
     }

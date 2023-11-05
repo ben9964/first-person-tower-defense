@@ -13,6 +13,7 @@ public class HudManager : MonoBehaviour
     public HealthBar healthBar;
     public HealthBar baseHealthBar;
     public TextMeshProUGUI moneyText;
+    public TextMeshProUGUI waveText;
     public String moneyString;
     public TextMeshProUGUI waveSpawnText;
     public GameObject escMenuPrefab;
@@ -36,6 +37,11 @@ public class HudManager : MonoBehaviour
         playerMessageObj.SetText(message);
         playerMessageObj.color = colour;
         playerMessageObj.gameObject.SetActive(true);
+    }
+
+    public void UpdateWaveText(int waveNumber, int totalWaves)
+    {
+        waveText.SetText("Wave: " + waveNumber + "/" + totalWaves);
     }
 
     public void clearMessage()
