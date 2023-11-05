@@ -20,6 +20,16 @@ public class HudManager : MonoBehaviour
     private GameObject _escMenu;
     private bool isPaused = false;
 
+    private void Start()
+    {
+        LoseState baseState = FindObjectOfType<LoseState>();
+        if (baseState != null)
+        {
+            baseState.UpdateBaseHealthBar();
+
+        }
+    }
+
     //generic method for sending the player messages
     public void SendMessage(String message, Color32 colour, float removeAfter)
     {

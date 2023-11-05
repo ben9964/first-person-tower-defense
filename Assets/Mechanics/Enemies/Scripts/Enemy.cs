@@ -33,7 +33,6 @@ public class Enemy : LivingEntity
             if (baseState != null)
             {
                 baseState.DecreaseBaseHealth((int)attackDamage);
-
             }
             Destroy(gameObject);
             return;

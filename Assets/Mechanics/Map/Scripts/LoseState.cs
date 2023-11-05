@@ -10,35 +10,35 @@ using UnityEngine.Serialization;
 
 public class LoseState : MonoBehaviour
 {
+    
     public float maxBaseHealth = 100.0f;
-    public float baseHealth;      // Declare a public integer for the base's initial health, set to 100 by default.
+    private float _baseHealth;      // Declare a public integer for the base's initial health, set to 100 by default.
 
     // This method is called once at the beginning of the game.
-    void Start()
+    void Awake()
     {
-        baseHealth = maxBaseHealth;
-        UpdateBaseHealthBar();         // Initialize the health display when the game starts.
+        _baseHealth = maxBaseHealth;
     }
 
     // This function decreases the base's health by a given damage amount and updates the UI.
     public void DecreaseBaseHealth(int damageAmount)
     {
-        baseHealth -= damageAmount;   // Deduct the damage amount from the base's health.
+        _baseHealth -= damageAmount;   // Deduct the damage amount from the base's health.
 
         UpdateBaseHealthBar();         // Update the UI to reflect the new health value.
 
         // If health has reached zero or gone below, trigger the lose state.
-        if(baseHealth <= 0)
+        if(_baseHealth <= 0)
         {
             lose();
         }
     }
 
     // This function updates the text UI element to display the current base health.
-    private void UpdateBaseHealthBar()
+    public void UpdateBaseHealthBar()
     {
-        baseHealth = Math.Max(baseHealth, 0);
-        Global.GetPlayer().GetHud().GetBaseHealthBar().SetHealthPercentage(baseHealth/maxBaseHealth);
+        _baseHealth = Math.Max(_baseHealth, 0);
+        Global.GetPlayer().GetHud().GetBaseHealthBar().SetHealthPercentage(_baseHealth/maxBaseHealth);
     }
 
     // This function handles the lose state of the game.
