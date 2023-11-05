@@ -10,7 +10,8 @@ public class HudManager : MonoBehaviour
 {
     
     public TextMeshProUGUI playerMessageObj;
-    public Slider healthBar;
+    public HealthBar healthBar;
+    public HealthBar baseHealthBar;
     public TextMeshProUGUI moneyText;
     public String moneyString;
     public TextMeshProUGUI waveSpawnText;
@@ -42,17 +43,14 @@ public class HudManager : MonoBehaviour
         playerMessageObj.gameObject.SetActive(false);
     }
 
-    public void setHealthPercentage(float value)
+    public HealthBar GetHealthBar()
     {
-        if (value > 1)
-        {
-            value = 1.0f;
-        }
-        else if (value < 0)
-        {
-            value = 0.0f;
-        }
-        healthBar.value = value;
+        return healthBar;
+    }
+
+    public HealthBar GetBaseHealthBar()
+    {
+        return baseHealthBar;
     }
 
     public void SetVisible(bool visible)
@@ -81,7 +79,14 @@ public class HudManager : MonoBehaviour
         {
             _escMenu = Instantiate(escMenuPrefab, escMenuPrefab.transform.position, escMenuPrefab.transform.rotation);
         }
-        Global.GetPlayer().Freeze();
+
+        //if the player is frozen then we want to preserve this state
+        AbstractPlayer player = Global.GetPlayer();
+        if (!player.IsFrozen())
+        {
+            Global.GetPlayer().Freeze(true);
+        }
+        
         _escMenu.SetActive(true);
         isPaused = true;
     }
@@ -93,7 +98,13 @@ public class HudManager : MonoBehaviour
             _escMenu = Instantiate(escMenuPrefab, escMenuPrefab.transform.position, escMenuPrefab.transform.rotation);
         }
 
-        Global.GetPlayer().UnFreeze();
+        //if the player is frozen then we want to preserve this state
+        AbstractPlayer player = Global.GetPlayer();
+        if (!player.IsFrozen())
+        {
+            Global.GetPlayer().UnFreeze(true);
+        }
+        
         _escMenu.SetActive(false);
         isPaused = false;
     }

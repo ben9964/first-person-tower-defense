@@ -23,6 +23,7 @@ public abstract class AbstractPlayer : LivingEntity
     private AbstractWeapon _currentWeapon;
 
 	private float money;
+    private bool isFrozen;
 
     protected override void Awake()
     {
@@ -46,7 +47,7 @@ public abstract class AbstractPlayer : LivingEntity
         controller.MoveSpeed = speed;
         money = startingMoney;
         ToggleCursorLock(true);
-        _hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
+        _hudManager.GetHealthBar().SetHealthPercentage(GetHealth()/GetMaxHealth());
         _hudManager.SetMoney(money);
         Global.GetWaveSpawner().CheckWaveFinished(false);
     }
@@ -87,7 +88,7 @@ public abstract class AbstractPlayer : LivingEntity
     public override void TakeDamage(float amount)
     {
         base.TakeDamage(amount);
-        _hudManager.setHealthPercentage(GetHealth()/GetMaxHealth());
+        _hudManager.GetHealthBar().SetHealthPercentage(GetHealth()/GetMaxHealth());
     }
 
     protected override void _die()
@@ -98,21 +99,44 @@ public abstract class AbstractPlayer : LivingEntity
 
     public void Freeze()
     {
+        Freeze(false);
+    }
+    
+    public void Freeze(bool preserve)
+    {
         Time.timeScale = 0;
         controller.RotationSpeed = 0;
         ToggleCursorLock(false);
+        if (!preserve)
+        {
+            isFrozen = true;
+        }
+    }
+
+    public void UnFreeze()
+    {
+        UnFreeze(false);
     }
     
-    public void UnFreeze()
+    public void UnFreeze(bool preserve)
     {
         Time.timeScale = 1;
         controller.RotationSpeed = 1;
         ToggleCursorLock(true);
+        if (!preserve)
+        {
+            isFrozen = false; 
+        }
     }
 
     public Color32 GetColour()
     {
         return colour;
+    }
+
+    public bool IsFrozen()
+    {
+        return isFrozen;
     }
 
     public String GetName()
