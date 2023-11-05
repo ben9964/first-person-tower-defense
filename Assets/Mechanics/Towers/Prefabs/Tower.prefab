@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rateOfFire: 1000
-  damage: 4
+  damage: 7
   fireCooldown: 0
   range: 10
   cost: 50

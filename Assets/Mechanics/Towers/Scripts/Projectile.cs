@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private float projSpeed = 10f;
+    private float projSpeed = 20f;
     private Transform target;
     private float damage;
 

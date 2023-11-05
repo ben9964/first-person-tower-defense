@@ -104,9 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54593d03297f3d744990d161cfdd47bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   maxHealth: 15
   damageGracePeriod: 0
-  attackDamage: 3
+  attackDamage: 5
   healthBar: {fileID: 4225155511047322300}
-  moneyReward: 3
+  moneyReward: 5

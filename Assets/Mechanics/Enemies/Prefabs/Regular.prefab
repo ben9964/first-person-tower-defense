@@ -93,12 +93,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54593d03297f3d744990d161cfdd47bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 6
   maxHealth: 25
   damageGracePeriod: 0
-  attackDamage: 5
+  attackDamage: 12
   healthBar: {fileID: 8272278369403959638}
-  moneyReward: 5
+  moneyReward: 9
 --- !u!114 &8272278369403959638 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7294472191895493101, guid: 6a34386684a1bbd459977574932b9a42, type: 3}

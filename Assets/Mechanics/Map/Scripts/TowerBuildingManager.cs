@@ -32,7 +32,6 @@ public class TowerBuildingManager : MonoBehaviour
 
     private void OnRightClick(InputValue value)
     {
-        Debug.Log("right clicked");
         Ray ray = Global.GetPlayer().GetCamera().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hitData;
 
@@ -51,7 +50,11 @@ public class TowerBuildingManager : MonoBehaviour
         {
             AbstractPlayer player = GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>();
         
-            if (!player.HasMoney(tower.GetCost())) return;
+            if (!player.HasMoney(tower.GetCost()))
+            {
+                player.GetHud().SendMessage("You need $50 to place this", new Color32(255, 0, 0, 255), 2);
+                return;
+            }
             player.RemoveMoney(tower.GetCost());
         }
         

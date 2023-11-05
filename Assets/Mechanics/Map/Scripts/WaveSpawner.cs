@@ -44,7 +44,7 @@ public class WaveSpawner : MonoBehaviour
     {
         inWave = true;
         Global.GetPlayer().GetHud().UpdateWaveText(_waveNumber, waves.Count);
-        SpawnEnemies(_waveNumber); 
+        StartCoroutine(SpawnEnemies(_waveNumber));
         _waveNumber++;  // Increase the wave number for the next wave.
     }
 
@@ -54,17 +54,15 @@ public class WaveSpawner : MonoBehaviour
         player.GetHud().SendMessage("You Win!", new Color32(0, 255, 0, 255));
         player.Freeze();
     }
-
-    // Function to spawn a single enemy.
-    void SpawnEnemies(int wave)
+    
+    IEnumerator SpawnEnemies(int wave)
     {
-        // instantiate each enemy in this wave
+        Random random = new Random();
         foreach (string enemy in waves[wave])
         {
-            this.Invoke(() =>
-            {
-                Instantiate(enemyTypes[enemy], spawnPoint.position, spawnPoint.rotation);
-            }, randomDelay(0.8f, 4.5f));
+            Instantiate(enemyTypes[enemy], spawnPoint.position, spawnPoint.rotation);
+        
+            yield return new WaitForSeconds(randomDelay(0.5f, 3.5f));
         }
     }
 
