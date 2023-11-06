@@ -15,3 +15,14 @@ Our Strategic tower defense game with a first person twist. Multiple different c
 
 ### Utility Methods Used
 - https://low-scope.com/unity-tips-1-dont-use-your-first-scene-for-global-script-initialization/
+
+
+# Controls
+
+- W A S D -> Movement
+- Mouse Movement -> Look
+- Space -> Jump
+- Left Click -> Shoot
+- Right Click -> Place Tower where you are looking
+- G -> Spawn Next Wave
+- ESC -> View Pause Menu (and controls)
