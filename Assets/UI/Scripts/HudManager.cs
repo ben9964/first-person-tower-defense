@@ -8,13 +8,14 @@ using UnityEngine.UI;
 
 public class HudManager : MonoBehaviour
 {
-    
     public TextMeshProUGUI playerMessageObj;
     public HealthBar healthBar;
     public HealthBar baseHealthBar;
     public TextMeshProUGUI moneyText;
     public TextMeshProUGUI waveText;
     public String moneyString;
+    public TextMeshProUGUI XPText;
+    public String XPString;
     public TextMeshProUGUI waveSpawnText;
     public GameObject escMenuPrefab;
     private GameObject _escMenu;
@@ -74,9 +75,16 @@ public class HudManager : MonoBehaviour
         gameObject.SetActive(visible);
     }
 
+    
     public void SetMoney(float amount)
     {
         moneyText.SetText(moneyString + amount);
+    }
+    
+
+     public void SetXP(float amount)
+    {
+        //XPText.SetText(XPString + amount);
     }
 
     public void ShowWaveSpawnText()

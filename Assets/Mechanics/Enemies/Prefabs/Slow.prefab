@@ -106,3 +106,4 @@ MonoBehaviour:
   attackDamage: 20
   healthBar: {fileID: 1358648978646451298}
   moneyReward: 15
+  XPReward: 15

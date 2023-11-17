@@ -99,6 +99,7 @@ MonoBehaviour:
   attackDamage: 12
   healthBar: {fileID: 8272278369403959638}
   moneyReward: 9
+  XPReward: 9
 --- !u!114 &8272278369403959638 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7294472191895493101, guid: 6a34386684a1bbd459977574932b9a42, type: 3}

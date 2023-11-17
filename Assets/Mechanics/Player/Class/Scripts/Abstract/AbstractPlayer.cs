@@ -17,14 +17,13 @@ public abstract class AbstractPlayer : LivingEntity
     public Color32 colour;
     public String name;
     public float startingMoney;
-    
+    public float startingXP;
     private Camera _camera;
     private HudManager _hudManager;
     private AbstractWeapon _currentWeapon;
-
 	private float money;
+    private float XP;
     private bool isFrozen;
-
     protected override void Awake()
     {
         base.Awake();
@@ -46,9 +45,11 @@ public abstract class AbstractPlayer : LivingEntity
     {
         controller.MoveSpeed = speed;
         money = startingMoney;
+        XP = startingXP;
         ToggleCursorLock(true);
         _hudManager.GetHealthBar().SetHealthPercentage(GetHealth()/GetMaxHealth());
         _hudManager.SetMoney(money);
+        _hudManager.SetXP(XP);
         Global.GetWaveSpawner().CheckWaveFinished(false);
     }
 
@@ -177,7 +178,6 @@ public abstract class AbstractPlayer : LivingEntity
     {
         return money;
     }
-
     public void AddMoney(float amount)
     {
         money += amount;
@@ -193,5 +193,16 @@ public abstract class AbstractPlayer : LivingEntity
     public bool HasMoney(float amount)
     {
         return money >= amount;
+    }
+
+     public float GetXP()
+    {
+        return XP;
+    }
+    public void AddXP(float amount)
+    {
+        XP += amount;
+        _hudManager.SetXP(XP);
+        Debug.Log(XP);
     }
 }

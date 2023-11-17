@@ -10,6 +10,7 @@ public class Enemy : LivingEntity
     public float attackDamage;
     public Slider healthBar;
     public float moneyReward;
+    public float XPReward;
 
     void Start () {
         _target = Waypoints.points[0];
@@ -77,5 +78,10 @@ public class Enemy : LivingEntity
     public float GetMoneyReward()
     {
         return moneyReward;
+    }
+
+    public float GetXPReward()
+    {
+        return XPReward;
     }
 }
