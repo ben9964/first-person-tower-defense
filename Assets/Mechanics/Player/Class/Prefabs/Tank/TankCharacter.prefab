@@ -88,7 +88,7 @@ MonoBehaviour:
   speed: 12
   maxHealth: 100
   damageGracePeriod: 1
-  weaponPrefab: {fileID: 863093164373036079, guid: 9b2ef08cc6dcd974f8d8fd0aa04d6182, type: 3}
+  weaponPrefab: {fileID: 5783954524288184859, guid: 06c813cf854462d4c86a7cd38f98536b, type: 3}
   cameraPrefab: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
   controller: {fileID: 4929440410927730811}
   colour:
@@ -96,6 +96,7 @@ MonoBehaviour:
     rgba: 4294918400
   name: Tank
   startingMoney: 100
+  startingXP: 0
 --- !u!114 &4929440410927730811 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7773859507163709127, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}
