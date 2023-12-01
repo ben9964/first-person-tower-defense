@@ -12,6 +12,11 @@ public class HealthBarLook : MonoBehaviour
         {
             _mainCamera = GameObject.FindWithTag("MainCamera");
         }
+
+        if (!_mainCamera.activeSelf)
+        {
+            return;
+        }
         gameObject.transform.LookAt(_mainCamera.transform);
     }
 }

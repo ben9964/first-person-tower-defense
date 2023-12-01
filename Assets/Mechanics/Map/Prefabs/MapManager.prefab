@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1518530973615246586}
   - component: {fileID: 4386171003716860501}
   - component: {fileID: 2135255941987903036}
+  - component: {fileID: 1042604937799615885}
   m_Layer: 0
   m_Name: MapManager
   m_TagString: Untagged
@@ -98,3 +99,18 @@ MonoBehaviour:
   m_DefaultActionMap: node
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1042604937799615885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571360926572917652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bb3db867ded7448abb742b3dcd8fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapViewCameraPrefab: {fileID: 226831730969267999, guid: a57f09ef33074fc43979f8af81b74401, type: 3}
+  mapViewCameraPosition: {x: 44.4, y: 59.18, z: 47.8}
+  mapViewCameraRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}

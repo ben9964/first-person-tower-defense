@@ -28,7 +28,7 @@ public class CollisionListener : MonoBehaviour
         {
             hud.OpenEscMenu();
         }
-        
+
     }
 
     private void OnWaveStart(InputValue value)
