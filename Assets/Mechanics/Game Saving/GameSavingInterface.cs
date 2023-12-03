@@ -14,10 +14,10 @@ public interface GameSavingInterface
     Saving and Loading data in individual scripts instrucctions:
 
     Put GameSavingInterface after MonoBehaviour with a comma at the top of the script
-    i.e , GameSavingInterface
+    i.e MonoBehaviour, GameSavingInterface
 
     Copy and paste the below methods in order to save and load data
-    use the appopriate variable for the appopriate script
+    use the appropriate variable for the appropriate script
 
     public void LoadGameData(GameData data)
     {
