@@ -69,12 +69,12 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ViewMap",
+                    "name": "BuyMenu",
                     "type": "Button",
-                    "id": "8f94ac3a-4a62-4b0c-9b6e-8119db94a7ea",
+                    "id": "d7f0bf63-68cf-4273-9364-619cfff41f01",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -290,12 +290,12 @@
                 },
                 {
                     "name": "",
-                    "id": "2ae717c7-9e14-4289-8994-6fa0e933b6b0",
-                    "path": "<Keyboard>/m",
+                    "id": "4841417e-6847-4b6a-8728-b2c726809d3b",
+                    "path": "<Keyboard>/b",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ViewMap",
+                    "action": "BuyMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -59,8 +59,8 @@ public class NodeBuilding : MonoBehaviour
         }
 
         // Fetch the tower to be built and instantiate it on this node.
-        GameObject BuildTower = TowerBuildingManager.instance.GetBuildTower();
-        TowerController tower = BuildTower.GetComponent<TowerController>();
+        GameObject BuildTower = TowerBuildingManager.instance.GetBuildTower("blue");
+        Tower tower = BuildTower.GetComponent<Tower>();
         if (Global.HasPlayer())
         {
             AbstractPlayer player = GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>();

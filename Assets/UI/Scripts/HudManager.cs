@@ -8,7 +8,10 @@ using UnityEngine.UI;
 
 public class HudManager : MonoBehaviour
 {
+    // Permanent Text object to send player various messages on screen
     public TextMeshProUGUI playerMessageObj;
+    
+    // Player HUD Elements
     public HealthBar healthBar;
     public HealthBar baseHealthBar;
     public TextMeshProUGUI moneyText;
@@ -17,9 +20,16 @@ public class HudManager : MonoBehaviour
     public TextMeshProUGUI XPText;
     public String XPString;
     public TextMeshProUGUI waveSpawnText;
+    
+    // Esc Menu
     public GameObject escMenuPrefab;
     private GameObject _escMenu;
-    private bool isPaused = false;
+    private bool _isPaused = false;
+    
+    // Tower Buy Menu
+    public GameObject towerBuyMenuPrefab;
+    private GameObject _towerBuyMenu;
+    private bool _isInBuyMenu = false;
 
     private void Start()
     {
@@ -112,7 +122,7 @@ public class HudManager : MonoBehaviour
         }
         
         _escMenu.SetActive(true);
-        isPaused = true;
+        _isPaused = true;
     }
 
     public void CloseEscMenu()
@@ -130,12 +140,53 @@ public class HudManager : MonoBehaviour
         }
         
         _escMenu.SetActive(false);
-        isPaused = false;
+        _isPaused = false;
+    }
+    
+    public void OpenTowerBuyMenu()
+    {
+        if (_towerBuyMenu == null)
+        {
+            _towerBuyMenu = Instantiate(towerBuyMenuPrefab, towerBuyMenuPrefab.transform.position, towerBuyMenuPrefab.transform.rotation);
+        }
+
+        //if the player is frozen then we want to preserve this state
+        AbstractPlayer player = Global.GetPlayer();
+        if (!player.IsFrozen())
+        {
+            Global.GetPlayer().Freeze(true);
+        }
+        
+        _towerBuyMenu.SetActive(true);
+        _isInBuyMenu = true;
+    }
+    
+    public void CloseTowerBuyMenu()
+    {
+        if (_towerBuyMenu == null)
+        {
+            _towerBuyMenu = Instantiate(towerBuyMenuPrefab, towerBuyMenuPrefab.transform.position, towerBuyMenuPrefab.transform.rotation);
+        }
+
+        //if the player is frozen then we want to preserve this state
+        AbstractPlayer player = Global.GetPlayer();
+        if (!player.IsFrozen())
+        {
+            Global.GetPlayer().UnFreeze(true);
+        }
+        
+        _towerBuyMenu.SetActive(false);
+        _isInBuyMenu = false;
+    }
+    
+    public bool IsInBuyMenu()
+    {
+        return _isInBuyMenu;
     }
 
     public bool IsPaused()
     {
-        return isPaused;
+        return _isPaused;
     }
     
 }

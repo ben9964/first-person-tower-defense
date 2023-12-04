@@ -17,7 +17,7 @@
                 {
                     "name": "ViewMap",
                     "type": "Button",
-                    "id": "4977555c-3ea7-4ac7-a2b3-8de0a2ed2ea7",
+                    "id": "5641f845-9e43-4e8d-a340-18a010f5f256",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -38,7 +38,7 @@
                 },
                 {
                     "name": "",
-                    "id": "c7e476b6-38c7-4a6e-8c75-22e7afb4cd57",
+                    "id": "8c9c1591-fc2c-4450-8826-9a001572b732",
                     "path": "<Keyboard>/m",
                     "interactions": "Press(behavior=2)",
                     "processors": "",

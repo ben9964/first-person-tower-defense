@@ -31,6 +31,27 @@ public class CollisionListener : MonoBehaviour
 
     }
 
+    private void OnBuyMenu(InputValue value)
+    {
+        AbstractPlayer player = transform.parent.GetComponent<AbstractPlayer>();
+        HudManager hud = player.GetHud();
+
+        // if we're paused we dont want to open the buy menu on top
+        if (hud.IsPaused())
+        {
+            return;
+        }
+        
+        if (hud.IsInBuyMenu())
+        {
+            hud.CloseTowerBuyMenu();
+        }
+        else
+        {
+            hud.OpenTowerBuyMenu();
+        }
+    }
+
     private void OnWaveStart(InputValue value)
     {
         WaveSpawner spawner = Global.GetWaveSpawner();

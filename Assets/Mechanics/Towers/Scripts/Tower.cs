@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class TowerController : MonoBehaviour
+public class Tower : MonoBehaviour
 {
     // rateOfFire is shots PER SECOND.
     [Header("Attributes")]

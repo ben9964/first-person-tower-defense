@@ -1,5 +1,7 @@
 // This script acts as a manager for building towers.
 // It provides a singleton reference and methods to get the tower to be built.
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -11,7 +13,10 @@ public class TowerBuildingManager : MonoBehaviour
     // Singleton instance of the TowerBuildingManager.
     public static TowerBuildingManager instance;
     
-    // Ensure only one instance of TowerBuildingManager exists in the scene.
+    private Dictionary<String, GameObject> towers = new(){};
+
+    private String _currentSelectedTower;
+    
     void Awake()
     {
         if (instance != null)
@@ -21,13 +26,19 @@ public class TowerBuildingManager : MonoBehaviour
         instance = this;
     }
 
-    // Public variable to reference the tower prefab.
-    public GameObject Tower;
-
-    // Method to return the tower to be built.
-    public GameObject GetBuildTower()
+    public String GetCurrentlySelectedTower()
     {
-        return Tower;
+        return _currentSelectedTower;
+    }
+    
+    public void SetCurrentlySelectedTower(String tower)
+    {
+        _currentSelectedTower = tower;
+    }
+    
+    public GameObject GetBuildTower(String tower)
+    {
+        return towers[tower];
     }
 
     private void OnRightClick(InputValue value)
@@ -44,8 +55,9 @@ public class TowerBuildingManager : MonoBehaviour
         {
             return;
         }
-        
-        TowerController tower = Tower.GetComponent<TowerController>();
+
+        GameObject towerToBuild = GetBuildTower(_currentSelectedTower);
+        Tower tower = towerToBuild.GetComponent<Tower>();
         if (Global.HasPlayer())
         {
             AbstractPlayer player = GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>();
@@ -58,6 +70,7 @@ public class TowerBuildingManager : MonoBehaviour
             player.RemoveMoney(tower.GetCost());
         }
         
-        Instantiate(Tower, target, transform.rotation);
+        GameObject liveTower = Instantiate(towerToBuild, target, Quaternion.identity);
+        liveTower.transform.LookAt(Global.GetPlayer().transform);
     }
 }
