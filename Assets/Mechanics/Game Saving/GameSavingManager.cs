@@ -40,6 +40,7 @@ public class GameSavingManager : MonoBehaviour
         if (this.gameData == null)
         {
             Debug.Log("No saved game data found, all values set to defaults");
+            this.gameData = new GameData();
         }
 
         foreach (GameSavingInterface gamedataPersistenceObj in gamedataPersistenceObjects)
@@ -57,7 +58,7 @@ public class GameSavingManager : MonoBehaviour
     {
         foreach (GameSavingInterface gamedataPersistenceObj in gamedataPersistenceObjects)
         {
-            gamedataPersistenceObj.SavedGameData(ref gameData);
+            gamedataPersistenceObj.SaveGameData(ref gameData);
         }
 
         Debug.Log("Saved Wave Number = " + gameData.waveNumber);

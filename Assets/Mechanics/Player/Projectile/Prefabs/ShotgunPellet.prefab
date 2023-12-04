@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 5609436076637847509}
   - component: {fileID: 5855208672649965079}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: ShotgunPellet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 75
   aliveTime: 2.5
+  spreadRadius: 0.05
 --- !u!54 &5855208672649965079
 Rigidbody:
   m_ObjectHideFlags: 0

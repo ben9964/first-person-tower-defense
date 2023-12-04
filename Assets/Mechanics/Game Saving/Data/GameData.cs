@@ -6,17 +6,13 @@ using UnityEngine;
 [System.Serializable]
 public class GameData 
 {
-    // variable for wave number
     public int waveNumber;
+    public float playerHealth;
+    public float baseHealth;
+    public float playerMoney;
 
-    // variable for player health
-    public int playerHealth;
-
-    // variable for base health
-    public int baseHealth;
-
-    // variable for player money
-    public int playerMoney;
+    public int playerLevel;
+    public float playerXp;
 
     // values defined in this method are the default values i.e when there is no game data to load
     public GameData()
@@ -25,9 +21,13 @@ public class GameData
 
         this.playerHealth = 100;
 
-        this.baseHealth = 30;
+        this.baseHealth = 100;
 
         this.playerMoney = 100;
+
+        this.playerLevel = 1;
+
+        this.playerXp = 0;
     }
     
 }

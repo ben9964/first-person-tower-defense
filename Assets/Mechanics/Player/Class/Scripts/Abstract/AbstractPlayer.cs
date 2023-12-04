@@ -6,24 +6,25 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 
-
-public abstract class AbstractPlayer : LivingEntity
+public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
 {
     public GameObject weaponPrefab;
     public Camera cameraPrefab;
     public FirstPersonController controller;
     public Color32 colour;
-    public String name;
+    public String playerName;
     public float startingMoney;
-    public float startingXP;
+    public float startingXp;
     private Camera _camera;
     private HudManager _hudManager;
     private AbstractWeapon _currentWeapon;
-	private float money;
-    private float XP;
-    private bool isFrozen;
+	private float _money;
+    private float _xp;
+    private int _playerLevel;
+    private bool _isFrozen;
     protected override void Awake()
     {
         base.Awake();
@@ -44,13 +45,15 @@ public abstract class AbstractPlayer : LivingEntity
     private void InitPlayerDefaults()
     {
         controller.MoveSpeed = speed;
-        money = startingMoney;
-        XP = startingXP;
+        _money = startingMoney;
+        _xp = startingXp;
+        _playerLevel = 1;
         ToggleCursorLock(true);
         _hudManager.GetHealthBar().SetHealthPercentage(GetHealth()/GetMaxHealth());
-        _hudManager.SetMoney(money);
-        _hudManager.SetXP(XP);
+        _hudManager.SetMoney(_money);
+        _hudManager.SetXP(_xp);
         Global.GetWaveSpawner().CheckWaveFinished(false);
+        Debug.Log(transform.position);
     }
 
     public void ToggleCursorLock(bool lockState)
@@ -75,7 +78,7 @@ public abstract class AbstractPlayer : LivingEntity
 
     private void InitWeapon()
     {
-        GameObject weapon = Instantiate(weaponPrefab, _camera.transform.Find("HandPos").position, weaponPrefab.transform.rotation,
+        GameObject weapon = Instantiate(weaponPrefab,
             _camera.transform.Find("HandPos"));
         _currentWeapon = weapon.GetComponent<AbstractWeapon>();
     }
@@ -110,7 +113,7 @@ public abstract class AbstractPlayer : LivingEntity
         ToggleCursorLock(false);
         if (!preserve)
         {
-            isFrozen = true;
+            _isFrozen = true;
         }
     }
 
@@ -126,7 +129,7 @@ public abstract class AbstractPlayer : LivingEntity
         ToggleCursorLock(true);
         if (!preserve)
         {
-            isFrozen = false; 
+            _isFrozen = false; 
         }
     }
 
@@ -137,12 +140,12 @@ public abstract class AbstractPlayer : LivingEntity
 
     public bool IsFrozen()
     {
-        return isFrozen;
+        return _isFrozen;
     }
 
     public String GetName()
     {
-        return name;
+        return playerName;
     }
 
     public Camera GetCamera()
@@ -176,33 +179,49 @@ public abstract class AbstractPlayer : LivingEntity
 
     public float GetMoney()
     {
-        return money;
+        return _money;
     }
     public void AddMoney(float amount)
     {
-        money += amount;
-        _hudManager.SetMoney(money);
+        _money += amount;
+        _hudManager.SetMoney(_money);
     }
 
     public void RemoveMoney(float amount)
     {
-        money -= amount;
-        _hudManager.SetMoney(money);
+        _money -= amount;
+        _hudManager.SetMoney(_money);
     }
 
     public bool HasMoney(float amount)
     {
-        return money >= amount;
+        return _money >= amount;
     }
 
-     public float GetXP()
+     public float GetXp()
     {
-        return XP;
+        return _xp;
     }
-    public void AddXP(float amount)
+    public void AddXp(float amount)
     {
-        XP += amount;
-        _hudManager.SetXP(XP);
-        Debug.Log(XP);
+        _xp += amount;
+        _hudManager.SetXP(_xp);
+        Debug.Log(_xp);
+    }
+
+    public void LoadGameDate(GameData data)
+    {
+        this._health = data.playerHealth;
+        this._xp = data.playerXp;
+        this._playerLevel = data.playerLevel;
+        this._money = data.playerMoney;
+    }
+
+    public void SaveGameData(ref GameData data)
+    {
+        data.playerHealth = this._health;
+        data.playerLevel = this._playerLevel;
+        data.playerXp = this._xp;
+        data.playerMoney = this._money;
     }
 }

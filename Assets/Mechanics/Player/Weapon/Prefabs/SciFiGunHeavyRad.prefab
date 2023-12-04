@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 447586}
   - component: {fileID: 3316144}
   - component: {fileID: 2327490}
+  - component: {fileID: -623196651285950331}
   m_Layer: 0
   m_Name: SciFiGunHeavyRad
   m_TagString: Untagged
@@ -27,10 +28,11 @@ Transform:
   m_GameObject: {fileID: 166328}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.086, y: 2.0295558, z: 6.629}
+  m_LocalPosition: {x: -0.086, y: 0, z: -0.444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4794987968077272362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3316144
@@ -83,3 +85,50 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &-623196651285950331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 166328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4bc0b35915049f19108b95f873fc97f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4
+  muzzle: {fileID: 4794987968077272362}
+  projectilePrefab: {fileID: 7276880913439751661, guid: 4ee0775925d42a24db38cf0158863f2e, type: 3}
+  shootCooldown: 0.3
+--- !u!1 &8053253009337425445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4794987968077272362}
+  m_Layer: 0
+  m_Name: muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4794987968077272362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8053253009337425445}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0023, y: 0.0486, z: 0.6603}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 447586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

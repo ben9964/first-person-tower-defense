@@ -7,7 +7,7 @@ public interface GameSavingInterface
 
     void LoadGameDate(GameData data);
 
-    void SavedGameData(ref GameData data);
+    void SaveGameData(ref GameData data);
 
     
     /*

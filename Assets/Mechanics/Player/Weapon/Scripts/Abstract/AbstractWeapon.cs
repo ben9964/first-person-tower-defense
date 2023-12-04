@@ -11,13 +11,13 @@ public abstract class AbstractWeapon : MonoBehaviour
     public Transform muzzle;
     public GameObject projectilePrefab;
     public float shootCooldown;
-    private bool canShoot = true;
+    protected bool canShoot = true;
 
     public virtual void Use()
     {
         if (!canShoot) return;
         
-        GameObject projectileObj = Instantiate(this.projectilePrefab, GetMuzzle().position, quaternion.identity);
+        GameObject projectileObj = Instantiate(this.projectilePrefab, GetMuzzle().position, Quaternion.identity);
         AbstractProjectile clazz = projectileObj.GetComponent<AbstractProjectile>();
         clazz.SetShooter(GameObject.FindWithTag("Player").GetComponentInChildren<AbstractPlayer>());
         clazz.SetWeapon(this);

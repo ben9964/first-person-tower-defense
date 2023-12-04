@@ -8,7 +8,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Serialization;
 
-public class LoseState : MonoBehaviour
+public class LoseState : MonoBehaviour, GameSavingInterface
 {
     
     public float maxBaseHealth = 100.0f;
@@ -47,5 +47,15 @@ public class LoseState : MonoBehaviour
         AbstractPlayer player = Global.GetPlayer(); // Find the player game object.
         player.GetHud().SendMessage("You Lose!", Color.red);                                    // Send a message to the player's HUD indicating the loss.
         player.Freeze();                                                                        // Freeze the player's actions, presumably ending their ability to play.
+    }
+    
+    public void LoadGameDate(GameData data)
+    {
+        this._baseHealth = data.baseHealth;
+    }
+
+    public void SaveGameData(ref GameData data)
+    {
+        data.baseHealth = this._baseHealth;
     }
 }

@@ -94,9 +94,9 @@ MonoBehaviour:
   colour:
     serializedVersion: 2
     rgba: 4294918400
-  name: Tank
+  playerName: Tank
   startingMoney: 100
-  startingXP: 0
+  startingXp: 0
 --- !u!114 &4929440410927730811 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7773859507163709127, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}

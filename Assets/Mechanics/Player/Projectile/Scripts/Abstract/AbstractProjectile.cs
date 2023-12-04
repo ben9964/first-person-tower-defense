@@ -6,8 +6,8 @@ using UnityEngine.XR;
 
 public class AbstractProjectile : Entity
 {
-    private AbstractPlayer _shooter;
-    private AbstractWeapon _weaponThatShot;
+    protected AbstractPlayer _shooter;
+    protected AbstractWeapon _weaponThatShot;
     public float aliveTime;
 
     private void Awake()
@@ -16,6 +16,11 @@ public class AbstractProjectile : Entity
     }
 
     void Start()
+    {
+        SpawnProjectile();
+    }
+
+    protected virtual void SpawnProjectile()
     {
         GameObject playerObj = this._shooter.gameObject;
 
@@ -35,7 +40,7 @@ public class AbstractProjectile : Entity
         Vector3 direction = target - _weaponThatShot.GetMuzzle().position;
 
         transform.forward = direction.normalized;
-        GetComponent<Rigidbody>().AddForce(direction.normalized * GetSpeed(), ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(direction.normalized * GetSpeed(), ForceMode.Force);
     }
 
     private void OnCollisionEnter(Collision other)
@@ -45,9 +50,9 @@ public class AbstractProjectile : Entity
 
     protected virtual void HandleCollision(Collision other)
     {
+        Destroy(gameObject);
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(gameObject);
             LivingEntity enemy = other.gameObject.GetComponent<LivingEntity>();
             enemy.TakeDamage(_weaponThatShot.GetDamage());
         }

@@ -318,6 +318,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8690748211415228215, guid: 0d937f397532fce4b9108bd26ea4c70a, type: 3}
+      propertyPath: defaultCharacter
+      value: 
+      objectReference: {fileID: 915376995334273361, guid: 0ebb4e53578bd894abc968662a4d15fb, type: 3}
+    - target: {fileID: 8690748211415228215, guid: 0d937f397532fce4b9108bd26ea4c70a, type: 3}
       propertyPath: mapManagerPrefab
       value: 
       objectReference: {fileID: 7571360926572917652, guid: d04ba1c27cc485546b3cca4d30b2e878, type: 3}

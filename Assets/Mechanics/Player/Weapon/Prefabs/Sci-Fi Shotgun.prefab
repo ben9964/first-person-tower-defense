@@ -187,7 +187,8 @@ MonoBehaviour:
   damage: 5
   muzzle: {fileID: 4433020584082764982}
   projectilePrefab: {fileID: 7276880913439751661, guid: 9adaaaa10efcb524eaa205d66b058a32, type: 3}
-  shootCooldown: 4
+  shootCooldown: 2.5
+  amountOfBullets: 10
 --- !u!1 &8901563087767012621
 GameObject:
   m_ObjectHideFlags: 0

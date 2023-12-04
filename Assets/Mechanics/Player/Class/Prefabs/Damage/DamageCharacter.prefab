@@ -100,11 +100,12 @@ MonoBehaviour:
   speed: 18
   maxHealth: 50
   damageGracePeriod: 1
-  weaponPrefab: {fileID: 863093164373036079, guid: 9b2ef08cc6dcd974f8d8fd0aa04d6182, type: 3}
+  weaponPrefab: {fileID: 166328, guid: 4687dbac65c37124e833c08251864ba7, type: 3}
   cameraPrefab: {fileID: 9005220659476430821, guid: 2d3a85ecde41a8246a79669975912b74, type: 3}
   controller: {fileID: 255310177847082766}
   colour:
     serializedVersion: 2
     rgba: 4278190335
-  name: Damage
+  playerName: Damage
   startingMoney: 100
+  startingXp: 0

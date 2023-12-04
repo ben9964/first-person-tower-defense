@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class LivingEntity : Entity
 {
     public float maxHealth;
-    private float _health;
+    protected float _health;
     
     private bool _invincible = false;
     private bool isDead = false;
