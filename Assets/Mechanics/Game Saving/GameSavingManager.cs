@@ -70,7 +70,7 @@ public class GameSavingManager : MonoBehaviour
         
     }
 
-    private void OnGameQuit()
+    private void OnApplicationQuit()
     {
         SaveGame();
     }
