@@ -39,7 +39,6 @@ public class GameSavingManager : MonoBehaviour
 
         if (this.gameData == null)
         {
-            Debug.Log("No saved game data found, all values set to defaults");
             this.gameData = new GameData();
         }
 
@@ -47,11 +46,6 @@ public class GameSavingManager : MonoBehaviour
         {
             gamedataPersistenceObj.LoadGameDate(gameData);
         }
-
-        Debug.Log("Loaded Wave Number = " + gameData.waveNumber);
-        Debug.Log("Loaded Player Health = " + gameData.playerHealth);
-        Debug.Log("Loaded Base Health = " + gameData.baseHealth);
-        Debug.Log("Loaded Player Money = " + gameData.playerMoney);
     }
 
     public void SaveGame()
@@ -60,11 +54,6 @@ public class GameSavingManager : MonoBehaviour
         {
             gamedataPersistenceObj.SaveGameData(ref gameData);
         }
-
-        Debug.Log("Saved Wave Number = " + gameData.waveNumber);
-        Debug.Log("Saved Player Health = " + gameData.playerHealth);
-        Debug.Log("Saved Base Health = " + gameData.baseHealth);
-        Debug.Log("Saved Player Money = " + gameData.playerMoney);
 
         fileDataHandler.Save(gameData);
         

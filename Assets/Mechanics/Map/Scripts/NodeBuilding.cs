@@ -54,7 +54,6 @@ public class NodeBuilding : MonoBehaviour
         // Check if a tower already exists on this node.
         if (towerObj != null)
         {
-            Debug.Log("Cannot build tower on occupied node");
             return;
         }
 
