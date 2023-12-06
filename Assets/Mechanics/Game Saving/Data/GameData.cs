@@ -17,7 +17,7 @@ public class GameData
     // values defined in this method are the default values i.e when there is no game data to load
     public GameData()
     {
-        this.waveNumber = 1;
+        this.waveNumber = 0;
 
         this.playerHealth = 100;
 

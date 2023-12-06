@@ -45,9 +45,6 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     private void InitPlayerDefaults()
     {
         controller.MoveSpeed = speed;
-        _money = startingMoney;
-        _xp = startingXp;
-        _playerLevel = 1;
         ToggleCursorLock(true);
         _hudManager.GetHealthBar().SetHealthPercentage(GetHealth()/GetMaxHealth());
         _hudManager.SetMoney(_money);

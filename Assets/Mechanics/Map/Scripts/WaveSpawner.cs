@@ -19,7 +19,7 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
     public Transform spawnPoint;
 
     // The number of the current wave.
-    private int _waveNumber = 1;
+    private int _waveNumber = 0;
 
     private bool inWave = false;
 
@@ -42,10 +42,10 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
     // Function to handle the spawning of a wave of enemies.
     public void NextWave()
     {
+        _waveNumber++;  // Increase the wave number for this wave
         inWave = true;
         Global.GetPlayer().GetHud().UpdateWaveText(_waveNumber, waves.Count);
         StartCoroutine(SpawnEnemies(_waveNumber));
-        _waveNumber++;  // Increase the wave number for the next wave.
     }
 
     private void _win()
@@ -104,6 +104,11 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
 
     public void SaveGameData(ref GameData data)
     {
+        //prevent case where we inflate wave number when saving mid round
+        if (inWave)
+        {
+            this._waveNumber--;
+        }
         data.waveNumber = this._waveNumber;
     }
 }
