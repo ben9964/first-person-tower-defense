@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44513b690f814ea5b1c05305124a207d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 0.5
   muzzle: {fileID: 4433020584082764982}
   projectilePrefab: {fileID: 7276880913439751661, guid: 9adaaaa10efcb524eaa205d66b058a32, type: 3}
   shootCooldown: 2.5

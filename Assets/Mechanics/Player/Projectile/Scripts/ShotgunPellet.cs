@@ -30,4 +30,13 @@ public class ShotgunPellet : AbstractProjectile
         transform.forward = direction.normalized;
         GetComponent<Rigidbody>().AddForce(direction.normalized * GetSpeed(), ForceMode.Impulse);
     }
+    
+    protected override void HandleCollision(Collision other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            LivingEntity enemy = other.gameObject.GetComponent<LivingEntity>();
+            enemy.TakeDamage(_weaponThatShot.GetDamage());
+        }
+    }
 }

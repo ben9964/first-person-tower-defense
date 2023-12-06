@@ -10,8 +10,10 @@ public class HealthBarLook : MonoBehaviour
     {
         if (_mainCamera == null)
         {
+            if (Global.GetPlayer() == null) return;
             _mainCamera = Global.GetPlayer().GetCamera().gameObject;
         }
+        if (_mainCamera == null) return;
 
         if (!_mainCamera.activeSelf)
         {
