@@ -21,7 +21,7 @@ public class GameData
 
         this.playerHealth = 100;
 
-        this.baseHealth = 100;
+        this.baseHealth = 30;
 
         this.playerMoney = 100;
 

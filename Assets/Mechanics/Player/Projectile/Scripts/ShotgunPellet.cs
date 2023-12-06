@@ -35,6 +35,7 @@ public class ShotgunPellet : AbstractProjectile
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            Destroy(gameObject);
             LivingEntity enemy = other.gameObject.GetComponent<LivingEntity>();
             enemy.TakeDamage(_weaponThatShot.GetDamage());
         }

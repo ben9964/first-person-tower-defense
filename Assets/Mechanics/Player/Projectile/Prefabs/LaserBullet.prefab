@@ -116,8 +116,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3235164749878687482}
-  - component: {fileID: 5609436076637847509}
   - component: {fileID: 5855208672649965079}
+  - component: {fileID: -6408503753432670160}
   m_Layer: 0
   m_Name: LaserBullet
   m_TagString: Untagged
@@ -141,21 +141,6 @@ Transform:
   - {fileID: 8832379538257111598}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5609436076637847509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7276880913439751661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e796d62a05f4228b450ebec88a26a27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 75
-  aliveTime: 2.5
-  spreadRadius: 0.05
 --- !u!54 &5855208672649965079
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -183,3 +168,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-6408503753432670160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7276880913439751661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc65a84fd5e445db8587510fbe196546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 75
+  aliveTime: 3

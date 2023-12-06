@@ -40,7 +40,7 @@ public class AbstractProjectile : Entity
         Vector3 direction = target - _weaponThatShot.GetMuzzle().position;
 
         transform.forward = direction.normalized;
-        GetComponent<Rigidbody>().AddForce(direction.normalized * GetSpeed(), ForceMode.Force);
+        GetComponent<Rigidbody>().AddForce(direction.normalized * GetSpeed(), ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision other)
