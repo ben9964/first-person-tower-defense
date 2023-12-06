@@ -10,6 +10,7 @@ public class Global : MonoBehaviour
     public GameObject playerHudPrefab;
     private WaveSpawner _waveSpawner;
     private AbstractPlayer _player;
+    private bool _inMapView;
 
     private void Awake()
     {
@@ -44,5 +45,15 @@ public class Global : MonoBehaviour
     public static bool HasPlayer()
     {
         return Instance._player != null;
+    }
+    
+    public static void SetInMapView(bool inMapView)
+    {
+        Instance._inMapView = inMapView;
+    }
+    
+    public static bool IsInMapView()
+    {
+        return Instance._inMapView;
     }
 }

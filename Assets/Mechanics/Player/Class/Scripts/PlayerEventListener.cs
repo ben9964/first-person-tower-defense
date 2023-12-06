@@ -20,6 +20,9 @@ public class CollisionListener : MonoBehaviour
     {
         AbstractPlayer player = transform.parent.GetComponent<AbstractPlayer>();
         HudManager hud = player.GetHud();
+        // if we're in the buy menu we dont want to pause
+        if (hud.IsInBuyMenu()) return;
+        
         if (hud.IsPaused())
         {
             hud.CloseEscMenu();
@@ -37,10 +40,7 @@ public class CollisionListener : MonoBehaviour
         HudManager hud = player.GetHud();
 
         // if we're paused we dont want to open the buy menu on top
-        if (hud.IsPaused())
-        {
-            return;
-        }
+        if (hud.IsPaused()) return;
         
         if (hud.IsInBuyMenu())
         {

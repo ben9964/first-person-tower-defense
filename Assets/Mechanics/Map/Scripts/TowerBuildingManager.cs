@@ -4,6 +4,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using AYellowpaper.SerializedCollections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,7 +14,8 @@ public class TowerBuildingManager : MonoBehaviour
     // Singleton instance of the TowerBuildingManager.
     public static TowerBuildingManager instance;
     
-    private Dictionary<String, GameObject> towers = new(){};
+    [SerializedDictionary("Tower Name", "Tower Prefab")]
+    public SerializedDictionary<String, GameObject> towerTypes;
 
     private String _currentSelectedTower;
     
@@ -38,7 +40,7 @@ public class TowerBuildingManager : MonoBehaviour
     
     public GameObject GetBuildTower(String tower)
     {
-        return towers[tower];
+        return towerTypes[tower];
     }
 
     private void OnRightClick(InputValue value)
@@ -55,7 +57,12 @@ public class TowerBuildingManager : MonoBehaviour
         {
             return;
         }
-
+        
+        if (_currentSelectedTower == null)
+        {
+            Global.GetPlayer().GetHud().SendMessage("You don't have a tower selected from the (B) menu", new Color32(255, 0, 0, 255), 2);
+            return;
+        }
         GameObject towerToBuild = GetBuildTower(_currentSelectedTower);
         Tower tower = towerToBuild.GetComponent<Tower>();
         if (Global.HasPlayer())
@@ -64,7 +71,7 @@ public class TowerBuildingManager : MonoBehaviour
         
             if (!player.HasMoney(tower.GetCost()))
             {
-                player.GetHud().SendMessage("You need $50 to place this", new Color32(255, 0, 0, 255), 2);
+                player.GetHud().SendMessage("You need $" + tower.GetCost() + " to place this", new Color32(255, 0, 0, 255), 2);
                 return;
             }
             player.RemoveMoney(tower.GetCost());

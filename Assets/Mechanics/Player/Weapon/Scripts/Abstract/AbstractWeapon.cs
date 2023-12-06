@@ -37,4 +37,9 @@ public abstract class AbstractWeapon : MonoBehaviour
     {
         return this.muzzle;
     }
+
+    public void ResetShot()
+    {
+        canShoot = true;
+    }
 }

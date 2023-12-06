@@ -47,7 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c10eb59ea1760c4bac87f3c091820b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tower: {fileID: 7823158909952367190, guid: 7a341dba71e2a2545a020212e959f8d2, type: 3}
+  towerTypes:
+    _serializedList:
+    - Key: blue
+      Value: {fileID: 7823158909952367190, guid: 7a341dba71e2a2545a020212e959f8d2, type: 3}
+    - Key: red
+      Value: {fileID: 7823158909952367190, guid: d872e5d81b3af2340a6db978d3aa5f20, type: 3}
 --- !u!114 &4386171003716860501
 MonoBehaviour:
   m_ObjectHideFlags: 0

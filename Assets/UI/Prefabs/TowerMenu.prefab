@@ -324,7 +324,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7453597000728322455}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9132361927018613532}
+        m_TargetAssemblyTypeName: TowerBuyMenu, Assembly-CSharp
+        m_MethodName: ClickExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7474950061688482861
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,7 +349,7 @@ GameObject:
   - component: {fileID: 3079986566639982216}
   - component: {fileID: 8785757856432942783}
   - component: {fileID: 7734160914135720171}
-  - component: {fileID: 4969077704251106686}
+  - component: {fileID: 9132361927018613532}
   m_Layer: 5
   m_Name: TowerMenu
   m_TagString: Untagged
@@ -429,7 +441,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4969077704251106686
+--- !u!114 &9132361927018613532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -438,7 +450,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7474950061688482861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99651b20ba246d546817b2b3dc9db3c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 3bff4edaeee541d408147849b05f0590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7984340896702685379
@@ -529,11 +541,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 402462173679507133, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_text
-      value: Tower 2
+      value: Red Tower
       objectReference: {fileID: 0}
     - target: {fileID: 1994866651706025480, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9132361927018613532}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TowerBuyMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4625698734041978243, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_LocalScale.x
@@ -593,7 +633,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6168690259217067035, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_text
-      value: 150$
+      value: $150
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9132361927018613532}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickBuy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TowerBuyMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: red
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8020115713195548181, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_Name
@@ -617,9 +681,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7917933327790559675}
     m_Modifications:
+    - target: {fileID: 402462173679507133, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_text
+      value: Blue Tower
+      objectReference: {fileID: 0}
     - target: {fileID: 1994866651706025480, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9132361927018613532}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickUpgrade
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TowerBuyMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4625698734041978243, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_LocalScale.x
@@ -676,6 +772,34 @@ PrefabInstance:
     - target: {fileID: 4762801055638022830, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_Name
       value: Tower 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6168690259217067035, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_text
+      value: $50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9132361927018613532}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickBuy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TowerBuyMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

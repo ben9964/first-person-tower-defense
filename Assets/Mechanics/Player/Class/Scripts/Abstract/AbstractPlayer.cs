@@ -81,8 +81,13 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
 
     public void HandleUseWeapon(InputValue value)
     {
-        if (IsDead() || _hudManager.IsPaused() || _hudManager.IsInBuyMenu()) return;
+        if (IsDead() || _hudManager.IsPaused() || _hudManager.IsInBuyMenu() || Global.IsInMapView()) return;
         _currentWeapon.Use();
+    }
+    
+    public AbstractWeapon GetCurrentWeapon()
+    {
+        return _currentWeapon;
     }
 
     public override void TakeDamage(float amount)
