@@ -23,6 +23,7 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     private AbstractWeapon _currentWeapon;
 	private float _money;
     private float _xp;
+    private float _levelupThreshold = 100;
     private int _playerLevel;
     private bool _isFrozen;
     protected override void Awake()
@@ -49,6 +50,7 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
         _hudManager.GetHealthBar().SetHealthPercentage(GetHealth()/GetMaxHealth());
         _hudManager.SetMoney(_money);
         _hudManager.SetXP(_xp);
+        _hudManager.SetLevel(_playerLevel);
         Global.GetWaveSpawner().CheckWaveFinished(false);
     }
 
@@ -203,10 +205,36 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     {
         return _xp;
     }
+    public float GeLevel()
+    {
+        return _xp;
+    }
+
     public void AddXp(float amount)
     {
         _xp += amount;
-        _hudManager.SetXP(_xp);
+
+        // Check if the XP exceeds the threshold after addition
+        if (_xp >= _levelupThreshold)
+        {
+            LevelUp();
+        }
+        else
+        {
+            _hudManager.SetXP(_xp); // Update the XP display if not leveling up
+        }
+    }
+
+    private void LevelUp()
+    {
+        _playerLevel++;
+        _xp -= _levelupThreshold; // Reset XP accounting for overflow
+        _hudManager.SetLevel(_playerLevel); // Update the level display
+        _hudManager.SetXP(_xp);// Update the XP display
+        _levelupThreshold *= 1.5f; // Increase the XP required for the next level
+
+        // Implement additional level-up effects here (e.g., increase health, damage, etc.)
+        
     }
 
     public void LoadGameDate(GameData data)

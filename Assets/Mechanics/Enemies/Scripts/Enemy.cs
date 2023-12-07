@@ -50,6 +50,7 @@ public class Enemy : LivingEntity
         if (Global.HasPlayer())
         {
             GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>().AddMoney(moneyReward);
+            GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>().AddXp(XPReward);
             Global.GetWaveSpawner().CheckWaveFinished(true); 
         }
     }

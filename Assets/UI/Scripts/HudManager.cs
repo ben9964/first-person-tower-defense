@@ -19,6 +19,8 @@ public class HudManager : MonoBehaviour
     public String moneyString;
     public TextMeshProUGUI XPText;
     public String XPString;
+    public TextMeshProUGUI levelText;
+    public String levelString;
     public TextMeshProUGUI waveSpawnText;
     
     // Esc Menu
@@ -85,7 +87,6 @@ public class HudManager : MonoBehaviour
         gameObject.SetActive(visible);
     }
 
-    
     public void SetMoney(float amount)
     {
         moneyText.SetText(moneyString + amount);
@@ -94,7 +95,12 @@ public class HudManager : MonoBehaviour
 
      public void SetXP(float amount)
     {
-        //XPText.SetText(XPString + amount);
+        XPText.SetText(XPString + amount);
+    }
+
+    public void SetLevel(float amount)
+    {
+        levelText.SetText(levelString + amount);
     }
 
     public void ShowWaveSpawnText()
