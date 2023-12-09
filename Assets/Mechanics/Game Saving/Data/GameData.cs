@@ -14,6 +14,7 @@ public class GameData
     public int playerLevel;
     public float playerXp;
 
+    // This class stores essential game data
     // values defined in this method are the default values i.e when there is no game data to load
     public GameData()
     {

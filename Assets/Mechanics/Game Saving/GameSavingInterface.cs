@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Defines an interface for game data loading and saving functionalities
 public interface GameSavingInterface 
 {
-
+    // Declares a method to load game data from an external source
     void LoadGameDate(GameData data);
 
+    // Declares a method to save game data, with data passed by reference
     void SaveGameData(ref GameData data);
 
     
@@ -21,26 +23,12 @@ public interface GameSavingInterface
 
     public void LoadGameData(GameData data)
     {
-        this.waveNumber = data.waveNumber;
-
-        this.playerHealth = data.playerHealth;
-
-        this.baseHealth = data.baseHealth;
-
-        this.playerMoney = data.playerMoney;
-
+        this.variableName = data.variableName;
     }
 
     public void SaveGameData(ref GameData data)
     {
-        data.waveNumber = this.waveNumber;
-
-        data.playerHealth = this.playerHealth;
-
-        data.baseHealth = this.baseHealth;
-
-        data.playerMoney = this.playerMoney;
-        
+        data.variableName = this.variableName;   
     }
 
     */

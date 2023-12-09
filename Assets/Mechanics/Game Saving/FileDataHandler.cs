@@ -1,20 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
-using System.IO;
+using System;     // Includes the System namespace for fundamental base classes and base interfaces
+using System.IO;  // Includes the System.IO namespace for file and stream I/O (input/output) operations
 
+
+// This class handles loading and saving game data to and from files in JSON format
 public class FileDataHandler
 {
    private string gamedataDirectoryPath = "";
    private string gamedataFileName = "";
 
+    // Initialises the file handler with specified directory and file name for game data
    public FileDataHandler(string gamedataDirectoryPath, string gamedataFileName)
    {
         this.gamedataDirectoryPath = gamedataDirectoryPath;
         this.gamedataFileName = gamedataFileName;
    }
 
+    // Loads game data from a file, returning a GameData object if successful, null otherwise
    public GameData Load()
    {
         string fullPath = Path.Combine(gamedataDirectoryPath, gamedataFileName);
@@ -43,6 +47,7 @@ public class FileDataHandler
         return loadedGameData;
    }
 
+    // Saves the provided GameData object to a file in JSON format
    public void Save(GameData data)
    {
         string fullPath = Path.Combine(gamedataDirectoryPath, gamedataFileName);
