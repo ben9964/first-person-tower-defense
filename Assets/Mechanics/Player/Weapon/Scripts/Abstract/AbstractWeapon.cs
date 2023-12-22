@@ -12,6 +12,9 @@ public abstract class AbstractWeapon : MonoBehaviour
     public GameObject projectilePrefab;
     public float shootCooldown;
     protected bool canShoot = true;
+    public AudioSource shootSound;
+
+
 
     public virtual void Use()
     {
@@ -21,6 +24,7 @@ public abstract class AbstractWeapon : MonoBehaviour
         AbstractProjectile clazz = projectileObj.GetComponent<AbstractProjectile>();
         clazz.SetShooter(GameObject.FindWithTag("Player").GetComponentInChildren<AbstractPlayer>());
         clazz.SetWeapon(this);
+        shootSound.Play();
         canShoot = false;
         this.Invoke(() =>
         {
