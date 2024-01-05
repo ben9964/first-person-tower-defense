@@ -14,6 +14,7 @@ TagManager:
   - LiveCharacter
   - Start
   - MapView
+  - End
   layers:
   - Default
   - TransparentFX

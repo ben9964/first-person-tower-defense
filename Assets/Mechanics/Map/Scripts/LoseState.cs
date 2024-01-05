@@ -42,7 +42,20 @@ public class LoseState : MonoBehaviour, GameSavingInterface
         player.GetHud().SendMessage("You Lose!", Color.red);                                   
         player.Freeze();                                                                    
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("collided with end");
+        Enemy enemy = other.gameObject.GetComponentInParent<Enemy>();
+        if (enemy != null)
+        {
+            Debug.Log("decreasing base health");
+            DecreaseBaseHealth((int)enemy.GetAttackDamage());
+            Destroy(other.gameObject);
+        }
+        
+    }
+
     public void LoadGameDate(GameData data)
     {
         this._baseHealth = data.baseHealth;

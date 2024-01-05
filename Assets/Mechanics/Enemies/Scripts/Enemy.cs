@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Enemy : LivingEntity
@@ -12,35 +13,18 @@ public class Enemy : LivingEntity
     public float moneyReward;
     public float XPReward;
 
-    void Start () {
-        _target = Waypoints.points[0];
+    private NavMeshAgent agent;
+
+    void Start ()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.destination = GameObject.FindWithTag("End").transform.position;
         UpdateHealthBar();
     }
 
-    void Update () {
-        Vector3 dir = _target.position - transform.position;
-        transform.Translate(Time.deltaTime * GetSpeed() * dir.normalized , Space.World);
-
-        if (Vector3.Distance(transform.position, _target.position) <= 0.2f) {
-            GetNextWaypoint();
-        }
-    }
-
-    void GetNextWaypoint() {
-        if (_waypointIndex >= Waypoints.points.Length - 1) 
-        {
-            // This is where the enemy reaches the base
-            LoseState baseState = FindObjectOfType<LoseState>();
-            if (baseState != null)
-            {
-                baseState.DecreaseBaseHealth((int)attackDamage);
-            }
-            Destroy(gameObject);
-            return;
-        }
-
-        _waypointIndex++;
-        _target = Waypoints.points[_waypointIndex];
+    void Update ()
+    {
+        //TODO: Ai to attack player - Yusuf
     }
 
     protected override void _die()
