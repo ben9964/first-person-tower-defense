@@ -8,7 +8,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Serialization;
 
-public class LoseState : MonoBehaviour, GameSavingInterface
+public class LoseState : MonoBehaviour
 {
     
     public float maxBaseHealth = 100.0f;
@@ -55,15 +55,5 @@ public class LoseState : MonoBehaviour, GameSavingInterface
             DecreaseBaseHealth((int)enemy.GetAttackDamage());
         }
         
-    }
-
-    public void LoadGameDate(GameData data)
-    {
-        this._baseHealth = data.baseHealth;
-    }
-
-    public void SaveGameData(ref GameData data)
-    {
-        data.baseHealth = this._baseHealth;
     }
 }

@@ -10,7 +10,7 @@ using Random = System.Random;
 using AYellowpaper.SerializedCollections;
 using UnityEngine.Rendering.UI;
 
-public class WaveSpawner : MonoBehaviour, GameSavingInterface
+public class WaveSpawner : MonoBehaviour
 {
     [SerializedDictionary("Enemy Name", "Enemy Prefab")]
     public SerializedDictionary<String, GameObject> enemyTypes;
@@ -131,21 +131,6 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
     {
         Random random = new Random();
         return (float)random.NextDouble() * (max - min) + min;
-    }
-    
-    public void LoadGameDate(GameData data)
-    {
-        this._waveNumber = data.waveNumber;
-    }
-
-    public void SaveGameData(ref GameData data)
-    {
-        //prevent case where we inflate wave number when saving mid round
-        if (inWave)
-        {
-            this._waveNumber--;
-        }
-        data.waveNumber = this._waveNumber;
     }
     
     public void SetInWave(bool flag)

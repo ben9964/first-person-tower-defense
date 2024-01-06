@@ -248,17 +248,13 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
 
     public void LoadGameDate(GameData data)
     {
-        this._health = data.playerHealth;
         this._xp = data.playerXp;
         this._playerLevel = data.playerLevel;
-        this._money = data.playerMoney;
     }
 
     public void SaveGameData(ref GameData data)
     {
-        data.playerHealth = this._health;
         data.playerLevel = this._playerLevel;
         data.playerXp = this._xp;
-        data.playerMoney = this._money;
     }
 }
