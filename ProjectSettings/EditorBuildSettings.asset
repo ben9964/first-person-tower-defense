@@ -12,13 +12,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Select/CharacterSelect.unity
     guid: e1e2889bfc3f52f4e8ab47847ad90f21
   - enabled: 1
-    path: Assets/Scenes/Levels/IndoorMap1.unity
+    path: Assets/Scenes/Levels/Easy.unity
     guid: 068a4163b1a440b419cd3430fa9e4220
   - enabled: 1
-    path: Assets/Scenes/Levels/IndoorMap2.unity
+    path: Assets/Scenes/Levels/Hard.unity
     guid: 0c2be73c4ac97084595d847393e1af1e
   - enabled: 1
-    path: Assets/Scenes/Levels/TerrainMap1.unity
+    path: Assets/Scenes/Levels/Medium.unity
     guid: 0755d6fdc954b734095b5589e4d88715
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

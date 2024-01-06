@@ -107,5 +107,4 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4278190335
   playerName: Damage
-  startingMoney: 100
-  startingXp: 0
+  abilityCooldown: 15

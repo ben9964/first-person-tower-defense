@@ -27,7 +27,7 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
 
     private Dictionary<String, Dictionary<Int32, List<String>>> waves = new(){
         {
-            "IndoorMap1", new(){
+            "Easy", new(){
                 {1, new List<String>{"regular", "regular", "regular", "regular", "regular", "regular"}},
                 {2, new List<String>{"regular", "regular", "slow", "regular", "regular", "slow"}},
                 {3, new List<String>{"fast"}},
@@ -36,7 +36,7 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
             }
         },
         {
-            "TerrainMap1", new(){
+            "Medium", new(){
                 {1, new List<String>{"regular", "regular", "regular", "regular", "regular", "regular"}},
                 {2, new List<String>{"regular", "regular", "slow", "regular", "regular", "slow"}},
                 {3, new List<String>{"fast", "fast", "fast"}},
@@ -48,7 +48,7 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
             }
         },
         {
-            "IndoorMap2", new(){
+            "Hard", new(){
                 {1, new List<String>{"regular", "regular", "regular", "regular", "regular"}},
                 {2, new List<String>{"slow", "regular", "slow", "regular", "slow", "regular", "regular", "regular", "regular"}},
                 {3, new List<String>{"fast", "regular", "fast", "regular", "fast", "regular", "slow", "regular", "fast", "fast", "regular", "regular"}},

@@ -330,9 +330,9 @@ MonoBehaviour:
   characterName: {fileID: 1327955882}
   mapName: {fileID: 330599117}
   maps:
-  - TerrainMap1
-  - IndoorMap1
-  - IndoorMap2
+  - Easy
+  - Medium
+  - Hard
 --- !u!4 &484996691
 Transform:
   m_ObjectHideFlags: 0
