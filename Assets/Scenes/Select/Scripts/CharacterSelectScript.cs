@@ -4,58 +4,84 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class CharacterSelectScript : MonoBehaviour
 {
-    public int selected;
-    public String sceneToLoad;
+    public int selectedCharacter;
+    public int selectedMap;
     public TextMeshProUGUI characterName;
+    public TextMeshProUGUI mapName;
 
     private List<GameObject> characterCache = new List<GameObject>();
+    public String[] maps;
 
     public void Start()
     {
         InitCharacters();
-        AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selected).GetComponent<AbstractPlayer>();
+        InitMaps();
+        AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selectedCharacter).GetComponent<AbstractPlayer>();
         characterName.SetText(playerPrefabComponent.GetName());
         characterName.color = playerPrefabComponent.GetColour();
-        characterCache[selected].SetActive(true);
+        characterCache[selectedCharacter].SetActive(true);
     }
 
-    public void SelectNext()
+    public void SelectNextCharacter()
     {
-        characterCache[selected].SetActive(false);
-        selected += 1;
-        if (selected >= CharacterDB.GetAmount())
+        characterCache[selectedCharacter].SetActive(false);
+        selectedCharacter += 1;
+        if (selectedCharacter >= CharacterDB.GetAmount())
         {
-            selected = 0;
+            selectedCharacter = 0;
         }
 
-        AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selected).GetComponent<AbstractPlayer>();
+        AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selectedCharacter).GetComponent<AbstractPlayer>();
         characterName.SetText(playerPrefabComponent.GetName());
         characterName.color = playerPrefabComponent.GetColour();
-        characterCache[selected].SetActive(true);
+        characterCache[selectedCharacter].SetActive(true);
     }
 
-    public void SelectPrevious()
+    public void SelectPreviousCharacter()
     {
-        characterCache[selected].SetActive(false);
-        selected -= 1;
-        if (selected < 0)
+        characterCache[selectedCharacter].SetActive(false);
+        selectedCharacter -= 1;
+        if (selectedCharacter < 0)
         {
-            selected = CharacterDB.GetAmount() - 1;
+            selectedCharacter = CharacterDB.GetAmount() - 1;
         }
 
-        AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selected).GetComponent<AbstractPlayer>();
+        AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selectedCharacter).GetComponent<AbstractPlayer>();
         characterName.SetText(playerPrefabComponent.GetName());
         characterName.color = playerPrefabComponent.GetColour();
-        characterCache[selected].SetActive(true);
+        characterCache[selectedCharacter].SetActive(true);
+    }
+    
+    public void SelectNextMap()
+    {
+        selectedMap ++;
+        if (selectedMap >= maps.Length)
+        {
+            selectedMap = 0;
+        }
+        
+        mapName.SetText(maps[selectedMap]);
+    }
+
+    public void SelectPreviousMap()
+    {
+        selectedMap --;
+        if (selectedMap < 0)
+        {
+            selectedMap = maps.Length - 1;
+        }
+        
+        mapName.SetText(maps[selectedMap]);
     }
 
     public void StartButtonPress()
     {
-        CharacterDB.SetSelected(this.selected);
-        Util.LoadScene(sceneToLoad);
+        CharacterDB.SetSelected(selectedCharacter);
+        Util.LoadScene(maps[selectedMap]);
     }
     
     private void InitCharacters()
@@ -67,6 +93,11 @@ public class CharacterSelectScript : MonoBehaviour
             characterModel.SetActive(false);
             characterCache.Add(characterModel);
         }
+    }
+    
+    private void InitMaps()
+    {
+        mapName.SetText(maps[selectedMap]);
     }
 }
 
