@@ -10,7 +10,6 @@ public class GameData
     public float playerHealth;
     public float baseHealth;
     public float playerMoney;
-
     public int playerLevel;
     public float playerXp;
 

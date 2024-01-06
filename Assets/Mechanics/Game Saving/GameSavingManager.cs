@@ -2,10 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.Universal;
 
 // GameSavingManager manages the game's data saving and loading process, handling interactions with persistent storage
 public class GameSavingManager : MonoBehaviour
 {
+    // Attribute to organize and label the gameData field in the Unity Editor
+    [Header("Developing")]
+    // Attribute to organize and label the gameData field in the Unity Editor
+    [SerializeField] private bool initializeGameDataIfNull = false;
+
     // Attribute to organize and label the fileName field in the Unity Editor
     [Header("File Storage Config")]
     // Private serialized field for storing the file name, editable in the Unity Editor
@@ -24,20 +31,46 @@ public class GameSavingManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("More than one GameSavingManger in scene");
+            Debug.LogError("More than one GameSavingManger in scene, Destorying the newest GameSavingManger");
+            Destroy(this.gameObject);
+            return;
         }
         instance = this;
+        DontDestroyOnLoad(this.gameObject);
+
+        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
     }
 
-    // Initialises fileDataHandler and finds all objects that need game data persistence on game start
-    private void Start()
+    // OnEnable is called when the object becomes enabled and active, registering scene load and unload events
+    private void OnEnable()
     {
-        this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+    }
+
+    // OnDisable is called when the object becomes disabled or inactive, unregistering scene load and unload events
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneUnloaded -= OnSceneUnloaded;
+    }
+
+    // OnSceneLoaded is called each time a scene is loaded, initializing game data persistence objects and loading game data
+    public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded was Called");
         this.gamedataPersistenceObjects = FindAllGameDataPersistenceObjects();
         LoadGame();
     }
 
-    // Initialises a new gameData object for a new game session.
+    // OnSceneUnloaded is called each time a scene is unloaded, triggering a save of the current game data
+    public void OnSceneUnloaded(Scene scene)
+    {    
+        Debug.Log("OnSceneUnloaded was Called");
+        SaveGame();   
+    }
+
+    // Initialises a new gameData object for a new game session
     public void NewGame()
     {
         this.gameData = new GameData();
@@ -54,9 +87,16 @@ public class GameSavingManager : MonoBehaviour
     {
         this.gameData = fileDataHandler.Load();
 
+        // if there is not gameData and the initializeGameDataIfNull is checked then start a new game
+        if (this.gameData == null && initializeGameDataIfNull)
+        {
+            NewGame();
+        }
+
         if (this.gameData == null)
         {
-            this.gameData = new GameData();
+            Debug.Log("No game data was found. A new game must be made first");
+            return;
         }
 
         foreach (GameSavingInterface gamedataPersistenceObj in gamedataPersistenceObjects)
@@ -68,6 +108,12 @@ public class GameSavingManager : MonoBehaviour
     // Saves the current game data through all gamedataPersistenceObjects and then to the file
     public void SaveGame()
     {
+        if (this.gameData == null)
+        {
+            Debug.LogWarning("No game data was found. A new game must be made first");
+            return;
+        }
+
         foreach (GameSavingInterface gamedataPersistenceObj in gamedataPersistenceObjects)
         {
             gamedataPersistenceObj.SaveGameData(ref gameData);
@@ -89,6 +135,12 @@ public class GameSavingManager : MonoBehaviour
         IEnumerable<GameSavingInterface> gamedataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<GameSavingInterface>();
 
         return new List<GameSavingInterface>(gamedataPersistenceObjects);
+    }
+
+    //Checks if gamaData object is null
+    public bool HasGameData()
+    {
+        return gameData != null;
     }
     
 }
