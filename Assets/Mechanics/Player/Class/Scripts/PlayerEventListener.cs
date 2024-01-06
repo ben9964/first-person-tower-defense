@@ -67,4 +67,10 @@ public class CollisionListener : MonoBehaviour
             transform.parent.GetComponent<AbstractPlayer>().GetHud().HideWaveSpawnText();
         }
     }
+
+    private void OnUseAbility(InputValue value)
+    {
+        AbstractPlayer player = transform.parent.GetComponent<AbstractPlayer>();
+        player.UseAbility();
+    }
 }

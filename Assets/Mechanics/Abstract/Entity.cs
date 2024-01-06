@@ -10,9 +10,4 @@ public abstract class Entity : MonoBehaviour
     {
         return this.speed;
     }
-
-    public void SetSpeed(float speed)
-    {
-        this.speed = speed;
-    }
 }

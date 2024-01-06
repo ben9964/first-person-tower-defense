@@ -16,8 +16,6 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     public FirstPersonController controller;
     public Color32 colour;
     public String playerName;
-    public float startingMoney;
-    public float startingXp;
     private Camera _camera;
     private HudManager _hudManager;
     private AbstractWeapon _currentWeapon;
@@ -26,6 +24,8 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     private float _levelupThreshold = 100;
     private int _playerLevel;
     private bool _isFrozen;
+    public float abilityCooldown;
+    protected bool _canUseAbility = true;
     protected override void Awake()
     {
         base.Awake();
@@ -41,6 +41,15 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     private void Start()
     {
         InitPlayerDefaults();
+    }
+
+    public virtual void UseAbility()
+    {
+        _canUseAbility = false;
+        this.Invoke(() =>
+        {
+            this._canUseAbility = true;
+        }, abilityCooldown);
     }
 
     private void InitPlayerDefaults()

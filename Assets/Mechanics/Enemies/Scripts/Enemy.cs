@@ -66,6 +66,11 @@ public class Enemy : LivingEntity
     {
         player.TakeDamage(attackDamage);
     }
+
+    public NavMeshAgent GetAgent()
+    {
+        return this.agent;
+    }
     
     public override void TakeDamage(float amount)
     {
