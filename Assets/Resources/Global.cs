@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Global : MonoBehaviour
@@ -11,6 +12,7 @@ public class Global : MonoBehaviour
     private WaveSpawner _waveSpawner;
     private AbstractPlayer _player;
     private bool _inMapView;
+    private String _currentMap;
 
     private void Awake()
     {
@@ -30,6 +32,16 @@ public class Global : MonoBehaviour
     public static WaveSpawner GetWaveSpawner()
     {
         return Instance._waveSpawner;
+    }
+
+    public static void SetMap(String map)
+    {
+        Instance._currentMap = map;
+    }
+
+    public static String GetMap()
+    {
+        return Instance._currentMap;
     }
     
     public static void SetPlayer(AbstractPlayer player)

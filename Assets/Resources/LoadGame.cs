@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadGame : MonoBehaviour
 {
@@ -23,5 +24,6 @@ public class LoadGame : MonoBehaviour
 
         GameObject manager = Instantiate(mapManagerPrefab, mapManagerPrefab.transform.position, mapManagerPrefab.transform.rotation);
         Global.SetWaveSpawner(manager.GetComponent<WaveSpawner>());
+        Global.SetMap(SceneManager.GetActiveScene().name);
     }
 }

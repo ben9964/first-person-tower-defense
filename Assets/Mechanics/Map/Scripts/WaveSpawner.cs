@@ -25,19 +25,51 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
 
     private bool inWave = false;
 
-    private Dictionary<Int32, List<String>> waves = new(){
-            {1, new List<String>{"regular", "regular", "regular", "slow"}},
-            {2, new List<String>{"slow", "regular", "slow", "regular", "fast", "fast"}},
-            {3, new List<String>{"fast", "fast", "fast", "fast", "fast"}},
-            {4, new List<String>{"fast", "fast", "slow", "slow", "fast", "fast", "regular", "fast", "fast", "fast"}},
-            {5, new List<String>{"fast", "fast", "regular", "slow", "slow", "slow", "slow"}}
+    private Dictionary<String, Dictionary<Int32, List<String>>> waves = new(){
+        {
+            "IndoorMap1", new(){
+                {1, new List<String>{"regular", "regular", "regular", "regular", "regular", "regular"}},
+                {2, new List<String>{"regular", "regular", "slow", "regular", "regular", "slow"}},
+                {3, new List<String>{"fast"}},
+                {4, new List<String>{"slow", "slow", "fast", "regular", "regular", "regular", "regular", "regular", "fast", "slow"}},
+                {5, new List<String>{"fast", "fast", "regular", "fast", "fast", "regular", "fast", "regular", "slow", "slow"}},
+            }
+        },
+        {
+            "TerrainMap1", new(){
+                {1, new List<String>{"regular", "regular", "regular", "regular", "regular", "regular"}},
+                {2, new List<String>{"regular", "regular", "slow", "regular", "regular", "slow"}},
+                {3, new List<String>{"fast", "fast", "fast"}},
+                {4, new List<String>{"slow", "slow", "fast", "regular", "regular", "regular", "regular", "regular", "fast", "slow"}},
+                {5, new List<String>{"fast", "fast", "regular", "fast", "fast", "regular", "fast", "regular", "slow", "slow"}},
+                {6, new List<String>{"fast", "fast", "fast", "fast", "fast", "fast", "fast", "fast", "fast", "fast"}},
+                {7, new List<String>{"slow", "slow", "slow", "fast", "regular", "fast", "fast", "slow", "slow", "regular", "regular", "regular", "regular"}},
+                {8, new List<String>{"slow", "regular", "regular", "regular", "slow", "regular", "regular", "regular", "slow", "regular", "fast", "fast", "regular", "regular", "regular"}}
+            }
+        },
+        {
+            "IndoorMap2", new(){
+                {1, new List<String>{"regular", "regular", "regular", "regular", "regular"}},
+                {2, new List<String>{"slow", "regular", "slow", "regular", "slow", "regular", "regular", "regular", "regular"}},
+                {3, new List<String>{"fast", "regular", "fast", "regular", "fast", "regular", "slow", "regular", "fast", "fast", "regular", "regular"}},
+                {4, new List<String>{"fast", "fast", "fast", "fast", "fast", "fast", "fast", "fast", "fast", "fast"}},
+                {5, new List<String>{"slow", "slow", "slow", "fast", "regular", "fast", "fast", "slow", "slow", "regular", "regular", "regular", "regular"}},
+                {6, new List<String>{"slow", "regular", "regular", "regular", "slow", "regular", "regular", "regular", "slow", "regular", "fast", "fast", "regular", "regular", "regular"}},
+                {7, new List<String>{"fast", "fast", "regular", "regular", "slow", "regular", "fast", "fast", "slow", "regular", "fast", "fast", "slow", "regular", "slow", "regular", "regular", "regular", "slow", "slow"}},
+                {8, new List<String>{"slow", "slow", "regular", "regular", "slow", "regular", "slow", "regular", "regular", "regular", "slow", "slow", "fast", "fast", "regular", "regular", "fast", "regular", "slow", "regular", "fast", "fast", "slow", "slow"}},
+                {9, new List<String>{"fast", "fast", "regular", "regular", "slow", "regular", "fast", "regular", "slow", "regular", "fast", "fast", "fast", "regular", "slow", "slow", "slow", "regular", "slow", "slow", "fast", "fast", "slow", "regular", "regular", "slow", "slow"}},
+                {10, new List<String>{"slow", "slow", "regular", "regular", "fast", "fast", "slow", "regular", "slow", "regular", "fast", "fast", "fast", "regular", "slow", "slow", "fast", "regular", "slow", "slow", "slow", "regular", "slow", "slow", "regular", "regular", "fast", "fast", "fast", "slow"}},
+                {11, new List<String>{"fast", "fast", "regular", "regular", "regular", "slow", "slow", "fast", "fast", "slow", "regular", "regular", "slow", "slow", "regular", "regular", "slow", "slow", "fast", "fast", "regular", "slow", "regular", "slow", "fast", "regular", "regular", "slow", "slow", "slow", "fast", "fast", "regular", "regular"}},
+                {12, new List<String>{"slow", "slow", "regular", "regular", "fast", "fast", "slow", "regular", "fast", "fast", "fast", "regular", "slow", "slow", "slow", "regular", "fast", "fast", "slow", "regular", "regular", "slow", "slow", "regular", "fast", "slow", "slow", "slow", "fast", "fast", "slow", "regular", "slow", "regular", "regular", "fast", "fast", "slow", "regular", "slow", "slow", "fast", "fast", "regular"}}
+            }
+        }
     }; 
 
     // Called when the game starts.
     void Start()
     {
         // Initial setup can be done here if needed.
-        Global.GetPlayer().GetHud().UpdateWaveText(_waveNumber, waves.Count);
+        Global.GetPlayer().GetHud().UpdateWaveText(_waveNumber, waves[Global.GetMap()].Count);
         spawnPoint = GameObject.FindWithTag("Start").transform;
     }
 
@@ -48,7 +80,7 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
         inWave = true;
         enemiesSpawned = 0;
         enemiesAlive = 0;
-        Global.GetPlayer().GetHud().UpdateWaveText(_waveNumber, waves.Count);
+        Global.GetPlayer().GetHud().UpdateWaveText(_waveNumber, waves[Global.GetMap()].Count);
         StartCoroutine(SpawnEnemies(_waveNumber));
     }
 
@@ -62,7 +94,7 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
     IEnumerator SpawnEnemies(int wave)
     {
         Random random = new Random();
-        foreach (string enemy in waves[wave])
+        foreach (string enemy in waves[Global.GetMap()][wave])
         {
             enemiesSpawned++;
             enemiesAlive++;
@@ -74,10 +106,10 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
 
     public void CheckWaveFinished()
     {
-        if (enemiesAlive <= 0 && (!inWave || enemiesSpawned >= waves[_waveNumber].Count))
+        if (enemiesAlive <= 0 && (!inWave || enemiesSpawned >= waves[Global.GetMap()][_waveNumber].Count))
         {
             inWave = false;
-            if (waves.Count < _waveNumber)
+            if (waves[Global.GetMap()].Count < _waveNumber)
             {
                 _win();
             }
