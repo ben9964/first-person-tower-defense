@@ -25,7 +25,7 @@ public class Enemy : LivingEntity
         
         //generate random roll between 0 and 1
         float roll = Random.Range(0f, 1f);
-        if (roll < 0.5f)
+        if (roll < 0.5f && GameObject.FindWithTag("Waypoint") != null)
         {
             currentTargetTag = "Waypoint";
         }
