@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;      
 using UnityEngine;                   
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class LoseState : MonoBehaviour
@@ -51,8 +52,11 @@ public class LoseState : MonoBehaviour
         if (enemy != null)
         {
             Destroy(other.gameObject);
-            Global.GetWaveSpawner().decreaseEnemiesAlive();
-            DecreaseBaseHealth((int)enemy.GetAttackDamage());
+            if (!SceneManager.GetActiveScene().name.Equals("Start"))
+            {
+                Global.GetWaveSpawner().decreaseEnemiesAlive();
+                DecreaseBaseHealth((int)enemy.GetAttackDamage()); 
+            }
         }
         
     }
