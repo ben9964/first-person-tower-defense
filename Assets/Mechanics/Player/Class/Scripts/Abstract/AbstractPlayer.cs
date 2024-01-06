@@ -51,7 +51,7 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
         _hudManager.SetMoney(_money);
         _hudManager.SetXP(_xp);
         _hudManager.SetLevel(_playerLevel);
-        Global.GetWaveSpawner().CheckWaveFinished(false);
+        Global.GetWaveSpawner().CheckWaveFinished();
     }
 
     public void ToggleCursorLock(bool lockState)

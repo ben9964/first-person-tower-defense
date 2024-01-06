@@ -8,17 +8,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1386951647746427953, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+      propertyPath: m_Height
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: -1386951647746427953, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1386951647746427953, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+      propertyPath: m_BaseOffset
+      value: 1.7
+      objectReference: {fileID: 0}
     - target: {fileID: 123277189200652598, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 123277189200652598, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 123277189200652598, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 123277189200652598, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -60,6 +72,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 678248002387507700, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 678248002387507700, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 678248002387507700, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2383959085296149116, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
       propertyPath: m_Name
       value: Regular
@@ -68,6 +92,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 89c71a4f02a3681428b7fc8b2e440023, type: 2}
+    - target: {fileID: 5464042736595039183, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+      propertyPath: m_Radius
+      value: 0.55
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -93,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54593d03297f3d744990d161cfdd47bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 2.5
   maxHealth: 25
   damageGracePeriod: 0
   attackDamage: 12

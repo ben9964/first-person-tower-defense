@@ -41,6 +41,12 @@ public class GameSavingManager : MonoBehaviour
     public void NewGame()
     {
         this.gameData = new GameData();
+        
+        foreach (GameSavingInterface gamedataPersistenceObj in gamedataPersistenceObjects)
+        {
+            gamedataPersistenceObj.LoadGameDate(gameData);
+        }
+        SaveGame();
     }
 
     // Loads game data from the file and updates all gamedataPersistenceObjects with the loaded data

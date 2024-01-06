@@ -20,6 +20,8 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
 
     // The number of the current wave.
     private int _waveNumber = 0;
+    private int enemiesSpawned = 0;
+    private int enemiesAlive = 0;
 
     private bool inWave = false;
 
@@ -44,6 +46,8 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
     {
         _waveNumber++;  // Increase the wave number for this wave
         inWave = true;
+        enemiesSpawned = 0;
+        enemiesAlive = 0;
         Global.GetPlayer().GetHud().UpdateWaveText(_waveNumber, waves.Count);
         StartCoroutine(SpawnEnemies(_waveNumber));
     }
@@ -60,17 +64,17 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
         Random random = new Random();
         foreach (string enemy in waves[wave])
         {
+            enemiesSpawned++;
+            enemiesAlive++;
             Instantiate(enemyTypes[enemy], spawnPoint.position, spawnPoint.rotation);
         
             yield return new WaitForSeconds(randomDelay(0.5f, 3.5f));
         }
     }
 
-    public void CheckWaveFinished(bool enemyDeath)
+    public void CheckWaveFinished()
     {
-        int enemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        bool isFinished = enemyDeath ? enemies <= 1 : enemies <= 0;
-        if (isFinished)
+        if (enemiesAlive <= 0 && (!inWave || enemiesSpawned >= waves[_waveNumber].Count))
         {
             inWave = false;
             if (waves.Count < _waveNumber)
@@ -110,5 +114,15 @@ public class WaveSpawner : MonoBehaviour, GameSavingInterface
             this._waveNumber--;
         }
         data.waveNumber = this._waveNumber;
+    }
+    
+    public void SetInWave(bool flag)
+    {
+        this.inWave = flag;
+    }
+    
+    public void decreaseEnemiesAlive()
+    {
+        this.enemiesAlive--;
     }
 }

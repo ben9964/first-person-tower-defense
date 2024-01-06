@@ -15,6 +15,7 @@ TagManager:
   - Start
   - MapView
   - End
+  - Waypoint
   layers:
   - Default
   - TransparentFX

@@ -27,7 +27,7 @@ public class LoseState : MonoBehaviour, GameSavingInterface
             lose();
         }
 
-        Global.GetWaveSpawner().CheckWaveFinished(false);
+        Global.GetWaveSpawner().CheckWaveFinished();
     }
     
     public void UpdateBaseHealthBar()
@@ -39,19 +39,20 @@ public class LoseState : MonoBehaviour, GameSavingInterface
     private void lose()
     {
         AbstractPlayer player = Global.GetPlayer(); 
+        Global.GetWaveSpawner().SetInWave(false);
+        GameSavingManager.instance.NewGame();
         player.GetHud().SendMessage("You Lose!", Color.red);                                   
         player.Freeze();                                                                    
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collided with end");
         Enemy enemy = other.gameObject.GetComponentInParent<Enemy>();
         if (enemy != null)
         {
-            Debug.Log("decreasing base health");
-            DecreaseBaseHealth((int)enemy.GetAttackDamage());
             Destroy(other.gameObject);
+            Global.GetWaveSpawner().decreaseEnemiesAlive();
+            DecreaseBaseHealth((int)enemy.GetAttackDamage());
         }
         
     }

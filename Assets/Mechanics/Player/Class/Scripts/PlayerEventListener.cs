@@ -54,6 +54,12 @@ public class CollisionListener : MonoBehaviour
 
     private void OnWaveStart(InputValue value)
     {
+        AbstractPlayer player = transform.parent.GetComponent<AbstractPlayer>();
+        HudManager hud = player.GetHud();
+
+        // if we're paused we dont want to be able to control waves
+        if (hud.IsPaused()) return;
+        
         WaveSpawner spawner = Global.GetWaveSpawner();
         if (spawner.CanStartNext())
         {

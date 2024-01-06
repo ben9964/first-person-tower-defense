@@ -15,11 +15,13 @@ public class EscMenu : MonoBehaviour
     {
         Global.GetPlayer().UnFreeze();
         Util.LoadScene(SceneManager.GetActiveScene().name);
+        GameSavingManager.instance.LoadGame();
     }
 
     public void ClickQuit()
     {
         Global.GetPlayer().UnFreeze();
         Util.LoadScene("start");
+        GameSavingManager.instance.SaveGame();
     }
 }

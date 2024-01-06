@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Enemy : LivingEntity
 {
@@ -14,16 +16,31 @@ public class Enemy : LivingEntity
     public float XPReward;
 
     private NavMeshAgent agent;
+    private String currentTargetTag = "End";
 
     void Start ()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.destination = GameObject.FindWithTag("End").transform.position;
+        agent.speed = speed;
+        
+        //generate random roll between 0 and 1
+        float roll = Random.Range(0f, 1f);
+        if (roll < 0.5f)
+        {
+            currentTargetTag = "Waypoint";
+        }
+        agent.destination = GameObject.FindWithTag(currentTargetTag).transform.position;
+        
         UpdateHealthBar();
     }
 
     void Update ()
     {
+        if (currentTargetTag == "Waypoint" && Vector3.Distance(transform.position, GameObject.FindWithTag("Waypoint").transform.position) < 2f)
+        {
+            currentTargetTag = "End";
+            agent.destination = GameObject.FindWithTag(currentTargetTag).transform.position;
+        }
         //TODO: Ai to attack player - Yusuf
     }
 
@@ -35,7 +52,8 @@ public class Enemy : LivingEntity
         {
             GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>().AddMoney(moneyReward);
             GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>().AddXp(XPReward);
-            Global.GetWaveSpawner().CheckWaveFinished(true); 
+            Global.GetWaveSpawner().decreaseEnemiesAlive();
+            Global.GetWaveSpawner().CheckWaveFinished(); 
         }
     }
 
