@@ -9023,7 +9023,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8018868, g: 0, b: 0, a: 1}
+      maxColor: {r: 0, g: 0.8, b: 0.05856781, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -20883,7 +20883,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.0011602573, g: 0.9150943, b: 0, a: 1}
+      maxColor: {r: 0.9137255, g: 0, b: 0.026838578, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -49520,6 +49520,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 970728039251049951, guid: 0d937f397532fce4b9108bd26ea4c70a, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 970728039251049951, guid: 0d937f397532fce4b9108bd26ea4c70a, type: 3}
+      propertyPath: Mute
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 970728039251049951, guid: 0d937f397532fce4b9108bd26ea4c70a, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -336245430955451505, guid: 7be86d06e5491084ea4dd7789a3bc446, type: 2}
     - target: {fileID: 3762929849476300712, guid: 0d937f397532fce4b9108bd26ea4c70a, type: 3}
       propertyPath: m_Name
       value: PlayerStart

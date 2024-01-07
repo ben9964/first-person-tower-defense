@@ -17,6 +17,7 @@ public class Shotgun : AbstractWeapon
             clazz.SetShooter(Global.GetPlayer());
             clazz.SetWeapon(this);
         }
+        shootSound.Play();
         canShoot = false;
         this.Invoke(() =>
         {
