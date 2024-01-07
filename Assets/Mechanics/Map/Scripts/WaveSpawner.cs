@@ -89,7 +89,6 @@ public class WaveSpawner : MonoBehaviour
     {
         AbstractPlayer player = GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>();
         player.GetHud().SendMessage("You Win, Returning to the selection menu...", new Color32(0, 255, 0, 255));
-        player.Freeze();
         GameSavingManager.instance.SaveGameData();
         this.Invoke(() =>
         {
@@ -99,7 +98,6 @@ public class WaveSpawner : MonoBehaviour
     
     IEnumerator SpawnEnemies(int wave)
     {
-        Random random = new Random();
         foreach (string enemy in waves[Global.GetMap()][wave])
         {
             enemiesSpawned++;
@@ -115,12 +113,14 @@ public class WaveSpawner : MonoBehaviour
         if (enemiesAlive <= 0 && (!inWave || enemiesSpawned >= waves[Global.GetMap()][_waveNumber].Count))
         {
             inWave = false;
-            if (waves[Global.GetMap()].Count < _waveNumber)
+            if (waves[Global.GetMap()].Count < _waveNumber+1)
             {
                 _win();
             }
             else
             {
+                //add money for completing a round successfully
+                Global.GetPlayer().AddMoney(300f);
                 GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>().GetHud().ShowWaveSpawnText();
             }
             

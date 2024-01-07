@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1386951647746427953, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+      propertyPath: m_Speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -1386951647746427953, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
       propertyPath: m_Height
       value: 4
       objectReference: {fileID: 0}
@@ -144,12 +148,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54593d03297f3d744990d161cfdd47bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   maxHealth: 50
   damageGracePeriod: 0
   attackDamage: 20
   healthBar: {fileID: 1358648978646451298}
-  moneyReward: 15
+  moneyReward: 20
   XPReward: 15
   particles: {fileID: 7389571734179206581}
 --- !u!198 &7389571734179206581 stripped

@@ -45,6 +45,7 @@ public class CharacterSelectScript : MonoBehaviour
         AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selectedCharacter).GetComponent<AbstractPlayer>();
         characterName.SetText(playerPrefabComponent.GetName());
         characterCache[selectedCharacter].SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void PlayCheck()

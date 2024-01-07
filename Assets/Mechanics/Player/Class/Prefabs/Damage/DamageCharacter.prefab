@@ -112,6 +112,6 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4278190335
   playerName: Damage
-  startingMoney: 150
+  startingMoney: 250
   _levelUpSound: {fileID: 3699685953596426085}
   abilityCooldown: 15
