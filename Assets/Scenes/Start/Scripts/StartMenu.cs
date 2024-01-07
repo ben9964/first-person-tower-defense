@@ -34,7 +34,7 @@ public class StartMenu : MonoBehaviour
     {
         DisableStartMenuButtons();
         GameSavingManager.instance.NewGameData();
-        SceneManager.LoadSceneAsync("CharacterSelect");
+        SceneManager.LoadSceneAsync("IntroCutscene");
     }
 
     // This method is for when the user wants to continue there game and use the data that is already saved

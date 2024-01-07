@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Select/CharacterSelect.unity
     guid: e1e2889bfc3f52f4e8ab47847ad90f21
   - enabled: 1
+    path: Assets/Scenes/Intro Cutscene/IntroCutscene.unity
+    guid: e718c44cf3c8ba54ba9f5e66faeced72
+  - enabled: 1
     path: Assets/Scenes/Levels/Easy.unity
     guid: 068a4163b1a440b419cd3430fa9e4220
   - enabled: 1
