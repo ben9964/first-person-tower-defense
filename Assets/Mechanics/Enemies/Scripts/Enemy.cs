@@ -57,9 +57,14 @@ public class Enemy : LivingEntity
         //TODO: Ai to attack player - Yusuf
     }
 
+    public override void SetHealth(float amount)
+    {
+        base.SetHealth(amount);
+        UpdateHealthBar();
+    }
+
     protected override void _die()
     {
-        //TODO: maybe some cool particle explosion idk
         transform.Find("Capsule").GetComponent<MeshRenderer>().enabled = false;
         transform.Find("Capsule").Find("Display").GetComponent<Canvas>().enabled = false;
         transform.Find("Capsule").GetComponent<CapsuleCollider>().enabled = false;

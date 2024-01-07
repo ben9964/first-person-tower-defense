@@ -25,8 +25,8 @@ public class TowerBuildingManager : MonoBehaviour
     
     private Dictionary<String, float> towerUpgradeCosts = new()
     {
-        {"bullet", 45f},
-        {"laser", 125f},
+        {"bullet", 150f},
+        {"laser", 300f},
     };
 
     private String _currentSelectedTower;
@@ -63,7 +63,7 @@ public class TowerBuildingManager : MonoBehaviour
     public void Upgrade(String towerName)
     {
         towerLevels[towerName] += 1;
-        towerUpgradeCosts[towerName] *= 2;
+        towerUpgradeCosts[towerName] *= 5;
     }
 
     public bool HasAnotherUpgrade(String tower)

@@ -102,9 +102,13 @@ public class WaveSpawner : MonoBehaviour
         {
             enemiesSpawned++;
             enemiesAlive++;
-            Instantiate(enemyTypes[enemy], spawnPoint.position, spawnPoint.rotation);
+            GameObject enemyType = Instantiate(enemyTypes[enemy], spawnPoint.position, spawnPoint.rotation);
+            //Increase enemies health every wave
+            Enemy enemyObj = enemyType.GetComponent<Enemy>();
+            enemyObj.SetMaxHealth(enemyObj.GetMaxHealth() * (1 + (_waveNumber / 10f)));
+            enemyObj.SetHealth(enemyObj.GetMaxHealth());
         
-            yield return new WaitForSeconds(randomDelay(0.5f, 3.5f));
+            yield return new WaitForSeconds(randomDelay(0.2f, 3f));
         }
     }
 
