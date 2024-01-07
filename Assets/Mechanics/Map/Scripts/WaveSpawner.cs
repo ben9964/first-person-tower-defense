@@ -9,6 +9,7 @@ using UnityEngine;
 using Random = System.Random;
 using AYellowpaper.SerializedCollections;
 using UnityEngine.Rendering.UI;
+using UnityEngine.SceneManagement;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -87,8 +88,13 @@ public class WaveSpawner : MonoBehaviour
     private void _win()
     {
         AbstractPlayer player = GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>();
-        player.GetHud().SendMessage("You Win!", new Color32(0, 255, 0, 255));
+        player.GetHud().SendMessage("You Win, Returning to the selection menu...", new Color32(0, 255, 0, 255));
         player.Freeze();
+        GameSavingManager.instance.SaveGameData();
+        this.Invoke(() =>
+        {
+            SceneManager.LoadScene("CharacterSelect");
+        }, 2f);
     }
     
     IEnumerator SpawnEnemies(int wave)
