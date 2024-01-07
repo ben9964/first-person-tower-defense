@@ -80,6 +80,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &3699685953596426085 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6574881125213849260, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}
+  m_PrefabInstance: {fileID: 7523623034315653577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5429082932816303652 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2539675459947468781, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}
@@ -108,4 +113,5 @@ MonoBehaviour:
     rgba: 4278190335
   playerName: Damage
   startingMoney: 150
+  _levelUpSound: {fileID: 3699685953596426085}
   abilityCooldown: 15

@@ -96,6 +96,7 @@ MonoBehaviour:
     rgba: 4294918400
   playerName: Tank
   startingMoney: 150
+  _levelUpSound: {fileID: 8409351263229995024}
   abilityCooldown: 15
 --- !u!114 &4929440410927730811 stripped
 MonoBehaviour:
@@ -108,3 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &8409351263229995024 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6574881125213849260, guid: 07096f97fc66af246bbf0c966b91ff8f, type: 3}
+  m_PrefabInstance: {fileID: 3425743873249685180}
+  m_PrefabAsset: {fileID: 0}

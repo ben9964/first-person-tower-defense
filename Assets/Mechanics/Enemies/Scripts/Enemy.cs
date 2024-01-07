@@ -62,6 +62,7 @@ public class Enemy : LivingEntity
         //TODO: maybe some cool particle explosion idk
         transform.Find("Capsule").GetComponent<MeshRenderer>().enabled = false;
         transform.Find("Capsule").Find("Display").GetComponent<Canvas>().enabled = false;
+        transform.Find("Capsule").GetComponent<CapsuleCollider>().enabled = false;
         particles.Play();
         Destroy(gameObject, 1);
         if (Global.HasPlayer())
