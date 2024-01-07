@@ -29,6 +29,7 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     public AudioSource _levelUpSound;
     public float abilityCooldown;
     protected bool _canUseAbility = true;
+    private float sensitivity = 1f;
     protected override void Awake()
     {
         base.Awake();
@@ -141,7 +142,7 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     public void UnFreeze(bool preserve)
     {
         Time.timeScale = 1;
-        controller.RotationSpeed = 1;
+        controller.RotationSpeed = sensitivity;
         ToggleCursorLock(true);
         if (!preserve)
         {
@@ -152,6 +153,11 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     public Color32 GetColour()
     {
         return colour;
+    }
+
+    public void SetSensitivity(float sensitivity)
+    {
+        this.sensitivity = sensitivity;
     }
 
     public bool IsFrozen()

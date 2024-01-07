@@ -20,4 +20,10 @@ public class SettingsSliders : MonoBehaviour
     {
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(sfxvolume)*20);
     }
+    
+    //// Sets the Sensitivity of the mouse based on the slider value
+    public void SetSensitivity (float sensitivity)
+    {
+        Global.GetPlayer().SetSensitivity(sensitivity);
+    }
 }
