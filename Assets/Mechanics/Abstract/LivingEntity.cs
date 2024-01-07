@@ -64,4 +64,14 @@ public abstract class LivingEntity : Entity
             _health = maxHealth;
         }
     }
+
+    public void SetMaxHealth(float amount)
+    {
+        this.maxHealth = amount;
+    }
+    
+    public virtual void SetHealth(float amount)
+    {
+        this._health = amount;
+    }
 }

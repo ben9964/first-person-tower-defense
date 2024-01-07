@@ -375,18 +375,29 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Controls:
+  m_text: 'Player:
 
     W A S D - Movement
 
     Space - Jump
 
-    Right Click -
-    Place Tower
+    B - Open Buy Menu
 
-    Left Click - Shoot
+    Left
+    Click - Shoot
 
     G - Start Next Wave
+
+    F - Use Ability
+
+
+    Tower:
+
+    Right
+    Click - Place Tower
+
+
+    Misc:
 
     ESC - Pause
 
@@ -453,7 +464,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -237.13438, w: -325.54382}
+  m_margin: {x: 0, y: 0, z: -237.13438, w: -495.45117}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
