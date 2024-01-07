@@ -13,13 +13,11 @@ public class SettingsSliders : MonoBehaviour
     public void SetMusicVolume (float musicvolume)
     {
         audioMixer.SetFloat("MusicVolume", Mathf.Log10(musicvolume)*20);
-        Debug.Log("Music volume is: " + Mathf.RoundToInt(musicvolume));
     }
 
     //// Sets the SFX volume based on the slider value
     public void SetSFXVolume (float sfxvolume)
     {
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(sfxvolume)*20);
-        Debug.Log("SFX volume is: " + Mathf.RoundToInt(sfxvolume));
     }
 }

@@ -46,4 +46,9 @@ public abstract class AbstractWeapon : MonoBehaviour
     {
         canShoot = true;
     }
+    
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
+    }
 }

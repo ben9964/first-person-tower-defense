@@ -12,6 +12,8 @@ Our Strategic tower defense game with a first person twist. Multiple different c
 
 ### External Assets Used
 - https://assetstore.unity.com/packages/essentials/starter-assets-first-person-character-controller-urp-196525
+- https://assetstore.unity.com/packages/3d/props/low-poly-powerups-212079
+- https://assetstore.unity.com/packages/2d/gui/icons/2d-casual-ui-hd-82080
 
 ### Utility Methods Used
 - https://low-scope.com/unity-tips-1-dont-use-your-first-scene-for-global-script-initialization/

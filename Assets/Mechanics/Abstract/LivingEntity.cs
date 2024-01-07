@@ -55,4 +55,13 @@ public abstract class LivingEntity : Entity
     {
         return _health <= 0;
     }
+    
+    public void Heal(float amount)
+    {
+        _health += amount;
+        if (_health > maxHealth)
+        {
+            _health = maxHealth;
+        }
+    }
 }
