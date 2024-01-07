@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -21,14 +22,25 @@ public class Enemy : LivingEntity
     {
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
+        _target = GameObject.FindWithTag(currentTargetTag).transform;
+        GameObject[] waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
+
         
-        //generate random roll between 0 and 1
-        float roll = Random.Range(0f, 1f);
-        if (roll < 0.5f && GameObject.FindWithTag("Waypoint") != null)
+        if (waypoints.Length == 1)
+        {
+            float roll = Random.Range(0f, 1f);
+            if (roll < 0.5f)
+            {
+                currentTargetTag = "Waypoint";
+                _target = GameObject.FindWithTag(currentTargetTag).transform;
+            }
+        }
+        else if (waypoints.Length > 1)
         {
             currentTargetTag = "Waypoint";
+            _target = waypoints[Random.Range(0, waypoints.Length)].transform;
         }
-        agent.destination = GameObject.FindWithTag(currentTargetTag).transform.position;
+        agent.destination = _target.position;
         
         UpdateHealthBar();
     }
@@ -38,7 +50,8 @@ public class Enemy : LivingEntity
         if (currentTargetTag == "Waypoint" && Vector3.Distance(transform.position, GameObject.FindWithTag("Waypoint").transform.position) < 2f)
         {
             currentTargetTag = "End";
-            agent.destination = GameObject.FindWithTag(currentTargetTag).transform.position;
+            _target = GameObject.FindWithTag(currentTargetTag).transform;
+            agent.destination = _target.position;
         }
         //TODO: Ai to attack player - Yusuf
     }
@@ -49,8 +62,8 @@ public class Enemy : LivingEntity
         Destroy(gameObject);
         if (Global.HasPlayer())
         {
-            GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>().AddMoney(moneyReward);
-            GameObject.FindWithTag("Player").GetComponent<AbstractPlayer>().AddXp(XPReward);
+            Global.GetPlayer().AddMoney(moneyReward);
+            Global.GetPlayer().AddXp(XPReward);
             Global.GetWaveSpawner().decreaseEnemiesAlive();
             Global.GetWaveSpawner().CheckWaveFinished(); 
         }

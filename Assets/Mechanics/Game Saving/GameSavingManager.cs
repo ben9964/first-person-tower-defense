@@ -39,7 +39,7 @@ public class GameSavingManager : MonoBehaviour
         this.gameData = fileDataHandler.Load();
     }
 
-    public void LoadToPlayer()
+    public void LoadToGame()
     {
         foreach (GameSavingInterface gamedataPersistenceObj in FindAllGameDataPersistenceObjects())
         {

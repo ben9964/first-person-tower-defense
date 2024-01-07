@@ -38,7 +38,6 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
         _camera = Instantiate(cameraPrefab, cameraPrefab.transform.position, cameraPrefab.transform.rotation,
             transform.parent).GetComponent<Camera>();
         InitWeapon();
-        GameSavingManager.instance.LoadToPlayer();
     }
 
     private void Start()

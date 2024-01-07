@@ -16,11 +16,18 @@ public class LoadGame : MonoBehaviour
         GameObject characterPrefab = defaultCharacter;
         if (CharacterDB.GetSelected() != -1)
         {
+            Debug.Log("Loading character");
             int selectedCharacter = CharacterDB.GetSelected();
             characterPrefab = CharacterDB.GetCharacter(selectedCharacter);
         }
+        Debug.Log("Spawning character");
         GameObject character = Instantiate(characterPrefab, spawnPos.position+offset, Quaternion.identity);
         character.SetActive(true);
+
+        if (GameSavingManager.instance.GetGameData() != null)
+        {
+            GameSavingManager.instance.LoadToGame();
+        }
 
         GameObject manager = Instantiate(mapManagerPrefab, mapManagerPrefab.transform.position, mapManagerPrefab.transform.rotation);
         Global.SetWaveSpawner(manager.GetComponent<WaveSpawner>());

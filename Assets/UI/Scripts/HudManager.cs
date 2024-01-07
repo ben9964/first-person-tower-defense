@@ -100,7 +100,6 @@ public class HudManager : MonoBehaviour
 
     public void SetLevel(float amount)
     {
-        Debug.Log(amount);
         levelText.SetText(levelString + amount);
     }
 

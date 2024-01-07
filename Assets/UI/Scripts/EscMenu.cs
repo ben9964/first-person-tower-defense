@@ -14,7 +14,7 @@ public class EscMenu : MonoBehaviour
     public void ClickRestart()
     {
         Global.GetPlayer().UnFreeze();
-        GameSavingManager.instance.LoadToPlayer();
+        GameSavingManager.instance.LoadToGame();
         Util.LoadScene(SceneManager.GetActiveScene().name);
     }
 
