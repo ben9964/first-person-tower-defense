@@ -8,6 +8,7 @@ public abstract class Powerup : MonoBehaviour
 
     public String name;
     public float despawnTime;
+    public AudioSource pickupSound;
     
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,9 @@ public abstract class Powerup : MonoBehaviour
     {
         if (other.transform.parent != null && other.transform.parent.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Powerup triggered");
             ApplyEffect(other.transform.parent.GetComponent<AbstractPlayer>());
+            pickupSound.Play();
             Destroy(gameObject);
         }
     }
