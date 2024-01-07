@@ -16,6 +16,7 @@ public class Enemy : LivingEntity
     public float XPReward;
 
     private NavMeshAgent agent;
+    public ParticleSystem particles;
     private String currentTargetTag = "End";
 
     void Start ()
@@ -59,7 +60,9 @@ public class Enemy : LivingEntity
     protected override void _die()
     {
         //TODO: maybe some cool particle explosion idk
-        Destroy(gameObject);
+        transform.Find("Capsule").GetComponent<MeshRenderer>().enabled = false;
+        particles.Play();
+        Destroy(gameObject, 1);
         if (Global.HasPlayer())
         {
             Global.GetPlayer().AddMoney(moneyReward);

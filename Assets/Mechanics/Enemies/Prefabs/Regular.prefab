@@ -104,6 +104,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 7100202119864421981}
   m_SourcePrefab: {fileID: 100100000, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+--- !u!198 &475944508397709441 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1255597836969101370, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+  m_PrefabInstance: {fileID: 1726605537847353531}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3955186037750842055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2383959085296149116, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
@@ -128,6 +133,7 @@ MonoBehaviour:
   healthBar: {fileID: 8272278369403959638}
   moneyReward: 9
   XPReward: 9
+  particles: {fileID: 475944508397709441}
 --- !u!114 &8272278369403959638 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7294472191895493101, guid: 6a34386684a1bbd459977574932b9a42, type: 3}

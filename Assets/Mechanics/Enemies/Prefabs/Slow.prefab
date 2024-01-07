@@ -151,3 +151,9 @@ MonoBehaviour:
   healthBar: {fileID: 1358648978646451298}
   moneyReward: 15
   XPReward: 15
+  particles: {fileID: 7389571734179206581}
+--- !u!198 &7389571734179206581 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1255597836969101370, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+  m_PrefabInstance: {fileID: 8638413999908461967}
+  m_PrefabAsset: {fileID: 0}
