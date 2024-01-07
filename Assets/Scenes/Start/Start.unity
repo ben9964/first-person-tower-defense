@@ -2634,7 +2634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerTypes:
     _serializedList:
-    - Key: bluetower
+    - Key: bluetower1
       Value: {fileID: 7823158909952367190, guid: 7a341dba71e2a2545a020212e959f8d2, type: 3}
 --- !u!4 &1873066280 stripped
 Transform:

@@ -21,6 +21,7 @@ public class TowerBuildingManager : MonoBehaviour
     {
         {"bullet", 1},
         {"laser", 1},
+        {"bluetower", 1}
     };
     
     private Dictionary<String, float> towerUpgradeCosts = new()
