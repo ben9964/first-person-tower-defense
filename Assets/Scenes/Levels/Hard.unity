@@ -33033,6 +33033,8 @@ GameObject:
   - component: {fileID: 1138040590}
   - component: {fileID: 1138040589}
   - component: {fileID: 1138040588}
+  - component: {fileID: 1138040592}
+  - component: {fileID: 1138040593}
   m_Layer: 0
   m_Name: FlyByCamera
   m_TagString: Untagged
@@ -33152,12 +33154,46 @@ Transform:
   m_GameObject: {fileID: 1138040587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.607588, y: -0.7732668, z: -8.956975}
+  m_LocalPosition: {x: 4.1, y: 3, z: -20.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1138040592
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138040587}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d4027625929bfc14589ee47bbbeec3e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1138040593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138040587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c5ba0e279e06e4b9f12459e6b81725, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1138615822 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6954531691785998512, guid: cf8443763fc34314490f8a3e2f94dd37, type: 3}
@@ -53390,7 +53426,7 @@ SceneRoots:
   - {fileID: 1987637569}
   - {fileID: 405124605}
   - {fileID: 776213946}
+  - {fileID: 1138040591}
   - {fileID: 399933011}
   - {fileID: 1631453617}
   - {fileID: 2051525464}
-  - {fileID: 1138040591}
