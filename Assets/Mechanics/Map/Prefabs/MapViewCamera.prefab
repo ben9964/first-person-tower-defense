@@ -11,13 +11,15 @@ GameObject:
   - component: {fileID: 1129931719892006067}
   - component: {fileID: 1000328219933448867}
   - component: {fileID: 3614895911440479287}
+  - component: {fileID: 8201907826291496386}
+  - component: {fileID: 274770193878993059}
   m_Layer: 0
   m_Name: MapViewCamera
   m_TagString: MapView
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1129931719892006067
 Transform:
   m_ObjectHideFlags: 0
@@ -40,7 +42,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 226831730969267999}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -128,3 +130,23 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!114 &8201907826291496386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226831730969267999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bb3db867ded7448abb742b3dcd8fe5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!81 &274770193878993059
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226831730969267999}
+  m_Enabled: 1

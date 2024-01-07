@@ -13,15 +13,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ViewMap",
-                    "type": "Button",
-                    "id": "5641f845-9e43-4e8d-a340-18a010f5f256",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -33,17 +24,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "RightClick",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8c9c1591-fc2c-4450-8826-9a001572b732",
-                    "path": "<Keyboard>/m",
-                    "interactions": "Press(behavior=2)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ViewMap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

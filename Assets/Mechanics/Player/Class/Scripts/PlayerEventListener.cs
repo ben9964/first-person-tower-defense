@@ -73,4 +73,11 @@ public class CollisionListener : MonoBehaviour
         AbstractPlayer player = transform.parent.GetComponent<AbstractPlayer>();
         player.UseAbility();
     }
+
+    private void OnMap(InputValue value)
+    {
+        GameObject obj = GameObject.FindWithTag("MapView");
+        MapCamera mapCamera = obj.GetComponent<MapCamera>();
+        mapCamera.OnViewMap(value);
+    }
 }
