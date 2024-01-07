@@ -96,9 +96,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1255597836969101370, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2383959085296149116, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
       propertyPath: m_Name
       value: Fast
+      objectReference: {fileID: 0}
+    - target: {fileID: 5078007208454637252, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5078007208454637252, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -127,6 +135,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &5689498604586003307 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1255597836969101370, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
+  m_PrefabInstance: {fileID: 6888800174490461009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &9118779253381611821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2383959085296149116, guid: 6a34386684a1bbd459977574932b9a42, type: 3}
@@ -151,3 +164,4 @@ MonoBehaviour:
   healthBar: {fileID: 4225155511047322300}
   moneyReward: 5
   XPReward: 5
+  particles: {fileID: 5689498604586003307}
