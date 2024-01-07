@@ -14,7 +14,12 @@ public class LoseState : MonoBehaviour
     
     public float maxBaseHealth = 100.0f;
     private float _baseHealth;      // Declare a public integer for the base's initial health, set to 100 by default.
-    
+
+    private void Start()
+    {
+        _baseHealth = maxBaseHealth;
+    }
+
 
     // This function decreases the base's health by a given damage amount and updates the UI.
     public void DecreaseBaseHealth(int damageAmount)
@@ -41,7 +46,6 @@ public class LoseState : MonoBehaviour
     {
         AbstractPlayer player = Global.GetPlayer(); 
         Global.GetWaveSpawner().SetInWave(false);
-        GameSavingManager.instance.NewGame();
         player.GetHud().SendMessage("You Lose!", Color.red);                                   
         player.Freeze();                                                                    
     }

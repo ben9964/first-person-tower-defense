@@ -9,7 +9,6 @@ using Random = UnityEngine.Random;
 public class Enemy : LivingEntity
 {
     private Transform _target;
-    private int _waypointIndex = 0;
     public float attackDamage;
     public Slider healthBar;
     public float moneyReward;

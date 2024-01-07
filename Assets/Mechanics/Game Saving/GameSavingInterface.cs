@@ -6,7 +6,7 @@ using UnityEngine;
 public interface GameSavingInterface 
 {
     // Declares a method to load game data from an external source
-    void LoadGameDate(GameData data);
+    void LoadGameData(GameData data);
 
     // Declares a method to save game data, with data passed by reference
     void SaveGameData(ref GameData data);

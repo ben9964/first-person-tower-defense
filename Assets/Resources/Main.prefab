@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 997602891254512032}
   - component: {fileID: 6184219641373625127}
   - component: {fileID: -5196933531504839956}
+  - component: {fileID: 1399762775536063121}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -61,3 +62,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHudPrefab: {fileID: 7474950061688482861, guid: ddf53c0d67984414a8530874403e5c33, type: 3}
+--- !u!114 &1399762775536063121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1147856796099900108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90e1a092d08df846bdf7987103edb5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileName: data.game

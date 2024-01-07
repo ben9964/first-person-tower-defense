@@ -32,7 +32,7 @@ public class StartMenu : MonoBehaviour
     public void OnNewGameClicked()
     {
         DisableStartMenuButtons();
-        GameSavingManager.instance.NewGame();
+        GameSavingManager.instance.NewGameData();
         SceneManager.LoadSceneAsync("CharacterSelect");
     }
 

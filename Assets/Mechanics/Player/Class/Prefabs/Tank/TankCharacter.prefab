@@ -95,6 +95,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294918400
   playerName: Tank
+  startingMoney: 150
   abilityCooldown: 15
 --- !u!114 &4929440410927730811 stripped
 MonoBehaviour:

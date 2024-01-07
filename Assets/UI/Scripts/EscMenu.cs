@@ -14,14 +14,14 @@ public class EscMenu : MonoBehaviour
     public void ClickRestart()
     {
         Global.GetPlayer().UnFreeze();
+        GameSavingManager.instance.LoadToPlayer();
         Util.LoadScene(SceneManager.GetActiveScene().name);
-        GameSavingManager.instance.LoadGame();
     }
 
     public void ClickQuit()
     {
         Global.GetPlayer().UnFreeze();
+        GameSavingManager.instance.SaveGameData();
         Util.LoadScene("start");
-        GameSavingManager.instance.SaveGame();
     }
 }

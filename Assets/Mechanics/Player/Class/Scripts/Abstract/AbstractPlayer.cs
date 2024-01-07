@@ -16,6 +16,8 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     public FirstPersonController controller;
     public Color32 colour;
     public String playerName;
+    public float startingMoney;
+    
     private Camera _camera;
     private HudManager _hudManager;
     private AbstractWeapon _currentWeapon;
@@ -36,6 +38,7 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
         _camera = Instantiate(cameraPrefab, cameraPrefab.transform.position, cameraPrefab.transform.rotation,
             transform.parent).GetComponent<Camera>();
         InitWeapon();
+        GameSavingManager.instance.LoadToPlayer();
     }
 
     private void Start()
@@ -54,6 +57,7 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
 
     private void InitPlayerDefaults()
     {
+        _money = startingMoney;
         controller.MoveSpeed = speed;
         ToggleCursorLock(true);
         _hudManager.GetHealthBar().SetHealthPercentage(GetHealth()/GetMaxHealth());
@@ -246,7 +250,7 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
         
     }
 
-    public void LoadGameDate(GameData data)
+    public void LoadGameData(GameData data)
     {
         this._xp = data.playerXp;
         this._playerLevel = data.playerLevel;

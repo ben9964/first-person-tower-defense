@@ -19,50 +19,47 @@ public class GameSavingManager : MonoBehaviour
             Debug.LogError("More than one GameSavingManger in scene");
         }
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
     {
         this.fileDataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
-        this.gamedataPersistenceObjects = FindAllGameDataPersistenceObjects();
-        LoadGame();
+        LoadToGameData();
     }
 
-    public void NewGame()
+    public void NewGameData()
     {
         this.gameData = new GameData();
+        SaveGameData();
     }
 
-    public void LoadGame()
+    public void LoadToGameData()
     {
         this.gameData = fileDataHandler.Load();
+    }
 
-        if (this.gameData == null)
+    public void LoadToPlayer()
+    {
+        foreach (GameSavingInterface gamedataPersistenceObj in FindAllGameDataPersistenceObjects())
         {
-            Debug.Log("No saved game data found, all values set to defaults");
-            NewGame();
-        }
-
-        foreach (GameSavingInterface gamedataPersistenceObj in gamedataPersistenceObjects)
-        {
-            gamedataPersistenceObj.LoadGameDate(gameData);
+            gamedataPersistenceObj.LoadGameData(gameData);
         }
     }
 
-    public void SaveGame()
+    public void SaveGameData()
     {
-        foreach (GameSavingInterface gamedataPersistenceObj in gamedataPersistenceObjects)
+        foreach (GameSavingInterface gamedataPersistenceObj in FindAllGameDataPersistenceObjects())
         {
             gamedataPersistenceObj.SaveGameData(ref gameData);
         }
-
-        fileDataHandler.Save(gameData);
         
+        fileDataHandler.Save(gameData);
     }
 
     private void OnApplicationQuit()
     {
-        SaveGame();
+        SaveGameData();
     }
 
     private List<GameSavingInterface> FindAllGameDataPersistenceObjects()
@@ -75,7 +72,7 @@ public class GameSavingManager : MonoBehaviour
     //Checks if gamaData object is null
     public bool HasGameData()
     {
-        return gameData != null;
+        return this.gameData != null;
     }
     
 }
