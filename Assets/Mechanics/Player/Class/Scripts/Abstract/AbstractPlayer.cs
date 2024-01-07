@@ -30,6 +30,8 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     public float abilityCooldown;
     protected bool _canUseAbility = true;
     private float sensitivity = 1f;
+
+    private bool shooting = false;
     protected override void Awake()
     {
         base.Awake();
@@ -97,13 +99,27 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
 
     public void HandleUseWeapon(InputValue value)
     {
-        if (IsDead() || _hudManager.IsPaused() || _hudManager.IsInBuyMenu() || Global.IsInMapView()) return;
-        _currentWeapon.Use();
+        shooting = !shooting;
+        if (shooting)
+        {
+            StartCoroutine(HoldShoot());
+        }
     }
     
     public AbstractWeapon GetCurrentWeapon()
     {
         return _currentWeapon;
+    }
+    
+    private IEnumerator HoldShoot()
+    {
+        while (shooting)
+        {
+            if (IsDead() || _hudManager.IsPaused() || _hudManager.IsInBuyMenu() || Global.IsInMapView()) yield return new WaitForSeconds(0.01f);
+            _currentWeapon.Use();
+
+            yield return new WaitForSeconds(0.01f);
+        }
     }
 
     public override void TakeDamage(float amount)
