@@ -5,16 +5,38 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class CharacterSelectScript : MonoBehaviour
 {
-    public int selectedCharacter;
-    public int selectedMap;
-    public TextMeshProUGUI characterName;
-    public TextMeshProUGUI mapName;
-
     private List<GameObject> characterCache = new List<GameObject>();
+    public int selectedCharacter;
+    
     public String[] maps;
+    public int selectedMap;
+    
+    public TextMeshProUGUI characterName;
+    public GameObject characterLockedIcons;
+    public TextMeshProUGUI characterLockedReq;
+    
+    public TextMeshProUGUI mapName;
+    public GameObject mapLockedIcons;
+    public TextMeshProUGUI mapLockedReq;
+
+    private Dictionary<String, Int32> mapUnlocks = new()
+    {
+        {"Easy", 0},
+        {"Medium", 5},
+        {"Hard", 10}
+    };
+    
+    private Dictionary<String, Int32> characterUnlocks = new()
+    {
+        {"Damage", 0},
+        {"Tank", 3},
+    };
+
+    public Button playButton;
 
     public void Start()
     {
@@ -22,8 +44,32 @@ public class CharacterSelectScript : MonoBehaviour
         InitMaps();
         AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selectedCharacter).GetComponent<AbstractPlayer>();
         characterName.SetText(playerPrefabComponent.GetName());
-        characterName.color = playerPrefabComponent.GetColour();
         characterCache[selectedCharacter].SetActive(true);
+    }
+
+    private void PlayCheck()
+    {
+        playButton.interactable = true;
+        characterLockedIcons.SetActive(false);
+        mapLockedIcons.SetActive(false);
+        int level = GameSavingManager.instance.GetGameData().GetLevel();
+        AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selectedCharacter).GetComponent<AbstractPlayer>();
+        Debug.Log(playerPrefabComponent.GetName());
+        if (level < characterUnlocks[playerPrefabComponent.GetName()])
+        {
+            playButton.interactable = false;
+            characterLockedIcons.SetActive(true);
+            characterLockedReq.SetText("Level " + characterUnlocks[playerPrefabComponent.GetName()]);
+            characterLockedReq.color = Color.red;
+        }
+        
+        if (level < mapUnlocks[maps[selectedMap]])
+        {
+            playButton.interactable = false;
+            mapLockedIcons.SetActive(true);
+            mapLockedReq.SetText("Level " + mapUnlocks[maps[selectedMap]]);
+            mapLockedReq.color = Color.red;
+        }
     }
 
     public void SelectNextCharacter()
@@ -37,8 +83,8 @@ public class CharacterSelectScript : MonoBehaviour
 
         AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selectedCharacter).GetComponent<AbstractPlayer>();
         characterName.SetText(playerPrefabComponent.GetName());
-        characterName.color = playerPrefabComponent.GetColour();
         characterCache[selectedCharacter].SetActive(true);
+        PlayCheck();
     }
 
     public void SelectPreviousCharacter()
@@ -52,8 +98,8 @@ public class CharacterSelectScript : MonoBehaviour
 
         AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selectedCharacter).GetComponent<AbstractPlayer>();
         characterName.SetText(playerPrefabComponent.GetName());
-        characterName.color = playerPrefabComponent.GetColour();
         characterCache[selectedCharacter].SetActive(true);
+        PlayCheck();
     }
     
     public void SelectNextMap()
@@ -65,6 +111,7 @@ public class CharacterSelectScript : MonoBehaviour
         }
         
         mapName.SetText(maps[selectedMap]);
+        PlayCheck();
     }
 
     public void SelectPreviousMap()
@@ -76,6 +123,7 @@ public class CharacterSelectScript : MonoBehaviour
         }
         
         mapName.SetText(maps[selectedMap]);
+        PlayCheck();
     }
 
     public void StartButtonPress()
