@@ -22,6 +22,8 @@ public class HudManager : MonoBehaviour
     public TextMeshProUGUI levelText;
     public String levelString;
     public TextMeshProUGUI waveSpawnText;
+    public Image abilityReadyImage;
+    public Image abilityNotReadyImage;
     
     // Esc Menu
     public GameObject escMenuPrefab;
@@ -70,6 +72,18 @@ public class HudManager : MonoBehaviour
     public void clearMessage()
     {
         playerMessageObj.gameObject.SetActive(false);
+    }
+
+    public void AbilityReady()
+    {
+        abilityReadyImage.gameObject.SetActive(true);
+        abilityNotReadyImage.gameObject.SetActive(false);
+    }
+    
+    public void AbilityNotReady()
+    {
+        abilityReadyImage.gameObject.SetActive(false);
+        abilityNotReadyImage.gameObject.SetActive(true);
     }
 
     public HealthBar GetHealthBar()

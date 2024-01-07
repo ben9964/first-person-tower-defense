@@ -51,9 +51,11 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
 
     public virtual void UseAbility()
     {
+        GetHud().AbilityNotReady();
         _canUseAbility = false;
         this.Invoke(() =>
         {
+            GetHud().AbilityReady();
             this._canUseAbility = true;
         }, abilityCooldown);
     }
