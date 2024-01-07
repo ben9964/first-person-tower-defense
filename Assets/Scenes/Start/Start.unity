@@ -1158,20 +1158,20 @@ MonoBehaviour:
 
     Space - Jump
 
-    B - Open Buy Menu
+    Left Click - Shoot
 
-    Left
-    Click - Shoot
-
-    G - Start Next Wave
+    G
+    - Start Next Wave
 
     F - Use Ability
 
 
     Tower:
 
-    Right
-    Click - Place Tower
+    Right Click - Place
+    Tower
+
+    B - Open Buy Menu
 
 
     Misc:
