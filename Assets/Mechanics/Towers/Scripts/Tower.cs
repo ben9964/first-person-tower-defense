@@ -15,13 +15,14 @@ public class Tower : MonoBehaviour
     [SerializeField] private float cost = 100f;
 
     [Header("Fields")]
+    
     [SerializeField] private Transform target;
     private float rotationSpeed = 5f;
     public Transform rotator;
-
-
     [SerializeField] private GameObject projectile;
     public Transform projectileSpawn;
+    [SerializeField] private AudioSource shootSound;
+    [SerializeField] private ParticleSystem particleSystem;
 
     void Start()
     {
@@ -88,6 +89,8 @@ public class Tower : MonoBehaviour
         {
             p.SelectTarget(target, damage);
         }
+        shootSound.Play();
+        particleSystem.Play();
     }
 
     private void OnDrawGizmos()
