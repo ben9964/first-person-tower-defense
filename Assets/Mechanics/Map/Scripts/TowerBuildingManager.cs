@@ -14,8 +14,20 @@ public class TowerBuildingManager : MonoBehaviour
     // Singleton instance of the TowerBuildingManager.
     public static TowerBuildingManager instance;
     
-    [SerializedDictionary("Tower Name", "Tower Prefab")]
+    [SerializedDictionary("Tower Name", "Tower Prefabs")]
     public SerializedDictionary<String, GameObject> towerTypes;
+    
+    private Dictionary<String, Int32> towerLevels = new()
+    {
+        {"bullet", 1},
+        {"laser", 1},
+    };
+    
+    private Dictionary<String, float> towerUpgradeCosts = new()
+    {
+        {"bullet", 45f},
+        {"laser", 125f},
+    };
 
     private String _currentSelectedTower;
     
@@ -40,7 +52,28 @@ public class TowerBuildingManager : MonoBehaviour
     
     public GameObject GetBuildTower(String tower)
     {
-        return towerTypes[tower];
+        return towerTypes[tower + GetTowerLevel(tower)];
+    }
+    
+    public Int32 GetTowerLevel(String tower)
+    {
+        return towerLevels[tower];
+    }
+
+    public void Upgrade(String towerName)
+    {
+        towerLevels[towerName] += 1;
+        towerUpgradeCosts[towerName] *= 2;
+    }
+
+    public bool HasAnotherUpgrade(String tower)
+    {
+        return towerTypes.ContainsKey(tower + (GetTowerLevel(tower) + 1));
+    }
+    
+    public float GetTowerUpgradeCost(String towerName)
+    {
+        return towerUpgradeCosts[towerName];
     }
 
     private void OnRightClick(InputValue value)

@@ -48,10 +48,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerTypes:
     _serializedList:
-    - Key: blue
+    - Key: bullet1
       Value: {fileID: 1000012174300454, guid: 6d6b8e566b3ccf044a76cceab00dfbf5, type: 3}
-    - Key: red
+    - Key: bullet2
+      Value: {fileID: 1000012258839112, guid: 2e62c767f721e3d4292886cc2c97b67c, type: 3}
+    - Key: bullet3
+      Value: {fileID: 1000010378282670, guid: f46256364b6530e4cb36dc4584bd3cd3, type: 3}
+    - Key: bullet4
+      Value: {fileID: 1000011222192992, guid: e37936ff575ce9147a7c5049113b20e5, type: 3}
+    - Key: laser1
       Value: {fileID: 529306906193240519, guid: 4063295e4c703164a899864faf273f02, type: 3}
+    - Key: laser2
+      Value: {fileID: 8870592839556487193, guid: 6ab4a941639d4c241aaf47a18141b78e, type: 3}
+    - Key: laser3
+      Value: {fileID: 9067108159534999263, guid: bcbca6aa0b7bb6c42afce1f1a86c0851, type: 3}
 --- !u!114 &4386171003716860501
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,11 +1,25 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TowerBuyMenu : MonoBehaviour
 {
+    public TextMeshProUGUI bulletUpgradeText;
+    public TextMeshProUGUI laserUpgradeText;
+    public Button bulletUpgradeButton;
+    public Button laserUpgradeButton;
+
+    private void Start()
+    {
+        TowerBuildingManager manager = TowerBuildingManager.instance;
+        bulletUpgradeText.SetText("Upgrade: $" + manager.GetTowerUpgradeCost("bullet"));
+        laserUpgradeText.SetText("Upgrade: $" + manager.GetTowerUpgradeCost("laser"));
+    }
+
     public void ClickBuy(String tower)
     {
         TowerBuildingManager.instance.SetCurrentlySelectedTower(tower);
@@ -16,7 +30,37 @@ public class TowerBuyMenu : MonoBehaviour
 
     public void ClickUpgrade(String tower)
     {
-        Global.GetPlayer().GetHud().SendMessage("COMING SOON", new Color32(255, 255, 0, 255));
+        TowerBuildingManager manager = TowerBuildingManager.instance;
+        float cost = manager.GetTowerUpgradeCost(tower);
+        if (!Global.GetPlayer().HasMoney(cost)) return;
+        
+        Global.GetPlayer().RemoveMoney(cost);
+        manager.Upgrade(tower);
+        switch (tower)
+        {
+            case "bullet":
+                if (!manager.HasAnotherUpgrade(tower))
+                {
+                    bulletUpgradeText.SetText("N/A");
+                    bulletUpgradeButton.interactable = false;
+                }
+                else
+                {
+                    bulletUpgradeText.SetText("Upgrade: $" + manager.GetTowerUpgradeCost(tower));
+                }
+                break;
+            case "laser":
+                if (!manager.HasAnotherUpgrade(tower))
+                {
+                    laserUpgradeText.SetText("N/A");
+                    laserUpgradeButton.interactable = false;
+                }
+                else
+                {
+                    laserUpgradeText.SetText("Upgrade: $" + manager.GetTowerUpgradeCost(tower));
+                }
+                break;
+        }
     }
 
     public void ClickExit()

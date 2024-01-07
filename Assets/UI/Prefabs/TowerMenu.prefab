@@ -453,6 +453,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bff4edaeee541d408147849b05f0590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletUpgradeText: {fileID: 7125439502049114168}
+  laserUpgradeText: {fileID: 483471525553311206}
+  bulletUpgradeButton: {fileID: 6088500177323821703}
+  laserUpgradeButton: {fileID: 3470504088657559385}
 --- !u!1 &7984340896702685379
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,9 +543,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7917933327790559675}
     m_Modifications:
+    - target: {fileID: 142035481126646657, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_text
+      value: 'Upgrade: $200'
+      objectReference: {fileID: 0}
     - target: {fileID: 402462173679507133, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_text
-      value: Red Tower
+      value: Laser Railgun
       objectReference: {fileID: 0}
     - target: {fileID: 1994866651706025480, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -570,6 +578,10 @@ PrefabInstance:
     - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TowerBuyMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: laser
       objectReference: {fileID: 0}
     - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -653,7 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: red
+      value: laser
       objectReference: {fileID: 0}
     - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -668,6 +680,28 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+--- !u!114 &483471525553311206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 142035481126646657, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+  m_PrefabInstance: {fileID: 526145236293992039}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3470504088657559385 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+  m_PrefabInstance: {fileID: 526145236293992039}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &5151262775344557028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4625698734041978243, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
@@ -681,9 +715,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7917933327790559675}
     m_Modifications:
+    - target: {fileID: 142035481126646657, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_text
+      value: 'Upgrade: $100'
+      objectReference: {fileID: 0}
     - target: {fileID: 402462173679507133, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_text
-      value: Blue Tower
+      value: Bullet Tower
       objectReference: {fileID: 0}
     - target: {fileID: 1994866651706025480, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -712,6 +750,10 @@ PrefabInstance:
     - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: TowerBuyMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: bullet
       objectReference: {fileID: 0}
     - target: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -795,7 +837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: blue
+      value: bullet
       objectReference: {fileID: 0}
     - target: {fileID: 7264875685667817783, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -811,3 +853,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4625698734041978243, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
   m_PrefabInstance: {fileID: 7141083921866967993}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6088500177323821703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3991468391749140798, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+  m_PrefabInstance: {fileID: 7141083921866967993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7125439502049114168 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 142035481126646657, guid: b93df5cfbf123f4499d873f2aeecc1cc, type: 3}
+  m_PrefabInstance: {fileID: 7141083921866967993}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
