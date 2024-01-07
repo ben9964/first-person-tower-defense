@@ -7,7 +7,12 @@ using UnityEngine.InputSystem;
 public class MapCamera : MonoBehaviour
 {
     private GameObject ceiling;
-    
+
+    private void Start()
+    {
+        gameObject.GetComponent<AudioListener>().enabled = false;
+    }
+
     public void OnViewMap(InputValue value)
     {
         GameObject playerCamera = Global.GetPlayer().GetCamera().gameObject;

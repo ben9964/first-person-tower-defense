@@ -34,6 +34,8 @@ public class Projectile : MonoBehaviour
             LivingEntity enemy = collision.gameObject.GetComponent<LivingEntity>();
             enemy.TakeDamage(damage);
             Destroy(gameObject);
+            return;
         }
+        Destroy(gameObject);
     }
 }

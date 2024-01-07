@@ -49,9 +49,9 @@ MonoBehaviour:
   towerTypes:
     _serializedList:
     - Key: blue
-      Value: {fileID: 7823158909952367190, guid: 7a341dba71e2a2545a020212e959f8d2, type: 3}
+      Value: {fileID: 1000012174300454, guid: 6d6b8e566b3ccf044a76cceab00dfbf5, type: 3}
     - Key: red
-      Value: {fileID: 7823158909952367190, guid: d872e5d81b3af2340a6db978d3aa5f20, type: 3}
+      Value: {fileID: 529306906193240519, guid: 4063295e4c703164a899864faf273f02, type: 3}
 --- !u!114 &4386171003716860501
 MonoBehaviour:
   m_ObjectHideFlags: 0

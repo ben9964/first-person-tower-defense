@@ -26,6 +26,7 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
     private float _levelupThreshold = 100;
     private int _playerLevel;
     private bool _isFrozen;
+    public AudioSource _levelUpSound;
     public float abilityCooldown;
     protected bool _canUseAbility = true;
     protected override void Awake()
@@ -244,6 +245,7 @@ public abstract class AbstractPlayer : LivingEntity, GameSavingInterface
         _hudManager.SetLevel(_playerLevel); // Update the level display
         _hudManager.SetXP(_xp);// Update the XP display
         _levelupThreshold *= 1.5f; // Increase the XP required for the next level
+        _levelUpSound.Play();
 
         // Implement additional level-up effects here (e.g., increase health, damage, etc.)
         

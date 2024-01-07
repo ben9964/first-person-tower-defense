@@ -45,6 +45,7 @@ public class TowerBuildingManager : MonoBehaviour
 
     private void OnRightClick(InputValue value)
     {
+        Debug.Log("Called");
         Ray ray = Global.GetPlayer().GetCamera().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hitData;
 

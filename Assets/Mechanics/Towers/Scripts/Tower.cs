@@ -26,6 +26,7 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
+        transform.rotation = Quaternion.Euler(0,0,0);
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         
     }
