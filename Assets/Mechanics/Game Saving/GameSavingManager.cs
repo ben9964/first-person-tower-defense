@@ -74,5 +74,9 @@ public class GameSavingManager : MonoBehaviour
     {
         return this.gameData != null;
     }
-    
+
+    public GameData GetGameData()
+    {
+        return this.gameData;
+    }
 }

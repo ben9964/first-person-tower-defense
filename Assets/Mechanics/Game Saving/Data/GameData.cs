@@ -16,5 +16,15 @@ public class GameData
 
         this.playerLevel = 1;
     }
+    
+    public float GetXp()
+    {
+        return playerXp;
+    }
+    
+    public int GetLevel()
+    {
+        return playerLevel;
+    }
 }
     

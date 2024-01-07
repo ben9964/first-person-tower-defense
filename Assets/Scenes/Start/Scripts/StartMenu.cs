@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,6 +13,11 @@ public class StartMenu : MonoBehaviour
     [Header ("Start Menu Buttons")]
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button continueGameButton;
+    
+    [SerializeField] private String levelString;
+    [SerializeField] private String XPString;
+    [SerializeField] private TextMeshProUGUI playerLevelText;
+    [SerializeField] private TextMeshProUGUI playerXPText;
 
     
     // The New Game and Continue Game button must be dragged and dropped on to the Start menu script
@@ -24,6 +30,16 @@ public class StartMenu : MonoBehaviour
         {
             continueGameButton.interactable = false;
         }
+
+        GameData savedData = GameSavingManager.instance.GetGameData();
+        if (savedData == null)
+        {
+            playerLevelText.gameObject.SetActive(false);
+            playerXPText.gameObject.SetActive(false);
+            return;
+        }
+        playerLevelText.SetText(levelString + savedData.GetLevel());
+        playerXPText.SetText(XPString + savedData.GetXp());
     }
 
     // This method is for when a new change is created 

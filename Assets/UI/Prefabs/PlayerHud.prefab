@@ -1148,7 +1148,7 @@ MonoBehaviour:
   XPText: {fileID: 5038403192336790416}
   XPString: 'XP: '
   levelText: {fileID: 4191704770427064262}
-  levelString: 'Player Level:'
+  levelString: 'Player Level: '
   waveSpawnText: {fileID: 4378482063933301022}
   escMenuPrefab: {fileID: 7474950061688482861, guid: abc47392cf3ebc341985528dd5a02db5, type: 3}
   towerBuyMenuPrefab: {fileID: 7474950061688482861, guid: 3efeec1c23d84f742804ebe0a58f5726, type: 3}
