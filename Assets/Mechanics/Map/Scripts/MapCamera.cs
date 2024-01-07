@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class MapCamera : MonoBehaviour
 {
+    private GameObject ceiling;
+    
     public void OnViewMap(InputValue value)
     {
         GameObject playerCamera = Global.GetPlayer().GetCamera().gameObject;
@@ -15,6 +17,11 @@ public class MapCamera : MonoBehaviour
             playerCamera.SetActive(false);
             gameObject.GetComponent<Camera>().enabled = true;
             gameObject.GetComponent<AudioListener>().enabled = true;
+            if (GameObject.FindWithTag("Ceiling") != null)
+            {
+                ceiling = GameObject.FindWithTag("Ceiling");
+                ceiling.SetActive(false);
+            }
             Global.GetPlayer().HideHud();
             Global.GetPlayer().GetCurrentWeapon().ResetShot();
         }
@@ -23,6 +30,10 @@ public class MapCamera : MonoBehaviour
             playerCamera.SetActive(true);
             gameObject.GetComponent<Camera>().enabled = false;
             gameObject.GetComponent<AudioListener>().enabled = false;
+            if (ceiling != null)
+            {
+                ceiling.SetActive(true);
+            }
             Global.GetPlayer().ShowHud();
             Global.SetInMapView(false);
         }
