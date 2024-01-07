@@ -54,7 +54,6 @@ public class CharacterSelectScript : MonoBehaviour
         mapLockedIcons.SetActive(false);
         int level = GameSavingManager.instance.GetGameData().GetLevel();
         AbstractPlayer playerPrefabComponent = CharacterDB.GetCharacter(selectedCharacter).GetComponent<AbstractPlayer>();
-        Debug.Log(playerPrefabComponent.GetName());
         if (level < characterUnlocks[playerPrefabComponent.GetName()])
         {
             playButton.interactable = false;
