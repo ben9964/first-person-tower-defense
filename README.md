@@ -29,10 +29,17 @@ Our Strategic tower defense game with a first person twist. Multiple different c
 
 # Controls
 
+## Player
 - W A S D -> Movement
 - Mouse Movement -> Look
 - Space -> Jump
 - Left Click -> Shoot
-- Right Click -> Place Tower where you are looking
 - G -> Spawn Next Wave
+- F -> Use Class Ability
+
+## Tower
+- Right Click -> Place Tower where you are looking
+- B -> Open Buy Menu
+
+## Misc
 - ESC -> View Pause Menu (and controls)
